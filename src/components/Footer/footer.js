@@ -6,6 +6,7 @@ import Vector from "../img/Vector.png";
 import Vector1 from "../img/Vector1.png";
 import Vector2 from "../img/Vector2.png";
 import footerBg from "../img/footerBg.png";
+import footer from "../img/footer.png";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -102,11 +103,11 @@ const Footer = () => {
             />
           </div>
           <p className="text-lg ml-6 text-white">
-            Made by : <strong>Team Geeks_on_Fire</strong>
+            Made by : <strong>Hurudza Software Team</strong>
           </p>
         </div>
         <div className="flex-1 flex mr-6">
-          <img src={footerBg} className="footerBgImg" alt="" />
+          <img src={footer} className="footerBgImg" alt="" />
           <h1 className="text-xl text-white font-bold mt-6">
             Ministry of agriculture and farmer's welfare
           </h1>
