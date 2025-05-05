@@ -1,14 +1,3 @@
-# Hurudza.AI
-![Hackathon (2)](https://user-images.githubusercontent.com/55245862/207863094-f5fc2d07-5584-45d7-be02-3695dd90c71b.png)
-
-> Problem Statement (AGRI12)
-
-
-AI-based voice-assisted Contact Center for assisting Farmers for their problems. Farmers can log their problems with the contact center thru phone calls / SMS / website and in return an automated voice response can be provided to the farmers with a most appropriate solution for their problems.
-
-# UNESCO India - Africa Hackathon
-
-<p align="center"><img src="https://user-images.githubusercontent.com/55245862/205508044-e43024b4-3c92-4ab9-9f6b-e3c6038205a6.jpg" height="200" width="300"></p>
 
 ## Features
 
