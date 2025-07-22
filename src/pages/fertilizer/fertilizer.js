@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import PreHeader from "../../components/preheader/preheader";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
-import React, { useState } from "react";
 
 const Fertilizer = () => {
   const [load, setLoad] = useState(false);
@@ -17,105 +17,114 @@ const Fertilizer = () => {
   const [application, setApplication] = useState("");
   const [specification, setSpecification] = useState("");
   const [lang, setLang] = useState("en");
-  function onSearchSubmit(term) {
+
+  const openaiApiKey = process.env.REACT_APP_OPENAI_API_KEY;
+
+  const systemPrompt = {
+    en: `You are an agricultural assistant. Based on soil type, crop type, moisture, nitrogen, phosphorus, potassium and city, provide:
+1. Recommended fertilizer.
+2. Information about it.
+3. How to apply it.
+4. Its specifications.
+Respond clearly and in English.`,
+    hi: `Iwe uri mubatsiri wezvekurima. Zvichienderana nerudzi rwevhu, chirimwa, hunyoro, nitrogen, phosphorus, potassium nemaguta, ipa:
+1. Fetereza inokurudzirwa.
+2. Ruzivo nezvayo.
+3. Maitiro ekuiisa.
+4. Zvakakosha zvefetereza yacho.
+Pindura muchiShona zvakajeka.`,
+    nd: `Ungumeluleki wezolimo. Ngokohlobo lomhlabathi, uhlobo lwesilimo, umswakamo, i-nitrogen, i-phosphorus, i-potassium kanye ledolobho, nikeza:
+1. Umanyolo ohlongozwayo.
+2. Ulwazi ngawo.
+3. Indlela yokuwusebenzisa.
+4. Incazelo yomkhiqizo.
+Phendula ngesiNdebele esiqondile.`
+  };
+
+  const onSearchSubmit = async () => {
     setLoad(true);
-    console.log("Clicked");
-    let url = "http://127.0.0.1:5000/fertilizer-predict";
-    let body = JSON.stringify({
-      "soil-type": soilType,
-      "crop-type": cropType,
-      moisture: parseFloat(moisture),
-      nitrogen: parseFloat(nitrogen),
-      phosphorous: parseFloat(phosphorus),
-      pottasium: parseFloat(potassium),
-      city: city,
-      lang: lang
-    });
-    console.log("body", body);
+    setPrediction("");
+    setInformation("");
+    setApplication("");
+    setSpecification("");
+
+    const userInput = `Soil type: ${soilType}
+Crop type: ${cropType}
+Moisture: ${moisture}
+Nitrogen: ${nitrogen}
+Phosphorus: ${phosphorus}
+Potassium: ${potassium}
+City: ${city}
+Give a full fertilizer recommendation.`
+
     try {
-      fetch(url, {
-        // mode: "no-cors",
-        method: "post",
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          "Access-Control-Allow-Origin": "*"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openaiApiKey}`
         },
-        body: body
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          let main_data = data["data"];
-          setPrediction(main_data["prediction"]);
-          setInformation(main_data["info"]["info"]);
-          setApplication(
-            main_data["info"]["application"]["1"] +
-              " " +
-              main_data["info"]["application"]["2"]
-          );
-          setSpecification(main_data["info"]["specifications"]);
-          console.log("res", data); // gives SyntaxError: Unexpected end of input
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: systemPrompt[lang] || systemPrompt.en },
+            { role: "user", content: userInput }
+          ],
+          temperature: 0.6
         })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (e) {
-      console.log(e);
+      });
+
+      const data = await res.json();
+      const content = data?.choices?.[0]?.message?.content || "";
+
+      // Attempt to split sections by keywords
+      setPrediction(content.match(/(?:Fertilizer|Recommendation):?\s*(.*)/i)?.[1] || "—");
+      setInformation(content.match(/Information:?\s*([\s\S]*?)Application:/i)?.[1] || "—");
+      setApplication(content.match(/Application:?\s*([\s\S]*?)Specification:/i)?.[1] || "—");
+      setSpecification(content.match(/Specification:?\s*([\s\S]*)/i)?.[1] || "—");
+    } catch (error) {
+      console.error("OpenAI Error:", error);
+      setPrediction("Something went wrong. Try again.");
     }
 
     setLoad(false);
-  }
+  };
 
   return (
     <>
       <PreHeader />
       <Header />
-      <section className="">
-        <div className="grid place-items-center my-14  ">
-          <div className="container bg-gray-100 p-10 grid place-items-center mt-14  ">
+      <section>
+        <div className="grid place-items-center my-14">
+          <div className="container bg-gray-100 p-10 grid place-items-center mt-14">
             <p className="text-2xl font-medium text-green-600 my-12">
               Predict the Fertilizer for your crop
-              <br />
             </p>
 
+            {/* Language selection */}
             <div className="flex flex-row space-x-3 my-10">
-              <div>Please select a Language, default language is English</div>
-              <div className="ml-16 ">
+              <div>Select a Language:</div>
+              {["en", "hi", "nd"].map((code) => (
                 <button
-                  onClick={() => setLang("en")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  key={code}
+                  onClick={() => setLang(code)}
+                  className={`ml-4 px-6 py-2.5 ${
+                    lang === code ? "bg-blue-700" : "bg-green-600"
+                  } text-white font-medium text-xs uppercase rounded shadow-md`}
                 >
-                  English
+                  {code === "en"
+                    ? "English"
+                    : code === "hi"
+                    ? "Shona"
+                    : "Ndebele"}
                 </button>
-              </div>
-              <div className="ml-16">
-                <button
-                  onClick={() => setLang("hi")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white 
-                  font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 
-                  hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 
-                  active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Hindi
-                </button>
-              </div>
-              <div className="ml-16 ">
-                <button
-                  onClick={() => setLang("es")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white 
-                  font-medium text-xs leading-tight uppercase rounded shadow-md
-                  hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none 
-                  focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Spanish
-                </button>
-              </div>
+              ))}
             </div>
+
+            {/* Dropdowns */}
             <div className="flex flex-row my-2 w-3/5">
               <div>Select a Soil Type</div>
-              <div className="ml-16 ">
+              <div className="ml-16">
                 <select
                   onChange={(e) => setSoilType(e.target.value)}
                   className="border-2 border-green-600 p-2 rounded-sm w-64"
@@ -128,10 +137,10 @@ const Fertilizer = () => {
                 </select>
               </div>
             </div>
-            {/* dropdown for crop type */}
+
             <div className="flex flex-row my-2 w-3/5">
               <div>Select a Crop Type</div>
-              <div className="ml-16 ">
+              <div className="ml-16">
                 <select
                   onChange={(e) => setCropType(e.target.value)}
                   className="border-2 border-green-600 p-2 rounded-sm w-64"
@@ -151,72 +160,64 @@ const Fertilizer = () => {
               </div>
             </div>
 
+            {/* Text Inputs */}
             <input
               onChange={(e) => setMoisture(e.target.value)}
-              className="w-3/5 my-2"
-              type="text"
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
               placeholder="Enter moisture value"
             />
             <input
               onChange={(e) => setNitrogen(e.target.value)}
-              className="w-3/5 my-2"
-              type="text"
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
               placeholder="Enter nitrogen value"
             />
             <input
               onChange={(e) => setPhosphorus(e.target.value)}
-              className="w-3/5 my-2"
-              type="text"
-              placeholder="Enter phosphorous value"
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
+              placeholder="Enter phosphorus value"
             />
             <input
               onChange={(e) => setPotassium(e.target.value)}
-              className="w-3/5 my-2"
-              type="text"
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
               placeholder="Enter potassium value"
             />
             <input
               onChange={(e) => setCity(e.target.value)}
-              className="w-3/5 my-2"
+              className="w-3/5 my-2 p-2 border rounded"
               type="text"
               placeholder="Enter city"
             />
 
-            <div className="grid place-items-center mt-14 ">
-              <div className="mt-2">
-                <button
-                  onClick={() => onSearchSubmit("aaa")}
-                  type="button"
-                  className="inline-block  px-6 py-2.5 bg-green-600 text-white font-medium text-xs 
-                  leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg
-                  focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800
-                  active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Get Fertilizer Recommendation
-                </button>
-              </div>
+            {/* Submit */}
+            <div className="mt-10">
+              <button
+                onClick={onSearchSubmit}
+                className="px-6 py-2.5 bg-green-600 text-white text-sm rounded shadow-md hover:bg-blue-700 transition"
+              >
+                Get Fertilizer Recommendation
+              </button>
             </div>
           </div>
         </div>
-        <div>
-          {load ? (
-            <div className="grid place-items-center my-14  ">loading </div>
-          ) : (
-            <div></div>
-          )}
-          {prediction !== "" ? (
-            <div className="grid place-items-center my-14 text-center ">
-              <p className="font-bold my-3">Fertilizer Predicted: </p>
-              {prediction}
-              <p className="font-bold my-3">Information</p>
-              {information}
-              <p className="font-bold my-3">Application</p>
-              {application}
-              <p className="font-bold my-3">Specification</p>
-              {specification}
+
+        {/* Output */}
+        <div className="text-center">
+          {load && <p className="text-green-600 font-semibold my-6">Loading...</p>}
+          {prediction && (
+            <div className="my-10 px-8 text-left max-w-2xl mx-auto">
+              <h3 className="text-xl font-bold text-green-700 mb-2">Fertilizer Recommended:</h3>
+              <p>{prediction}</p>
+              <h3 className="text-xl font-bold text-green-700 mt-6">Information:</h3>
+              <p>{information}</p>
+              <h3 className="text-xl font-bold text-green-700 mt-6">Application:</h3>
+              <p>{application}</p>
+              <h3 className="text-xl font-bold text-green-700 mt-6">Specification:</h3>
+              <p>{specification}</p>
             </div>
-          ) : (
-            <div></div>
           )}
         </div>
       </section>

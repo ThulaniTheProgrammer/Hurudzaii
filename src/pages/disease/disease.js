@@ -4,117 +4,144 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 
 const Disease = () => {
-  const [photo, setPhoto] = useState([]);
+  const [photo, setPhoto] = useState(null);
   const [load, setLoad] = useState(false);
   const [prediction, setPrediction] = useState("");
   const [lang, setLang] = useState("en");
 
-  let url = "http://127.0.0.1:5000/disease-predict/" + lang;
-  let form = new FormData();
-  form.append("file", photo[0]);
+  const openaiApiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
-  function onClick() {
-    try {
-      fetch(url, {
-        method: "post",
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
-        body: form
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          let main_data = data["data"];
-          setPrediction(main_data["prediction"]);
-          console.log("res", data); // gives SyntaxError: Unexpected end of input
-        })
-        .catch((error) => {
-          console.log(error);
+  const languagePromptMap = {
+    en: "Describe this plant disease and how to treat it in English.",
+    hi: "Tsanangura chirwere chechirimwa ichi uye maitiro ekuchirapa muShona.",
+    es: "Chaza lesi sifo sesitshalo lokuthi singelashwa njani ngesiNdebele."
+  };
+
+  async function onClick() {
+    if (!photo) return alert("Please upload an image.");
+
+    setLoad(true);
+    setPrediction("");
+
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const base64Image = reader.result.split(",")[1]; // remove the data:image/...;base64, prefix
+      const prompt = languagePromptMap[lang] || languagePromptMap["en"];
+
+      try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${openaiApiKey}`
+          },
+          body: JSON.stringify({
+            model: "gpt-4-vision-preview",
+            messages: [
+              {
+                role: "user",
+                content: [
+                  { type: "text", text: prompt },
+                  {
+                    type: "image_url",
+                    image_url: {
+                      url: `data:image/jpeg;base64,${base64Image}`
+                    }
+                  }
+                ]
+              }
+            ],
+            max_tokens: 1000
+          })
         });
-    } catch (e) {
-      console.log(e);
-    }
+
+        const data = await response.json();
+        setPrediction(data.choices[0]?.message?.content || "No prediction returned.");
+      } catch (error) {
+        console.error("OpenAI Error:", error);
+        setPrediction("Error getting prediction.");
+      } finally {
+        setLoad(false);
+      }
+    };
+
+    reader.readAsDataURL(photo);
   }
+
   return (
     <>
       <PreHeader />
       <Header />
       <section className="">
-        <div className="grid place-items-center my-14  ">
-          <div className="container bg-gray-100  p-10 grid place-items-center my-14 ">
+        <div className="grid place-items-center my-14">
+          <div className="container bg-gray-100 p-10 grid place-items-center">
             <p className="text-2xl font-medium text-green-600 my-12">
               Upload your image to get the disease prediction
-              <br />
             </p>
+
             <div className="flex flex-row space-x-3 my-10">
-              <div>Please select a Language, default language is English</div>
-              <div className="ml-16 ">
-                <button
-                  onClick={() => setLang("en")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  English
-                </button>
+              <div>Please select a Language</div>
+              <div className="ml-16">
+                <button onClick={() => setLang("en")} className="lang-button">English</button>
               </div>
               <div className="ml-16">
-                <button
-                  onClick={() => setLang("hi")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Shona
-                </button>
+                <button onClick={() => setLang("hi")} className="lang-button">Shona</button>
               </div>
-              <div className="ml-16 ">
-                <button
-                  onClick={() => setLang("es")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Spanish
-                </button>
+              <div className="ml-16">
+                <button onClick={() => setLang("es")} className="lang-button">Ndebele</button>
               </div>
             </div>
-            <p className="title">Select Image:</p>
-            <div className=" m-6">
-              <input
-                type="file"
-                onChange={(e) => setPhoto([e.target.files[0]])}
-              />
-            </div>
-            <button
-              onClick={() => onClick()}
-              type="button"
-              className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Get Upload
-            </button>
-            {/*{handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}*/}
 
-            <p className="title" style={{ marginTop: 30 }}>
-              Uploaded Image:
-            </p>
+            <p className="title">Select Image:</p>
+            <input type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} className="m-6" />
+
+            <button onClick={onClick} className="action-button">
+              Get Disease Prediction
+            </button>
+
+            <p className="title mt-10">Uploaded Image:</p>
+            {photo && (
+              <img
+                src={URL.createObjectURL(photo)}
+                alt="Uploaded preview"
+                className="mt-4 max-w-xs rounded shadow"
+              />
+            )}
           </div>
         </div>
 
-        <div>
+        <div className="grid place-items-center my-14 text-center">
           {load ? (
-            <div className="grid place-items-center my-14  ">loading </div>
-          ) : (
-            <div></div>
-          )}
-          {prediction !== "" ? (
-            <div className="grid place-items-center my-14 text-center ">
-              <p className="font-bold my-3">Disease From Image Predicted: </p>
-              {prediction}
-            </div>
-          ) : (
-            <div></div>
-          )}
+            <p className="text-green-600">Loading prediction...</p>
+          ) : prediction ? (
+            <>
+              <p className="font-bold my-3 text-xl text-green-700">Predicted Result:</p>
+              <p>{prediction}</p>
+            </>
+          ) : null}
         </div>
       </section>
       <Footer />
+
+      {/* Tailwind Custom Buttons */}
+      <style jsx>{`
+        .lang-button,
+        .action-button {
+          padding: 0.6rem 1.2rem;
+          background-color: #16a34a;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          border-radius: 0.375rem;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+        .lang-button:hover,
+        .action-button:hover {
+          background-color: #15803d;
+        }
+      `}</style>
     </>
   );
 };

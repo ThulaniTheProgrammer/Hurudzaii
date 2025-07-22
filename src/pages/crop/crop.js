@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import PreHeader from "../../components/preheader/preheader";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
-import React, { useState } from "react";
 
 const Crop = () => {
   const [load, setLoad] = useState(false);
@@ -14,164 +14,145 @@ const Crop = () => {
   const [prediction, setPrediction] = useState("");
   const [lang, setLang] = useState("en");
 
-  function onSearchSubmit(term) {
+  const openaiApiKey = process.env.REACT_APP_OPENAI_API_KEY;
+
+  const systemPrompt = {
+    en: "You are an expert agricultural assistant. Use soil and climate data to recommend the best crop to plant. Respond briefly and clearly.",
+    hi: "Iwe uri nyanzvi yezvekurima. Shandisa ruzivo rwevhu nemamiriro ekunze kupa zano rekudyara chirimwa chakanakisa. Pindura muchiShona.",
+    nd: "Ungumeluleki wezolimo. Sebenzisa imininingwane yomhlabathi nesimo sezulu ukunikeza isiphakamiso sokutshala isilimo esifanele. Phendula ngesiNdebele esiqondile."
+  };
+
+  const onSearchSubmit = async () => {
     setLoad(true);
-    console.log("Clicked");
-    let url = "http://127.0.0.1:5000/crop-recommedation";
-    let body = JSON.stringify({
-      nitrogen: parseFloat(nitrogen),
-      phosphorous: parseFloat(phosphorus),
-      pottasium: parseFloat(potassium),
-      ph: parseFloat(ph),
-      rainfall: parseFloat(rain),
-      city: city,
-      lang: lang
-    });
-    console.log("body", body);
+    setPrediction("");
+
+    const userInput = `Soil has: 
+    - Nitrogen: ${nitrogen}
+    - Phosphorus: ${phosphorus}
+    - Potassium: ${potassium}
+    - pH: ${ph}
+    - Rainfall: ${rain}mm
+    - Location: ${city}
+
+    Based on these values, recommend the most suitable crop to plant in this region.`;
+
     try {
-      fetch(url, {
-        method: "post",
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          "Access-Control-Allow-Origin": "*"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openaiApiKey}`
         },
-        body: body
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          let main_data = data["data"];
-          setPrediction(main_data["prediction"]);
-          console.log("res", data); // gives SyntaxError: Unexpected end of input
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "system", content: systemPrompt[lang] || systemPrompt.en },
+            { role: "user", content: userInput }
+          ],
+          temperature: 0.5
         })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (e) {
-      console.log(e);
+      });
+
+      const data = await res.json();
+      const result = data?.choices?.[0]?.message?.content;
+      setPrediction(result || "No recommendation received.");
+    } catch (error) {
+      console.error("OpenAI error:", error);
+      setPrediction("Something went wrong. Try again.");
     }
 
     setLoad(false);
-  }
+  };
 
   return (
     <>
       <PreHeader />
       <Header />
-      <section className="">
-        <div className="grid place-items-center my-14  ">
-          <div className="container bg-gray-100 p-10 grid place-items-center mt-14  ">
+      <section>
+        <div className="grid place-items-center my-14">
+          <div className="container bg-gray-100 p-10 grid place-items-center mt-14">
             <p className="text-2xl font-medium text-green-600 my-12">
               Predict the best crop to plant
-              <br />
             </p>
+
+            {/* Language Selector */}
             <div className="flex flex-row space-x-3 my-10">
-              <div>Please select a Language, default language is English</div>
-              <div className="ml-16 ">
+              <div>Please select a language:</div>
+              {["en", "hi", "nd"].map((code) => (
                 <button
-                  onClick={() => setLang("en")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  key={code}
+                  onClick={() => setLang(code)}
+                  className={`ml-4 px-6 py-2.5 ${
+                    lang === code ? "bg-blue-700" : "bg-green-600"
+                  } text-white font-medium text-xs uppercase rounded shadow-md`}
                 >
-                  English
+                  {code === "en"
+                    ? "English"
+                    : code === "hi"
+                    ? "Shona"
+                    : "Ndebele"}
                 </button>
-              </div>
-              <div className="ml-16">
-                <button
-                  onClick={() => setLang("hi")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Hindi
-                </button>
-              </div>
-              <div className="ml-16 ">
-                <button
-                  onClick={() => setLang("es")}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Spanish
-                </button>
-              </div>
+              ))}
             </div>
+
+            {/* Inputs */}
             <input
-              onChange={(e) => {
-                setNitrogen(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
-              type="text"
-              placeholder="Enter the value of nitrogen"
+              onChange={(e) => setNitrogen(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
+              placeholder="Enter the value of Nitrogen"
             />
             <input
-              onChange={(e) => {
-                setPhosphorus(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
-              type="text"
+              onChange={(e) => setPhosphorus(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
               placeholder="Enter the value of Phosphorus"
             />
             <input
-              onChange={(e) => {
-                setPotassium(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
-              type="text"
+              onChange={(e) => setPotassium(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
               placeholder="Enter the value of Potassium"
             />
             <input
-              onChange={(e) => {
-                setPh(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
-              type="text"
-              placeholder="Enter the soil ph value (0-14)"
+              onChange={(e) => setPh(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
+              placeholder="Enter the soil pH value (0–14)"
             />
             <input
-              onChange={(e) => {
-                setRain(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
-              type="text"
-              placeholder="Enter the rainfall gauge (in mm)"
+              onChange={(e) => setRain(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
+              type="number"
+              placeholder="Enter the rainfall (in mm)"
             />
             <input
-              onChange={(e) => {
-                setCity(e.target.value);
-              }}
-              className="w-3/5 my-2 required"
+              onChange={(e) => setCity(e.target.value)}
+              className="w-3/5 my-2 p-2 border rounded"
               type="text"
               placeholder="Enter your city"
             />
 
-            <div className="grid place-items-center mt-14 ">
-              <div className="mt-2">
-                <button
-                  onClick={() => {
-                    onSearchSubmit();
-                  }}
-                  type="button"
-                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
-                  Get Crop Recommendation
-                </button>
-              </div>
+            {/* Submit Button */}
+            <div className="mt-10">
+              <button
+                onClick={onSearchSubmit}
+                className="px-6 py-2.5 bg-green-600 text-white text-sm rounded shadow-md hover:bg-blue-700 transition"
+              >
+                Get Crop Recommendation
+              </button>
             </div>
           </div>
         </div>
 
-        <div>
-          {load ? (
-            <div className="grid place-items-center my-14  ">loading </div>
-          ) : (
-            <div></div>
-          )}
-          {prediction !== "" ? (
-            <div className="grid place-items-center my-14 text-center ">
-              <p className="font-bold my-3">Crop Predicted: </p>
-              {prediction}
+        {/* Loading / Result */}
+        <div className="text-center">
+          {load && <p className="text-green-600 font-semibold my-6">Loading...</p>}
+          {prediction && (
+            <div className="my-10 px-8">
+              <p className="text-xl font-bold text-green-700">Crop Recommendation:</p>
+              <p className="mt-4 text-gray-800 whitespace-pre-line">{prediction}</p>
             </div>
-          ) : (
-            <div></div>
           )}
         </div>
       </section>

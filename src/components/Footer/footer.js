@@ -1,117 +1,77 @@
 import React from "react";
-import "./footer.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../img/logo.png";
 import Vector from "../img/Vector.png";
 import Vector1 from "../img/Vector1.png";
 import Vector2 from "../img/Vector2.png";
-import footerBg from "../img/footerBg.png";
 import footer from "../img/footer.png";
 
 const Footer = () => {
   const navigate = useNavigate();
+
   return (
-    <div className="bg-[#219653] inPhone py-20">
-      <div className="flex justify-center items-center">
-        <div className="flex-1 border-r-2 border-black-600">
+    <div className="bg-gradient-to-br from-green-700 to-green-500 text-white py-16 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        {/* Logo and Brand */}
+        <div className="flex flex-col items-center md:items-start">
           <div
-            className="flex justify-center items-center mx-8 cursor-pointer"
             onClick={() => navigate("/")}
+            className="flex items-center space-x-4 cursor-pointer"
           >
-            <img src={logo} className="footerLogo" alt="" />
-            <div className="ml-4">
-              <h3 className="text-2xl text-white font-bold mt-4">HURUDZA.AI</h3>
-              <p className="text-md font-normal text-white mt-2">
-                WeAreFarmerVoice
-              </p>
+            <img src={logo} alt="Logo" className="w-14 h-14 object-contain" />
+            <div>
+              <h3 className="text-2xl font-bold">HURUDZA.AI</h3>
+              <p className="text-sm mt-1">WeAreFarmerVoice</p>
             </div>
           </div>
         </div>
-        <div className="flex-1 px-16 border-r-2 border-black-600">
-          <div className="flex">
-            <ul className="list-none mr-24">
-              <li
-                className="text-lg text-white font-bold cursor-pointer"
-                onClick={() => navigate("/")}
-              >
-                Home
-              </li>
-              {/* <li className='text-lg text-white font-medium cursor-pointer'>Menu</li> */}
-              <li
-                className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/sms")}
-              >
-                SMS Service
-              </li>
-            </ul>
-            <ul>
-              <li
-                className="text-lg text-white font-bold cursor-pointer"
-                onClick={() => navigate("/fertilizer")}
-              >
-                Fertilizer Prediction
-              </li>
-              <li
-                className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/crop")}
-              >
-                Crop Prediction
-              </li>
-              <li
-                className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/voice")}
-              >
-                Weather Prediction
-              </li>
-              <li
-                className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/disease")}
-              >
-                Disease Prediction
-              </li>
-            </ul>
+
+        {/* Navigation */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+          <ul className="space-y-2">
+            <li onClick={() => navigate("/")} className="hover:underline cursor-pointer">Home</li>
+            <li onClick={() => navigate("/sms")} className="hover:underline cursor-pointer">SMS Service</li>
+            <li onClick={() => navigate("/fertilizer")} className="hover:underline cursor-pointer">Fertilizer Prediction</li>
+            <li onClick={() => navigate("/crop")} className="hover:underline cursor-pointer">Crop Prediction</li>
+            <li onClick={() => navigate("/voice")} className="hover:underline cursor-pointer">Weather Prediction</li>
+            <li onClick={() => navigate("/disease")} className="hover:underline cursor-pointer">Disease Prediction</li>
+          </ul>
+        </div>
+
+        {/* Feedback and Social */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4">Engage with Us</h4>
+          <p className="mb-3">Have feedback?</p>
+          <button
+            onClick={() => navigate("/feedback")}
+            className="text-sm bg-white text-green-700 font-semibold py-1 px-3 rounded hover:bg-green-100 transition"
+          >
+            Submit Here
+          </button>
+          <div className="mt-6">
+            <h4 className="text-lg font-semibold mb-2">Follow Us</h4>
+            <div className="flex space-x-4">
+              <img src={Vector} alt="Facebook" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
+              <img src={Vector1} alt="Twitter" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
+              <img src={Vector2} alt="LinkedIn" className="w-6 h-6 cursor-pointer hover:scale-110 transition" />
+            </div>
           </div>
-          <p className="text-md text-medium text-white mt-4">
-            Please provide us Feedback{" "}
-            <button
-              onClick={() => navigate(this.props.feedback)}
-              className="text-xl underline"
-            >
-              HERE
-            </button>
-          </p>
         </div>
-        <div className="flex-1 px-16 border-r-2 border-black-600">
-          <h1 className="text-xl ml-6 text-white font-bold w-2/3">
-            Give us a follow on social media
-          </h1>
-          <div className="flex my-5 justify-left">
-            <img
-              className="socialIcons mx-3 ml-6 cursor-pointer"
-              src={Vector}
-              alt=""
-            />
-            <img
-              className="socialIcons mx-3 ml-6 cursor-pointer"
-              src={Vector1}
-              alt=""
-            />
-            <img
-              className="socialIcons mx-3 ml-6 cursor-pointer"
-              src={Vector2}
-              alt=""
-            />
-          </div>
-          <p className="text-lg ml-6 text-white">
-            Made by : <strong>Hurudza Software Team</strong>
-          </p>
+
+        {/* Ministry Branding */}
+        <div className="flex flex-col items-center">
+          <img src={footer} alt="Ministry" className="w-20 h-20 object-contain mb-4" />
+          <h4 className="text-md font-bold text-center">
+            Ministry of Agriculture and Farmer's Welfare
+          </h4>
+          <p className="text-xs mt-2 text-center">Supported by Hurudza Software Team</p>
         </div>
-        <div className="flex-1 flex mr-6">
-          <img src={footer} className="footerBgImg" alt="" />
-          <h1 className="text-xl text-white font-bold mt-6">
-            Ministry of agriculture and farmer's welfare
-          </h1>
-        </div>
+      </div>
+
+      {/* Bottom Line */}
+      <div className="border-t border-white mt-12 pt-6 text-center text-sm text-white/80">
+        © {new Date().getFullYear()} Hurudza.AI. All rights reserved.
       </div>
     </div>
   );
