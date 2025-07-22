@@ -84,7 +84,7 @@ const Voice = () => {
       if (data?.choices?.[0]?.message?.content) {
         setChatGPTResponse(data.choices[0].message.content);
       } else {
-        setChatGPTResponse("No response from ChatGPT.");
+        setChatGPTResponse("No response from Hurudz.AI please subscribe or contact us for free demo.");
       }
     } catch (error) {
       console.error("ChatGPT error:", error);

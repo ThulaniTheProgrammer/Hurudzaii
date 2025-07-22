@@ -58,7 +58,7 @@ const Crop = () => {
       setPrediction(result || "No recommendation received.");
     } catch (error) {
       console.error("OpenAI error:", error);
-      setPrediction("Something went wrong. Try again.");
+      setPrediction("No response from Hurudz.AI please subscribe or contact us for free demo.");
     }
 
     setLoad(false);
