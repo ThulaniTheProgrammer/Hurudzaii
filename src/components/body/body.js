@@ -45,7 +45,7 @@ const Body = () => {
   };
   return (
     <div className="body">
-      <div className="background-image grid place-items-center my-6">
+      <div className="background-image grid place-items-center my-6 md:hidden">
         <div className="">
           <p className="text-2xl  font-bold text-center text-white uppercase mb-4">
             Farmers' Help Center
