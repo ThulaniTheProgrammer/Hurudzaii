@@ -118,7 +118,7 @@ const Disease = () => {
                   const confidence = result.predictions[disease].confidence;
                   return (
                     <div key={index} className="p-4 border rounded bg-green-50">
-                      <p className="font-semibold text-green-800">Disease: {disease}</p>
+                      <p className="font-semibold text-green-800">Disease{disease}</p>
                       <p>Confidence: {(confidence * 100).toFixed(1)}%</p>
                       <p>Treatment: {treatmentMap[disease]}</p>
                     </div>
