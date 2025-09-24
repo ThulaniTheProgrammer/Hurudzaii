@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "../img/logo.png";
+import logo from "../img/mlilo_logo.jpg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 md:px-8">
         <div className="flex items-center cursor-pointer" onClick={() => navigate("/") }>
           <img src={logo} className="logoWeb" alt="" />
-          <h3 className="text-md font-bold opacity-[.70] ml-2">HURUDZA.AI</h3>
+        
         </div>
         <button
           className="md:hidden inline-flex items-center justify-center p-2 rounded text-[#219653] hover:bg-gray-100"
