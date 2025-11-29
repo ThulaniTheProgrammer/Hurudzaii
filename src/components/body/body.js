@@ -41,7 +41,7 @@ const Body = () => {
         setResult("No response. Please try again.");
       }
     } catch (e) {
-      setResult("Failed to fetch response. Try again.");
+      setResult("Please subscribe or contact us at +263787423492 for free demo.");
     }
     setLoading(false);
   };
