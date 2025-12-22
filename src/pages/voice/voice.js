@@ -93,7 +93,7 @@ const Voice = () => {
       }
     } catch (error) {
       console.error("ChatGPT error:", error);
-      setChatGPTResponse("Failed to fetch response. Try again.");
+      setChatGPTResponse("Register to use Hurudza AI or contact us for free demo at fmakeba@cut.ac.zw");
       setIsModalOpen(true);
     }
 
