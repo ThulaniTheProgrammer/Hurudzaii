@@ -71,7 +71,16 @@ const Footer = () => {
 
       {/* Bottom Line */}
       <div className="border-t border-white mt-12 pt-6 text-center text-sm text-white/80">
-        © {new Date().getFullYear()} Hurudza.AI. All rights reserved.
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+          <p>© {new Date().getFullYear()} Hurudza.AI. All rights reserved.</p>
+          <span className="hidden md:inline">|</span>
+          <span
+            onClick={() => navigate("/privacy")}
+            className="hover:underline cursor-pointer"
+          >
+            Privacy Policy
+          </span>
+        </div>
       </div>
     </div>
   );
