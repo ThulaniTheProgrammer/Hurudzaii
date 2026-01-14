@@ -80,6 +80,14 @@ const Footer = () => {
           >
             Privacy Policy
           </span>
+          <span className="hidden md:inline">|</span>
+          <button
+            type="button"
+            onClick={() => navigate("/delete-account")}
+            className="hover:underline"
+          >
+            Request Account Deletion
+          </button>
         </div>
       </div>
     </div>
