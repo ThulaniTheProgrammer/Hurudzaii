@@ -1,11 +1,11 @@
 {
-  "short_name": "Hurudza.AI",
-  "name": "Hurudza.AI",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "mlilo_logo.jpg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/x-icon"
     },
     {
       "src": "mlilo_logo.jpg",
