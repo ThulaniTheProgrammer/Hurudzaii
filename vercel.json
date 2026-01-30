@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "hurudzaii.vercel.app"
+        }
+      ],
+      "destination": "https://www.hurudzaai.tech/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hurudzaai.tech"
+        }
+      ],
+      "destination": "https://www.hurudzaai.tech/$1",
+      "permanent": true
+    }
+  ]
+}
