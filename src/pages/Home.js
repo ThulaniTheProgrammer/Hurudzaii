@@ -11,12 +11,7 @@ import {
   Leaf,
   X,
   ChevronRight,
-  Zap,
-  Trophy,
-  Newspaper,
-  Award,
-  ExternalLink,
-  Milestone
+  Zap
 } from "lucide-react";
 import Footer from "../components/Footer/footer";
 import Header from "../components/Header/Header";
@@ -219,8 +214,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <TrustBar staggerContainer={staggerContainer} fadeInUp={fadeInUp} />
 
       {/* Result Modal */}
       {isModalOpen && (
@@ -458,8 +451,6 @@ const Home = () => {
         </div>
       </section>
 
-      <RecognitionSection staggerContainer={staggerContainer} fadeInUp={fadeInUp} />
-
       {/* Trust & CTA */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -488,123 +479,6 @@ const Home = () => {
 
       <Footer />
     </div>
-  );
-};
-
-const TrustBar = ({ staggerContainer, fadeInUp }) => (
-  <section className="py-12 bg-white border-b border-emerald-50 relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="flex flex-col md:flex-row items-center justify-between gap-12"
-      >
-        <motion.div variants={fadeInUp} className="text-gray-400 font-bold uppercase tracking-[0.2em] text-xs whitespace-nowrap">
-          Strategic Partners & Support
-        </motion.div>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-          {["POTRAZ", "CUT", "Zimtrade", "Eight2five"].map((partner, i) => (
-            <motion.div
-              key={i}
-              variants={fadeInUp}
-              className="text-2xl font-black text-emerald-950 tracking-tighter"
-            >
-              {partner}
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
-  </section>
-);
-
-const RecognitionSection = ({ staggerContainer, fadeInUp }) => {
-  const achievements = [
-    {
-      title: "AI for Good Agritech Award",
-      org: "Global Excellence recognition",
-      icon: Trophy,
-      color: "text-amber-500",
-      bg: "bg-amber-50"
-    },
-    {
-      title: "Africa AI Summit",
-      org: "Official Exhibition Partner",
-      icon: Milestone,
-      color: "text-blue-500",
-      bg: "bg-blue-50"
-    },
-    {
-      title: "Zim Agricultural Show",
-      org: "Innovation Showcase",
-      icon: Award,
-      color: "text-emerald-500",
-      bg: "bg-emerald-50"
-    },
-    {
-      title: "Featured in The Herald",
-      org: "National Impact Coverage",
-      icon: Newspaper,
-      color: "text-purple-500",
-      bg: "bg-purple-50"
-    }
-  ];
-
-  return (
-    <section className="py-32 bg-emerald-50/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-3 gap-16 items-start">
-          <motion.div
-            initial={{ x: -20, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="lg:col-span-1"
-          >
-            <h2 className="text-emerald-600 font-black uppercase tracking-[0.2em] text-xs mb-6 text-center lg:text-left">Milestones</h2>
-            <h3 className="text-5xl font-black text-[#05150E] mb-8 leading-tight text-center lg:text-left">Globally Recognized. <br />Locally Rooted.</h3>
-            <p className="text-gray-500 text-lg leading-relaxed mb-10 text-center lg:text-left">
-              From international tech summits to local field days, Hurudza AI is being celebrated for its commitment to revolutionizing African agriculture.
-            </p>
-            <div className="hidden lg:block p-8 rounded-[2.5rem] bg-emerald-600 text-white shadow-2xl relative overflow-hidden">
-              <div className="relative z-10">
-                <div className="text-4xl font-black mb-2">#1</div>
-                <div className="font-bold opacity-80 uppercase tracking-widest text-[10px]">Agri-Tech Startup</div>
-                <div className="mt-4 text-emerald-100 text-sm italic leading-relaxed">"Redefining the boundaries of what is possible in precision farming."</div>
-              </div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="lg:col-span-2 grid sm:grid-cols-2 gap-6"
-          >
-            {achievements.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-emerald-100 shadow-sm hover:shadow-xl transition-all group"
-              >
-                <div className={`w-14 h-14 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <h4 className="text-xl font-black text-[#05150E] mb-2">{item.title}</h4>
-                <div className="text-sm font-bold text-gray-400 mb-6">{item.org}</div>
-                <div className="flex items-center gap-2 text-emerald-600 font-black text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
-                  View Source <ExternalLink className="w-4 h-4" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </section>
   );
 };
 
