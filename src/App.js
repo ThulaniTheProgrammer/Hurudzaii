@@ -8,17 +8,25 @@ import SmsService from "./pages/sms/sms";
 import Disease from "./pages/disease/disease";
 import Privacy from "./pages/privacy/privacy";
 import DeleteAccount from "./pages/delete-account/delete-account";
+import RequestDemo from "./pages/request-demo/request-demo";
+import { Navigate } from "react-router-dom";
 function App() {
+  const Gate = ({ children }) => {
+    const ok = typeof window !== "undefined" && localStorage.getItem("demoAccess") === "true";
+    if (!ok) return <Navigate to="/request-demo" replace />;
+    return children;
+  };
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/voice" element={<Voice />} />
-          <Route path="/fertilizer" element={<Fertilizer />} />
-          <Route path="/crop" element={<Crop />} />
-          <Route path="/sms" element={<SmsService />} />
-          <Route path="/disease" element={<Disease />} />
+          <Route path="/request-demo" element={<RequestDemo />} />
+          <Route path="/voice" element={<Gate><Voice /></Gate>} />
+          <Route path="/fertilizer" element={<Gate><Fertilizer /></Gate>} />
+          <Route path="/crop" element={<Gate><Crop /></Gate>} />
+          <Route path="/sms" element={<Gate><SmsService /></Gate>} />
+          <Route path="/disease" element={<Gate><Disease /></Gate>} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
         </Routes>
