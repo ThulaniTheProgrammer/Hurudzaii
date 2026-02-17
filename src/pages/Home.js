@@ -34,26 +34,26 @@ const ScienceDetailImg = "/Leaf-rust-detection-in-precision-agriculture.png";
 const features = [
   {
     icon: Sprout,
-    title: "Smart Crop Match",
-    description: "AI-driven selection matching your soil profile with the most profitable crops for your climate.",
+    title: "Multilingual Assistant Engine",
+    description: "Specialized assistant engine trained on african agricultural knowledge and practices that can answer questions in local african languages.",
     color: "bg-emerald-500",
   },
   {
     icon: Droplets,
-    title: "Precision Fertilizer",
-    description: "Optimize input costs by up to 35% with precise N-P-K nutrient mapping and application schedules.",
+    title: "The African Knowledge Graph",
+    description: "Hurudza AI is building the largest proprietary database of soil types,crop types,and agricultural practices in africa.This make us the most knowledgeable ai agent in africa agricuture.",
     color: "bg-blue-500",
   },
   {
     icon: ShieldAlert,
-    title: "Disease Early Shield",
-    description: "Snap a photo to identify pests and diseases instantly. Prevent total crop loss with AI diagnosis.",
+    title: "Real time market clearing house",
+    description: "Hurudza AI layer connects thousands of farmers directly to high value markets in africa automating the logistics and pricing that middlemen usually steal",
     color: "bg-amber-500",
     detailImg: ScienceDetailImg
   },
   {
     icon: Mic2,
-    title: "Voice Assistant",
+    title: "Agritech API",
     description: "Full agronomy support in Shona, Ndebele, and English. No tech-savviness required.",
     color: "bg-purple-500",
   },
@@ -155,14 +155,15 @@ const Home = () => {
               </motion.div>
 
               <motion.h1 variants={fadeInUp} className="text-6xl md:text-8xl font-black text-white leading-[1] mb-8">
-                Cultivate <br />
+                Agriculture <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">
-                  Precision.
+                 Data Layer<br />
                 </span>
+                For Africa
               </motion.h1>
 
               <motion.p variants={fadeInUp} className="text-xl text-emerald-100/70 mb-12 max-w-lg leading-relaxed">
-                Hurudza AI transforms soil data into actionable insights, helping you navigate the complexities of modern farming.
+                Hurudza AI transforms generational african data and wisdom  into actionable insights
               </motion.p>
 
               {/* Interactive Search */}
