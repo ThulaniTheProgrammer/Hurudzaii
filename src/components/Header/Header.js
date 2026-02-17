@@ -1,120 +1,174 @@
-import React, { useState } from "react";
-import "./Header.css";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "../img/mlilo_logo.jpg";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight, Home as HomeIcon, Cpu, Globe2, Newspaper, Users } from "lucide-react";
+import logo from "../img/logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Benefits", path: "#benefits" },
-    { label: "Testimonials", path: "#testimonials" },
-    { label: "Trust Badges", path: "#trust-badges" },
+    { label: "Home", path: "/", icon: HomeIcon },
+    { label: "Features", path: "/#features", icon: Cpu },
+    { label: "How it Works", path: "/#how-it-works", icon: Globe2 },
+    { label: "Partners", path: "/#partners", icon: Users },
+    { label: "Latest News", path: "/news", icon: Newspaper },
   ];
 
+  const handleNavClick = (path) => {
+    if (path.startsWith("/#")) {
+      const sectionId = path.split("#")[1];
+      if (location.pathname === "/") {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    } else {
+      navigate(path);
+    }
+    setIsOpen(false);
+  };
+
   const isActive = (path) => {
-    if (path === "/") return location.pathname === "/";
-    return location.pathname.startsWith(path);
+    if (path === "/") return location.pathname === "/" && !location.hash;
+    return location.pathname === path || (path.startsWith("/#") && location.hash === `#${path.split("#")[1]}`);
   };
 
   return (
-    <div className="inPhone my-2 relative z-40">
-      <div className="flex items-center justify-between px-4 md:px-8">
-        <div className="flex items-center cursor-pointer" onClick={() => navigate("/") }>
-          <img src={logo} className="logoWeb" alt="" />
-        
-        </div>
-        <button
-          className="md:hidden inline-flex items-center justify-center p-2 rounded text-[#219653] hover:bg-gray-100"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-        <div className="hidden md:flex flex-1 items-center justify-between">
-          <ul className="flex items-center">
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 ${scrolled ? "mt-2" : "mt-0"
+        }`}
+    >
+      <nav
+        className={`max-w-7xl mx-auto transition-all duration-500 rounded-[2.5rem] border ${scrolled
+            ? "bg-white/70 backdrop-blur-2xl border-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] py-3 px-8"
+            : "bg-transparent border-transparent py-5 px-6"
+          }`}
+      >
+        <div className="flex items-center justify-between">
+          {/* Logo Section */}
+          <div
+            onClick={() => navigate("/")}
+            className="group flex items-center gap-3 cursor-pointer"
+          >
+            <div className={`relative p-2 rounded-xl border transition-all duration-500 ${scrolled ? "bg-[#05150E] border-white/10" : "bg-white/10 border-white/20"
+              }`}>
+              <img src={logo} className="w-8 h-8 object-contain" alt="Hurudza Logo" />
+            </div>
+            <div className="flex flex-col">
+              <span className={`text-xl font-black tracking-tighter leading-none transition-colors duration-500 ${scrolled ? "text-[#05150E]" : "text-white"
+                }`}>
+                HURUDZA<span className="text-emerald-500">.AI</span>
+              </span>
+              <span className={`text-[8px] font-black uppercase tracking-[0.3em] transition-colors duration-500 ${scrolled ? "text-emerald-600/60" : "text-emerald-400/60"
+                }`}>
+                WeAreFarmerVoice
+              </span>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
-              <li
-                key={item.path}
-                onClick={() => {
-                  if (item.path.startsWith("#")) {
-                    document.querySelector(item.path).scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    navigate(item.path);
-                  }
-                }}
-                className={`${isActive(item.path) ? "text-[#1e874b]" : "text-[#219653]"} text-sm cursor-pointer font-semibold hover:opacity-90 mx-3`}
+              <button
+                key={item.label}
+                onClick={() => handleNavClick(item.path)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isActive(item.path)
+                    ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
+                    : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
+                  }`}
               >
                 {item.label}
-              </li>
+              </button>
             ))}
-          </ul>
-          <div>
+          </div>
+
+          {/* Action Area */}
+          <div className="flex items-center gap-4">
             <button
               onClick={() => navigate("/request-demo")}
-              className="px-4 py-2 rounded-xl bg-[#219653] text-white font-semibold hover:bg-[#1e874b] shadow"
+              className={`hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${scrolled
+                  ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                  : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
+                }`}
             >
-              Request Demo
+              Request Demo <ArrowRight className="w-4 h-4" />
+            </button>
+
+            {/* Mobile Toggle */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`md:hidden p-3 rounded-2xl transition-all ${scrolled ? "bg-[#05150E]/5 text-[#05150E]" : "bg-white/10 text-white backdrop-blur-lg"
+                }`}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
-      </div>
-      {/* Backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden absolute left-0 right-0 px-4 pb-4 transition-all duration-300 ease-out origin-top z-40 ${
-          isOpen ? "opacity-100 scale-y-100 translate-y-0" : "opacity-0 scale-y-95 -translate-y-2 pointer-events-none"
-        }`}
-      >
-        <div className="mt-2 rounded-2xl bg-white shadow-xl border border-emerald-100 overflow-hidden">
-          <ul className="flex flex-col divide-y">
-            {navItems.map((item) => (
-              <li key={item.path}>
+      </nav>
+
+      {/* Mobile Navigation Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            style={{ originY: 0 }}
+            className="md:hidden absolute top-full left-6 right-6 mt-4"
+          >
+            <div className="bg-white rounded-[3rem] border border-emerald-100 shadow-2xl p-8 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10" />
+
+              <div className="space-y-4">
+                {navItems.map((item, i) => (
+                  <motion.button
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    key={item.label}
+                    onClick={() => handleNavClick(item.path)}
+                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
+                        ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
+                        : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
+                      }`}
+                  >
+                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
+                      <item.icon className="w-5 h-5 opacity-60" />
+                      {item.label}
+                    </div>
+                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive(item.path) ? "translate-x-0" : "-translate-x-2 opacity-0"}`} />
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-100">
                 <button
-                  onClick={() => {
-                    if (item.path.startsWith("#")) {
-                      document.querySelector(item.path).scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      navigate(item.path);
-                    }
-                    setIsOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 text-sm font-semibold ${
-                    isActive(item.path) ? "text-emerald-700 bg-emerald-50" : "text-[#219653] hover:bg-emerald-50"
-                  }`}
+                  onClick={() => { navigate("/request-demo"); setIsOpen(false); }}
+                  className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-[#05150E] text-white font-black text-xs uppercase tracking-widest shadow-2xl active:scale-95 transition-all"
                 >
-                  {item.label}
+                  Request System Demo <ArrowRight className="w-4 h-4" />
                 </button>
-              </li>
-            ))}
-            <li>
-              <button
-                onClick={() => { navigate("/request-demo"); setIsOpen(false); }}
-                className="w-full text-left px-4 py-3 text-sm font-semibold text-white bg-[#219653]"
-              >
-                Request Demo
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
