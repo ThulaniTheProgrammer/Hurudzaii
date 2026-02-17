@@ -66,12 +66,12 @@ const Footer = () => {
               onClick={() => navigate("/")}
               className="group flex items-center gap-4 cursor-pointer mb-8"
             >
-              <div className="relative p-2 rounded-2xl bg-white/5 border border-white/10 group-hover:border-emerald-500/50 transition-colors">
-                <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+              <div className="relative p-3 rounded-2xl bg-white border border-white/20 group-hover:border-emerald-500/50 transition-colors shadow-2xl shadow-white/5">
+                <img src={logo} alt="Hurudzai Logo" className="w-14 h-14 object-contain" />
               </div>
               <div>
-                <h3 className="text-3xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">HURUDZA<span className="text-emerald-500">.AI</span></h3>
-                <p className="text-[10px] uppercase font-black tracking-[0.3em] text-emerald-400/60 mt-1">Digitizing Wisdom</p>
+                <h3 className="text-3xl font-black tracking-tighter text-white group-hover:text-emerald-400 transition-colors">HURUDZAI <span className="text-emerald-500 underline decoration-2 underline-offset-4">AI</span></h3>
+                <p className="text-[10px] uppercase font-black tracking-[0.1em] text-emerald-400 mt-1">Artificial Intelligence Contact Centre</p>
               </div>
             </div>
 
@@ -181,7 +181,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-[10px] uppercase font-black tracking-[0.3em] text-gray-500 gap-6">
-          <p>© {new Date().getFullYear()} Hurudza Software Team. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Hurudzai Software Team. All rights reserved.</p>
           <div className="flex gap-8">
             <span onClick={() => navigate("/privacy")} className="hover:text-emerald-400 transition-colors cursor-pointer">Privacy</span>
             <span onClick={() => navigate("/terms")} className="hover:text-emerald-400 transition-colors cursor-pointer">Terms</span>

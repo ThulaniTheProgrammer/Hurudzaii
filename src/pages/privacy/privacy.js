@@ -18,7 +18,7 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-emerald-600 mb-3">1. Introduction</h2>
                 <p className="leading-relaxed">
-                  Welcome to Hurudza.AI ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our agricultural AI platform and services.
+                  Welcome to Hurudzai AI ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our agricultural AI platform and services.
                 </p>
               </section>
 
@@ -127,7 +127,7 @@ const Privacy = () => {
                   If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
                 </p>
                 <div className="mt-3 p-4 bg-emerald-50 rounded-lg">
-                  <p className="font-medium text-gray-800">Hurudza Software Team</p>
+                  <p className="font-medium text-gray-800">Hurudzai Software Team</p>
                   <p className="text-gray-700">Email: <a href="mailto:fmakeba@cut.ac.zw" className="text-emerald-600 hover:underline">fmakeba@cut.ac.zw</a></p>
                   <p className="text-gray-700 mt-2">Supported by Ministry of Agriculture and Farmer's Welfare</p>
                 </div>

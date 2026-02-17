@@ -55,28 +55,27 @@ const Header = () => {
     >
       <nav
         className={`max-w-7xl mx-auto transition-all duration-500 rounded-[2.5rem] border ${scrolled
-            ? "bg-white/70 backdrop-blur-2xl border-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] py-3 px-8"
-            : "bg-transparent border-transparent py-5 px-6"
+          ? "bg-white/70 backdrop-blur-2xl border-white shadow-[0_20px_50px_rgba(0,0,0,0.05)] py-3 px-8"
+          : "bg-transparent border-transparent py-5 px-6"
           }`}
       >
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div
             onClick={() => navigate("/")}
-            className="group flex items-center gap-3 cursor-pointer"
+            className="group flex items-center gap-4 cursor-pointer"
           >
-            <div className={`relative p-2 rounded-xl border transition-all duration-500 ${scrolled ? "bg-[#05150E] border-white/10" : "bg-white/10 border-white/20"
-              }`}>
-              <img src={logo} className="w-8 h-8 object-contain" alt="Hurudza Logo" />
+            <div className="relative p-2.5 rounded-2xl bg-white border border-white/20 shadow-xl group-hover:scale-110 transition-all duration-500">
+              <img src={logo} className="w-12 h-12 object-contain" alt="Hurudzai Logo" />
             </div>
-            <div className="flex flex-col">
-              <span className={`text-xl font-black tracking-tighter leading-none transition-colors duration-500 ${scrolled ? "text-[#05150E]" : "text-white"
+            <div className="flex flex-col justify-center">
+              <span className={`text-2xl font-black tracking-tighter leading-none transition-colors duration-500 ${scrolled ? "text-[#05150E]" : "text-white"
                 }`}>
-                HURUDZA<span className="text-emerald-500">.AI</span>
+                HURUDZAI <span className="text-emerald-500 underline decoration-2 underline-offset-4">AI</span>
               </span>
-              <span className={`text-[8px] font-black uppercase tracking-[0.3em] transition-colors duration-500 ${scrolled ? "text-emerald-600/60" : "text-emerald-400/60"
+              <span className={`text-[10px] font-black uppercase tracking-[0.1em] mt-1 transition-colors duration-500 ${scrolled ? "text-emerald-700" : "text-emerald-400"
                 }`}>
-                WeAreFarmerVoice
+                Artificial Intelligence Contact Centre
               </span>
             </div>
           </div>
@@ -88,8 +87,8 @@ const Header = () => {
                 key={item.label}
                 onClick={() => handleNavClick(item.path)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isActive(item.path)
-                    ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
-                    : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
+                  ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
+                  : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
                   }`}
               >
                 {item.label}
@@ -102,8 +101,8 @@ const Header = () => {
             <button
               onClick={() => navigate("/request-demo")}
               className={`hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${scrolled
-                  ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
-                  : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
                 }`}
             >
               Request Demo <ArrowRight className="w-4 h-4" />
@@ -143,8 +142,8 @@ const Header = () => {
                     key={item.label}
                     onClick={() => handleNavClick(item.path)}
                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
-                        ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
-                        : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
+                      ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
+                      : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
                       }`}
                   >
                     <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">

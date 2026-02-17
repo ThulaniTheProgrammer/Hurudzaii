@@ -51,13 +51,13 @@ const features = [
   {
     icon: Database,
     title: "The African Knowledge Graph",
-    description: "Hurudza AI is building the largest proprietary database of soil types,crop types,and agricultural practices in africa.This make us the most knowledgeable ai agent in africa agricuture.",
+    description: "Hurudzai AI is building the largest proprietary database of soil types,crop types,and agricultural practices in africa.This make us the most knowledgeable ai agent in africa agricuture.",
     color: "bg-blue-500",
   },
   {
     icon: BarChart3,
     title: "Real time market clearing house",
-    description: "Hurudza AI layer connects thousands of farmers directly to high value markets in africa automating the logistics and pricing that middlemen usually steal",
+    description: "Hurudzai AI layer connects thousands of farmers directly to high value markets in africa automating the logistics and pricing that middlemen usually steal",
     color: "bg-amber-500",
     detailImg: ScienceDetailImg
   },
@@ -94,7 +94,7 @@ const Home = () => {
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
           messages: [
-            { role: "system", content: "You are Hurudza AI, a helpful agricultural assistant for African farmers. Keep answers concise and actionable." },
+            { role: "system", content: "You are Hurudzai AI, a helpful agricultural assistant for African farmers. Keep answers concise and actionable." },
             { role: "user", content: query },
           ],
           temperature: 0.7,
@@ -186,7 +186,7 @@ const Home = () => {
               </motion.h1>
 
               <motion.p variants={fadeInUp} className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
-                Hurudza AI transforms generational african data and wisdom into actionable insights through localized intelligence.
+                Hurudzai AI transforms generational african data and wisdom into actionable insights through localized intelligence.
               </motion.p>
 
               {/* Interactive Search */}
@@ -332,7 +332,7 @@ const Home = () => {
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-16">
               {[
-                { label: "Digitizing Wisdom", icon: Sparkles },
+                { label: "A.I Contact Centre", icon: Sparkles },
                 { label: "Localized AI Models", icon: Cpu },
                 { label: "Field-to-Market Data", icon: Network },
                 { label: "Precision Agronomy", icon: Sprout },
@@ -377,7 +377,7 @@ const Home = () => {
               <div className="p-4 bg-emerald-100 text-emerald-600 rounded-[1.5rem]">
                 <Mic2 className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-black text-[#05150E]">Hurudza Voice Result</h3>
+              <h3 className="text-3xl font-black text-[#05150E]">Hurudzai Voice Result</h3>
             </div>
             <div className="min-h-[200px] p-8 bg-gray-50 rounded-[2rem] border border-gray-100 text-[#05150E] leading-relaxed text-xl">
               {loading ? (
@@ -764,7 +764,7 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { text: "“Hurudza AI helped me plant the right crop for my soil. I saw a 45% yield increase in just one season.”", author: "Tendai M.", role: "Commercial Farmer, Mashonaland" },
+              { text: "“Hurudzai AI helped me plant the right crop for my soil. I saw a 45% yield increase in just one season.”", author: "Tendai M.", role: "Commercial Farmer, Mashonaland" },
               { text: "“The fertilizer recommendations cut my input costs by 30%. I'm finally seeing real profit.”", author: "Lindiwe G.", role: "Smallholder, Matabeleland" },
               { text: "“Being able to ask questions in Shona makes my whole crew more efficient. It's a game changer.”", author: "Samuel T.", role: "Co-op Lead, Midlands" }
             ].map((t, i) => (
@@ -875,7 +875,7 @@ const Home = () => {
               },
               {
                 title: "Africa AI Summit Exhibition",
-                desc: "Exhibited Hurudza AI’s large language model capabilities at Africa’s premier AI summit.",
+                desc: "Exhibited Hurudzai AI’s large language model capabilities at Africa’s premier AI summit.",
                 year: "2026",
                 icon: Globe2,
                 tag: "Summit"
@@ -948,7 +948,7 @@ const Home = () => {
           >
             {[
               {
-                title: "Hurudza AI Showcased at Africa AI Summit 2026",
+                title: "Hurudzai AI Showcased at Africa AI Summit 2026",
                 excerpt: "Leading the conversation on how localized AI models can transform African smallholder productivity.",
                 img: "/High-tech-agriculture-at-sunrise.png",
                 date: "Jan 12, 2026",
@@ -1019,7 +1019,7 @@ const Home = () => {
               </motion.div>
 
               <h2 className="text-5xl md:text-8xl font-black mb-12 leading-[0.9] tracking-tight">Ready to transform <br />your yield?</h2>
-              <p className="text-emerald-50/70 mb-14 max-w-2xl mx-auto text-xl font-medium leading-relaxed">Join thousands of farmers across Zimbabwe, South Africa, and Botswana who are growing smarter with Hurudza AI.</p>
+              <p className="text-emerald-50/70 mb-14 max-w-2xl mx-auto text-xl font-medium leading-relaxed">Join thousands of farmers across Zimbabwe, South Africa, and Botswana who are growing smarter with Hurudzai AI.</p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <a href="/request-demo" className="group/btn px-14 py-6 rounded-[2.5rem] bg-white text-emerald-700 font-black text-xl hover:bg-emerald-50 transition-all shadow-[0_20px_40px_rgba(0,0,0,0.2)] active:scale-95 flex items-center gap-4">

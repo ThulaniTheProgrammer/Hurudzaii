@@ -22,7 +22,7 @@ class HelpCard extends Component {
             <div className="flex flex-row items-center bg-white rounded-xl shadow m-0 p-4 md:p-5 w-full">
               <img className="w-12 h-12 md:w-14 md:h-14 rounded-lg mr-4" src={Call} alt="call" />
               <div className="flex flex-col flex-1 min-w-0">
-                <p className="truncate">Give Hurudza AI a call</p>
+                <p className="truncate">Give Hurudzai AI a call</p>
                 <p className="text-green-600">9876644566</p>
               </div>
             </div>

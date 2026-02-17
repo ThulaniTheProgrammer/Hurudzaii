@@ -89,7 +89,7 @@ const RequestDemo = () => {
             <div>
               <h1 className="text-3xl md:text-4xl font-extrabold text-emerald-700">Request a Demo</h1>
               <p className="mt-3 text-gray-700">
-                Access to Hurudza AI is unlocked after requesting a demo. A team member will contact you immediately.
+                Access to Hurudzai AI is unlocked after requesting a demo. A team member will contact you immediately.
               </p>
               <ul className="mt-6 space-y-3 text-gray-700">
                 <li className="flex items-start gap-3">

@@ -88,12 +88,12 @@ const Voice = () => {
         setChatGPTResponse(data.choices[0].message.content);
         setIsModalOpen(true);
       } else {
-        setChatGPTResponse("No response from Hurudz.AI please subscribe or contact us for free demo.");
+        setChatGPTResponse("No response from Hurudzai AI please subscribe or contact us for free demo.");
         setIsModalOpen(true);
       }
     } catch (error) {
       console.error("ChatGPT error:", error);
-      setChatGPTResponse("Register to use Hurudza AI or contact us for free demo at fmakeba@cut.ac.zw");
+      setChatGPTResponse("Register to use Hurudzai AI or contact us for free demo at fmakeba@cut.ac.zw");
       setIsModalOpen(true);
     }
 
@@ -153,25 +153,22 @@ const Voice = () => {
               <span className="text-gray-600">Select Language:</span>
               <button
                 onClick={() => setLang("en")}
-                className={`px-4 py-2 rounded-full shadow-sm transition ${
-                  lang === "en" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                }`}
+                className={`px-4 py-2 rounded-full shadow-sm transition ${lang === "en" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
               >
                 English
               </button>
               <button
                 onClick={() => setLang("hi")}
-                className={`px-4 py-2 rounded-full shadow-sm transition ${
-                  lang === "hi" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                }`}
+                className={`px-4 py-2 rounded-full shadow-sm transition ${lang === "hi" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
               >
                 Shona
               </button>
               <button
                 onClick={() => setLang("es")}
-                className={`px-4 py-2 rounded-full shadow-sm transition ${
-                  lang === "es" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                }`}
+                className={`px-4 py-2 rounded-full shadow-sm transition ${lang === "es" ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
               >
                 Ndebele
               </button>
@@ -182,9 +179,8 @@ const Voice = () => {
               <button
                 onClick={startListening}
                 disabled={listening}
-                className={`px-8 py-3 text-white font-semibold rounded-full shadow ${
-                  listening ? "bg-gray-400" : "bg-emerald-600 hover:bg-emerald-700"
-                }`}
+                className={`px-8 py-3 text-white font-semibold rounded-full shadow ${listening ? "bg-gray-400" : "bg-emerald-600 hover:bg-emerald-700"
+                  }`}
               >
                 {listening ? "🎙️ Listening..." : "🎤 Start Voice Search"}
               </button>

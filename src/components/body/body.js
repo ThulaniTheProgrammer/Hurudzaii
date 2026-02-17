@@ -52,12 +52,12 @@ const Body = () => {
       {/* ================= CLEAN MINIMAL MOBILE HEADER ================ */}
       <div className="md:hidden w-full py-10 px-6 text-center">
 
-        <p className="text-4xl font-extrabold text-green-700 tracking-wide mb-1">
-          HURUDZA.AI
+        <p className="text-4xl font-black text-green-700 tracking-wide mb-1">
+          HURUDZAI AI
         </p>
 
         <p className="text-sm text-green-600 font-medium">
-          Agriculture Intelligence
+          Artificial Intelligence Contact Centre
         </p>
 
         {/* TEXTAREA SEARCH BOX */}
@@ -67,7 +67,7 @@ const Body = () => {
             <textarea
               value={mobileQuery}
               onChange={(e) => setMobileQuery(e.target.value)}
-              placeholder="Ask Hurudza anything..."
+              placeholder="Ask Hurudzai anything..."
               rows={3}
               className="w-full bg-transparent resize-none text-gray-800 text-base focus:outline-none"
             />
@@ -96,7 +96,7 @@ const Body = () => {
             Explore Our Features
           </p>
           <p className="text-base md:text-xl text-gray-600 mt-1">
-            Hurudza's digital tools for farmers
+            Hurudzai's digital tools for farmers
           </p>
         </div>
 
