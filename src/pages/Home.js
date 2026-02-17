@@ -11,7 +11,15 @@ import {
   Leaf,
   X,
   ChevronRight,
-  Zap
+  Zap,
+  Award,
+  Tv,
+  Calendar,
+  Newspaper,
+  ExternalLink,
+  Tractor,
+  Layout,
+  Monitor
 } from "lucide-react";
 import Footer from "../components/Footer/footer";
 import Header from "../components/Header/Header";
@@ -451,6 +459,173 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Trusted & Supported By */}
+      <section className="py-24 bg-gray-50/50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.h4
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-emerald-600 font-bold uppercase tracking-widest text-xs mb-4"
+            >
+              Trusted & Supported By
+            </motion.h4>
+            <h3 className="text-3xl font-black text-[#05150E]">Empowering Global Standards.</h3>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center"
+          >
+            {[
+              { name: "POTRAZ", desc: "Regulating ICT for Innovation" },
+              { name: "CUT", desc: "Chinhoyi University of Technology" },
+              { name: "ZimTrade", desc: "Developing Export Competitiveness" },
+              { name: "Eight2Five", desc: "Innovation Hub & Accelerator" }
+            ].map((partner, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group flex flex-col items-center gap-4 cursor-default"
+              >
+                <div className="text-4xl font-black text-gray-400/30 group-hover:text-emerald-600 group-hover:drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all duration-500 tracking-tighter">
+                  {partner.name}
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 group-hover:text-emerald-800 transition-colors">
+                  {partner.desc}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <div className="mt-20 text-center">
+            <p className="text-sm text-gray-400 italic">“Working alongside leading institutions to advance agricultural innovation.”</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Recognition & Exhibitions */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-20">
+            <h2 className="text-emerald-600 font-bold uppercase tracking-widest text-xs mb-4">Milestones</h2>
+            <h3 className="text-5xl font-black text-[#05150E]">Recognition & <br />Exhibitions.</h3>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 gap-8"
+          >
+            {[
+              {
+                title: "AI for Good Agritech Global Award",
+                desc: "Recognized for innovation in AI-driven agricultural solutions.",
+                year: "2025",
+                icon: Award
+              },
+              {
+                title: "Africa AI Summit Exhibition",
+                desc: "Exhibited Hurudza AI at Africa’s leading artificial intelligence summit.",
+                year: "2026",
+                icon: Globe2
+              },
+              {
+                title: "Zimbabwe Agricultural Show",
+                desc: "Showcased smart farming technology to national agricultural stakeholders.",
+                year: "2024",
+                icon: Tractor
+              },
+              {
+                title: "The Herald News Feature",
+                desc: "Featured in national media for innovation in agritech.",
+                year: "2024",
+                icon: Newspaper
+              }
+            ].map((event, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                whileHover={{ y: -8 }}
+                className="p-10 rounded-[3rem] bg-gray-50 border border-gray-100 group hover:bg-emerald-50 transition-all duration-500"
+              >
+                <div className="flex justify-between items-start mb-8">
+                  <div className="p-4 bg-white rounded-2xl text-emerald-600 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                    <event.icon className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-black text-emerald-600/30 group-hover:text-emerald-600 transition-colors">{event.year}</span>
+                </div>
+                <h4 className="text-2xl font-black text-[#05150E] mb-4">{event.title}</h4>
+                <p className="text-gray-500 leading-relaxed">{event.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* News & Highlights */}
+      <section className="py-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+              <h2 className="text-emerald-600 font-bold uppercase tracking-widest text-xs mb-4">Press</h2>
+              <h3 className="text-5xl font-black text-[#05150E]">Latest News & <br />Highlights.</h3>
+            </div>
+            <a href="/news" className="px-8 py-4 rounded-xl border-2 border-emerald-600 text-emerald-600 font-black hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-3">
+              View All News <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: "Hurudza AI Showcased at Africa AI Summit 2026",
+                excerpt: "Leading the conversation on how localized AI models can transform African smallholder productivity.",
+                img: "/High-tech-agriculture-at-sunrise.png"
+              },
+              {
+                title: "Improving Crop Yield Through AI Nutrient Mapping",
+                excerpt: "New study shows 35% reduction in fertilizer waste using our precision application schedules.",
+                img: "/Futuristic-farm-at-dawn.png"
+              },
+              {
+                title: "Partnership Expansion with Innovation Hubs",
+                excerpt: "Scaling our reach through institutional collaborations across Mashonaland and beyond.",
+                img: "/Farm-field-nutrient-analysis-at-sunset.png"
+              }
+            ].map((news, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+              >
+                <div className="h-60 overflow-hidden">
+                  <img src={news.img} alt={news.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div className="p-8">
+                  <h4 className="text-xl font-black text-[#05150E] mb-4 group-hover:text-emerald-600 transition-colors leading-tight">{news.title}</h4>
+                  <p className="text-gray-500 text-sm mb-6 line-clamp-2">{news.excerpt}</p>
+                  <a href={`/news/${i}`} className="text-emerald-600 font-bold text-sm inline-flex items-center gap-2 hover:gap-4 transition-all">
+                    Read More <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Trust & CTA */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -478,6 +653,24 @@ const Home = () => {
       </section>
 
       <Footer />
+
+      {/* Highlight Strip Overlay */}
+      <div className="bg-emerald-950 py-4 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between gap-6 text-[10px] uppercase tracking-[0.3em] font-black text-emerald-400/60">
+          <div className="flex items-center gap-3">
+            <Award className="w-4 h-4" />
+            <span>Recognized at major African AI exhibitions</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Globe2 className="w-4 h-4" />
+            <span>Partnering with national institutions</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Tractor className="w-4 h-4" />
+            <span>Building the future of smart agriculture</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
