@@ -9,6 +9,10 @@ import Disease from "./pages/disease/disease";
 import Privacy from "./pages/privacy/privacy";
 import DeleteAccount from "./pages/delete-account/delete-account";
 import RequestDemo from "./pages/request-demo/request-demo";
+import WhatsAppBot from "./pages/products/WhatsAppBot";
+import FarmersCRM from "./pages/products/FarmersCRM";
+import DeveloperConsole from "./pages/products/DeveloperConsole";
+import B2BSolutions from "./pages/products/B2BSolutions";
 import { Navigate } from "react-router-dom";
 function App() {
   const Gate = ({ children }) => {
@@ -29,6 +33,11 @@ function App() {
           <Route path="/disease" element={<Gate><Disease /></Gate>} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
+          {/* Product Pages */}
+          <Route path="/products/whatsapp-bot" element={<WhatsAppBot />} />
+          <Route path="/products/farmers-crm" element={<FarmersCRM />} />
+          <Route path="/products/developer-console" element={<DeveloperConsole />} />
+          <Route path="/products/b2b-solutions" element={<B2BSolutions />} />
         </Routes>
       </BrowserRouter>
     </>

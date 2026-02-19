@@ -1,21 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Home as HomeIcon, Cpu, Globe2, Newspaper, Users } from "lucide-react";
+import {
+  Menu, X, ArrowRight,
+  Home as HomeIcon, Cpu, Globe2, Newspaper, Users,
+  ChevronDown,
+} from "lucide-react";
 import logo from "../img/logo.png";
+import {
+  WhatsAppBotIcon,
+  FarmersCRMIcon,
+  DeveloperConsoleIcon,
+  B2BSolutionsIcon,
+} from "../img/ProductIcons";
+
+const products = [
+  {
+    label: "WhatsApp Bot",
+    path: "/products/whatsapp-bot",
+    Icon: WhatsAppBotIcon,
+    accent: "#25D366",
+    bg: "bg-green-500/10",
+    desc: "AI-powered advisory bot for farmers via WhatsApp",
+  },
+  {
+    label: "Farmers AI CRM",
+    path: "/products/farmers-crm",
+    Icon: FarmersCRMIcon,
+    accent: "#10B981",
+    bg: "bg-emerald-500/10",
+    desc: "Manage & grow your farmer relationships at scale",
+  },
+  {
+    label: "Developer Console",
+    path: "/products/developer-console",
+    Icon: DeveloperConsoleIcon,
+    accent: "#2DD4BF",
+    bg: "bg-teal-500/10",
+    desc: "APIs, webhooks & SDKs to build on Hurudzai AI",
+  },
+  {
+    label: "B2B Solutions",
+    path: "/products/b2b-solutions",
+    Icon: B2BSolutionsIcon,
+    accent: "#22D3EE",
+    bg: "bg-cyan-500/10",
+    desc: "Enterprise white-label AgriAI for businesses",
+  },
+];
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const productsRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handler = (e) => {
+      if (productsRef.current && !productsRef.current.contains(e.target)) {
+        setProductsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   const navItems = [
@@ -41,12 +98,15 @@ const Header = () => {
       navigate(path);
     }
     setIsOpen(false);
+    setProductsOpen(false);
   };
 
   const isActive = (path) => {
     if (path === "/") return location.pathname === "/" && !location.hash;
     return location.pathname === path || (path.startsWith("/#") && location.hash === `#${path.split("#")[1]}`);
   };
+
+  const isProductActive = products.some((p) => location.pathname === p.path);
 
   return (
     <header
@@ -94,6 +154,69 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+
+            {/* Products Dropdown */}
+            <div className="relative" ref={productsRef}>
+              <button
+                onClick={() => setProductsOpen((prev) => !prev)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isProductActive || productsOpen
+                  ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
+                  : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
+                  }`}
+              >
+                Products
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${productsOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence>
+                {productsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.97 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 mt-3 w-[480px] bg-white rounded-3xl border border-gray-100 shadow-[0_30px_80px_rgba(0,0,0,0.12)] p-4 z-50"
+                  >
+                    {/* Mega-dropdown header */}
+                    <div className="px-3 py-2 mb-3">
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#05150E]/30">Our Products & Services</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      {products.map((product, i) => (
+                        <motion.button
+                          key={product.label}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          onClick={() => { navigate(product.path); setProductsOpen(false); }}
+                          className="group flex flex-col gap-3 p-4 rounded-2xl hover:bg-gray-50 transition-all text-left border border-transparent hover:border-gray-100"
+                        >
+                          <div className={`w-10 h-10 rounded-xl ${product.bg} flex items-center justify-center flex-shrink-0`}>
+                            <product.icon className={`w-5 h-5 ${product.color}`} />
+                          </div>
+                          <div>
+                            <p className="text-sm font-black text-[#05150E] mb-0.5 group-hover:text-emerald-700 transition-colors">{product.label}</p>
+                            <p className="text-xs text-[#05150E]/40 leading-snug">{product.desc}</p>
+                          </div>
+                        </motion.button>
+                      ))}
+                    </div>
+
+                    {/* Footer CTA */}
+                    <div className="mt-4 pt-4 border-t border-gray-100 px-2">
+                      <button
+                        onClick={() => { navigate("/request-demo"); setProductsOpen(false); }}
+                        className="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-[#05150E] text-white text-xs font-black uppercase tracking-widest hover:bg-emerald-800 transition-all group"
+                      >
+                        <span>Request a Full Platform Demo</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Action Area */}
@@ -133,12 +256,12 @@ const Header = () => {
             <div className="bg-white rounded-[3rem] border border-emerald-100 shadow-2xl p-8 overflow-hidden relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10" />
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {navItems.map((item, i) => (
                   <motion.button
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.07 }}
                     key={item.label}
                     onClick={() => handleNavClick(item.path)}
                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
@@ -153,6 +276,54 @@ const Header = () => {
                     <ArrowRight className={`w-4 h-4 transition-transform ${isActive(item.path) ? "translate-x-0" : "-translate-x-2 opacity-0"}`} />
                   </motion.button>
                 ))}
+
+                {/* Mobile Products Accordion */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.07 }}
+                >
+                  <button
+                    onClick={() => setMobileProductsOpen((v) => !v)}
+                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isProductActive ? "bg-emerald-600 text-white" : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"}`}
+                  >
+                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
+                      <Cpu className="w-5 h-5 opacity-60" />
+                      Products
+                    </div>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {mobileProductsOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden mt-2 space-y-2 pl-2"
+                      >
+                        {products.map((product, i) => (
+                          <motion.button
+                            key={product.label}
+                            initial={{ opacity: 0, x: -8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.06 }}
+                            onClick={() => { navigate(product.path); setIsOpen(false); }}
+                            className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-emerald-50 transition-all text-left"
+                          >
+                            <div className={`w-9 h-9 rounded-xl ${product.bg} flex items-center justify-center flex-shrink-0`}>
+                              <product.icon className={`w-4 h-4 ${product.color}`} />
+                            </div>
+                            <div>
+                              <p className="text-xs font-black text-[#05150E] uppercase tracking-widest">{product.label}</p>
+                              <p className="text-[10px] text-[#05150E]/40 leading-snug mt-0.5">{product.desc}</p>
+                            </div>
+                          </motion.button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-100">
