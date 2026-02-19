@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
   Sprout,
   Droplets,
@@ -29,7 +29,11 @@ import {
   Network,
   Code2,
   Fingerprint,
-  TrendingUp
+  TrendingUp,
+  Smartphone,
+  Download,
+  Share2,
+  Signal
 } from "lucide-react";
 import Footer from "../components/Footer/footer";
 import Header from "../components/Header/Header";
@@ -74,6 +78,7 @@ const Home = () => {
   const [result, setResult] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [heroView, setHeroView] = React.useState("platform"); // "platform" | "mobile"
   const openaiApiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
   const { scrollYProgress } = useScroll();
@@ -158,162 +163,282 @@ const Home = () => {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+            {/* Left Column: Content */}
             <motion.div
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
+              className="lg:min-h-[600px] flex flex-col justify-center"
             >
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-10 backdrop-blur-xl">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-20" />
-                  <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full relative z-10" />
-                </div>
-                <span className="text-emerald-400 font-bold text-[10px] uppercase tracking-[0.2em]">Digitizing Generational Wisdom v4.0</span>
-              </motion.div>
-
-              <motion.h1 variants={fadeInUp} className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
-                Agriculture <br />
-                <span className="relative inline-block mt-2">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-200">
-                    Data Layer
-                  </span>
-                  <div className="absolute -right-12 top-0 text-emerald-500/30">
-                    <Sparkles className="w-8 h-8 animate-pulse" />
-                  </div>
-                </span>
-                <br />
-                For Africa
-              </motion.h1>
-
-              <motion.p variants={fadeInUp} className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
-                Hurudzai AI transforms generational african data and wisdom into actionable insights through localized intelligence.
-              </motion.p>
-
-              {/* Interactive Search */}
-              <motion.div variants={fadeInUp} className="relative max-w-xl group mb-14">
-                <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-[2.5rem] opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="relative flex items-center bg-[#0A2E1F]/60 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-4 pl-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transition-all duration-300 group-focus-within:border-emerald-500/50 group-focus-within:ring-1 group-focus-within:ring-emerald-500/50">
-                  <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                    placeholder="Ask about your crops..."
-                    className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-emerald-100/20 text-xl py-4"
-                  />
+              {/* Premium Toggle Switch */}
+              <motion.div variants={fadeInUp} className="mb-12">
+                <div className="inline-flex p-1.5 bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[2rem]">
                   <button
-                    onClick={handleSearch}
-                    className="group/btn relative overflow-hidden px-8 py-5 bg-emerald-500 text-white rounded-[1.8rem] hover:bg-emerald-400 transition-all shadow-[0_10px_30px_rgba(16,185,129,0.3)] active:scale-95"
+                    onClick={() => setHeroView("platform")}
+                    className={`px-8 py-3 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 ${heroView === "platform" ? "bg-emerald-500 text-white shadow-xl shadow-emerald-500/20" : "text-white/40 hover:text-white"}`}
                   >
-                    <div className="relative z-10 flex items-center gap-2">
-                      <span className="font-bold">Search</span>
-                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                    </div>
+                    Platform Core
+                  </button>
+                  <button
+                    onClick={() => setHeroView("mobile")}
+                    className={`px-8 py-3 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 ${heroView === "mobile" ? "bg-emerald-500 text-white shadow-xl shadow-emerald-500/20" : "text-white/40 hover:text-white"}`}
+                  >
+                    Mobile App
                   </button>
                 </div>
-
-                {/* Search tags */}
-                <div className="mt-6 flex flex-wrap gap-3 px-2">
-                  <span className="text-[10px] text-emerald-100/30 uppercase font-bold tracking-widest mr-2">Try:</span>
-                  {["Soil moisture", "Pest control", "Market prices"].map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => { setQuery(tag); handleSearch(); }}
-                      className="text-[10px] text-emerald-100/40 hover:text-emerald-400 font-bold uppercase tracking-widest transition-colors"
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-8">
-                <a href="/request-demo" className="group px-12 py-6 rounded-2xl bg-white text-[#05150E] font-black text-xl hover:bg-emerald-50 transition-all flex items-center gap-4 shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
-                  Get Started <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-4 border-[#05150E] bg-emerald-900 flex items-center justify-center overflow-hidden">
-                      <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" />
+              <AnimatePresence mode="wait">
+                {heroView === "platform" ? (
+                  <motion.div
+                    key="platform"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-10 backdrop-blur-xl">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-20" />
+                        <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full relative z-10" />
+                      </div>
+                      <span className="text-emerald-400 font-bold text-[10px] uppercase tracking-[0.2em]">Digitizing Generational Wisdom v4.0</span>
+                    </motion.div>
+
+                    <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
+                      Agriculture <br />
+                      <span className="relative inline-block mt-2">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-200">
+                          Data Layer
+                        </span>
+                        <div className="absolute -right-12 top-0 text-emerald-500/30">
+                          <Sparkles className="w-8 h-8 animate-pulse" />
+                        </div>
+                      </span>
+                      <br />
+                      For Africa
+                    </h1>
+
+                    <div className="flex flex-wrap gap-4 mb-10">
+                      {[
+                        { icon: Zap, text: "v4.0 AI Kernel", color: "text-amber-400" },
+                        { icon: Languages, text: "Shona & Ndebele", color: "text-blue-400" },
+                        { icon: Signal, text: "Offline SMS", color: "text-emerald-400" },
+                        { icon: ShieldAlert, text: "Potraz Regulated", color: "text-rose-400" }
+                      ].map((h, i) => (
+                        <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
+                          <h.icon className={`w-4 h-4 ${h.color}`} />
+                          <span className="text-[10px] font-black text-white uppercase tracking-widest">{h.text}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                  <div className="w-12 h-12 rounded-full border-4 border-[#05150E] bg-[#0A2E1F] flex items-center justify-center text-[10px] font-bold text-emerald-400">
-                    +2k
-                  </div>
-                </div>
-                <div className="text-sm font-medium text-emerald-100/40">
-                  Joined by <span className="text-emerald-400 font-bold">2,400+</span> farmers this month
-                </div>
-              </motion.div>
+
+                    <p className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
+                      Hurudzai AI transforms generational african data and wisdom into actionable insights through localized intelligence.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-8">
+                      <a href="/request-demo" className="group px-10 py-5 rounded-2xl bg-white text-[#05150E] font-black text-lg hover:bg-emerald-50 transition-all flex items-center gap-4 shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
+                        Get Started <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="mobile"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-10 backdrop-blur-xl">
+                      <div className="w-2.5 h-2.5 bg-blue-500 rounded-full relative z-10" />
+                      <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em]">Now live on Google Play</span>
+                    </motion.div>
+
+                    <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
+                      Intelligence <br />
+                      <span className="relative inline-block mt-2">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-300 to-blue-200">
+                          In Your Pocket
+                        </span>
+                      </span>
+                      <br />
+                      Anywhere.
+                    </h1>
+
+                    <div className="flex flex-wrap gap-4 mb-10">
+                      {[
+                        { icon: Smartphone, text: "Zero Data Mode", color: "text-blue-400" },
+                        { icon: Mic2, text: "Voice Assistance", color: "text-emerald-400" },
+                        { icon: Share2, text: "Instant Export", color: "text-purple-400" },
+                        { icon: Zap, text: "Real-time Sync", color: "text-amber-400" }
+                      ].map((h, i) => (
+                        <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
+                          <h.icon className={`w-4 h-4 ${h.color}`} />
+                          <span className="text-[10px] font-black text-white uppercase tracking-widest">{h.text}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
+                      The Hurudzai Mobile Experience brings enterprise agritech to any device, optimized for high performance even on low-bandwidth networks.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-8">
+                      <a href="https://play.google.com/store/apps/details?id=com.hurudza.ai" target="_blank" rel="noopener noreferrer" className="group px-10 py-5 rounded-2xl bg-white text-[#05150E] font-black text-lg hover:bg-emerald-50 transition-all flex items-center gap-4 shadow-2xl">
+                        <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+                          <Smartphone className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex flex-col items-start leading-none">
+                          <span className="text-[10px] uppercase tracking-tighter text-emerald-400 mb-1">Download Now</span>
+                          <span>Google Play Store</span>
+                        </div>
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
+            {/* Right Column: Graphics */}
             <motion.div
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:block perspective-1000"
             >
-              <motion.div animate={floatingAnim} className="relative z-10 mt-12">
-                <div className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[4rem] p-10 shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden">
-                  {/* Glowing background inside card */}
-                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full" />
+              <AnimatePresence mode="wait">
+                {heroView === "platform" ? (
+                  <motion.div
+                    key="platform-graphic"
+                    initial={{ opacity: 0, scale: 0.8, rotateY: -20 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotateY: 20 }}
+                    className="relative z-10"
+                  >
+                    <motion.div animate={floatingAnim} className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[4rem] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden">
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full" />
 
-                  <div className="grid grid-cols-2 gap-6 relative z-10">
-                    {features.map((f, i) => (
-                      <motion.div
-                        key={i}
-                        whileHover={{ y: -10, backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
-                        className={`p-8 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 flex flex-col items-start ${i % 2 === 1 ? 'mt-8' : ''}`}
-                      >
-                        <div className={`p-4 rounded-2xl bg-[#05150E] border border-white/5 mb-6 shadow-xl`}>
-                          <f.icon className={`w-8 h-8 ${f.color.replace('bg-', 'text-')}`} />
-                        </div>
-                        <div className="font-black text-white text-base leading-tight mb-3 pr-4">{f.title}</div>
-                        <div className="text-sm text-white/40 leading-relaxed font-medium line-clamp-3 mb-4">{f.description}</div>
+                      <div className="relative overflow-hidden group/carousel">
+                        <motion.div
+                          animate={{ x: ["0%", "-50%"] }}
+                          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                          className="flex gap-6 py-6"
+                          style={{ width: "fit-content" }}
+                        >
+                          {[...features, ...features].map((f, i) => (
+                            <div
+                              key={i}
+                              className="w-[400px] flex-shrink-0 p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 flex flex-col items-start"
+                            >
+                              <div className={`p-5 rounded-2xl bg-[#05150E] border border-white/5 mb-8 shadow-xl`}>
+                                <f.icon className={`w-10 h-10 ${f.color.replace('bg-', 'text-')}`} />
+                              </div>
+                              <div className="font-black text-white text-2xl leading-tight mb-6 pr-4">{f.title}</div>
+                              <div className="text-base text-white/40 leading-relaxed font-medium mb-8 line-clamp-3">{f.description}</div>
 
-                        <div className="mt-auto pt-4 flex items-center gap-2 text-xs font-bold text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                          Learn more <ArrowRight className="w-3 h-3" />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+                              <div className="mt-auto w-full flex items-center justify-between">
+                                <div className="flex items-center gap-3 text-emerald-400 font-black text-[10px] uppercase tracking-widest">
+                                  <Smartphone className="w-4 h-4" />
+                                  Mobile Enabled
+                                </div>
+                                <div className="px-5 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 text-[10px] font-black uppercase tracking-widest">
+                                  AI Core
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </motion.div>
+                        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#05150E] to-transparent z-10 pointer-events-none" />
+                        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#05150E] to-transparent z-10 pointer-events-none" />
+                      </div>
+                    </motion.div>
 
-                {/* Floating stat card */}
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1 }}
-                  className="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-2xl flex items-center gap-4 border border-emerald-50/50"
-                >
-                  <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
-                    <TrendingUp className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Yield Increase</div>
-                    <div className="text-2xl font-black text-[#05150E]">+45% <span className="text-emerald-500 text-sm font-bold">Avg</span></div>
-                  </div>
-                </motion.div>
-
-                {/* Second floating card */}
-                <motion.div
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="absolute -top-12 -right-8 bg-emerald-600 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 border border-white/10"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white">
-                      <Network className="w-4 h-4" />
+                    {/* Floating stat card */}
+                    <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-2xl flex items-center gap-4 border border-emerald-50/50 z-20">
+                      <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                        <TrendingUp className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Yield Increase</div>
+                        <div className="text-2xl font-black text-[#05150E]">+45% <span className="text-emerald-500 text-sm font-bold">Avg</span></div>
+                      </div>
                     </div>
-                    <div className="text-[10px] uppercase font-bold text-emerald-50 tracking-widest">Nodes Active</div>
-                  </div>
-                  <div className="text-2xl font-black text-white">1,420 <span className="w-2 h-2 bg-emerald-300 rounded-full inline-block ml-1 animate-pulse" /></div>
-                </motion.div>
-              </motion.div>
 
-              {/* Massive background glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-emerald-500/10 blur-[180px] -z-10 rounded-full opacity-50" />
+                    {/* Second floating card */}
+                    <div className="absolute -top-12 -right-8 bg-emerald-600 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 border border-white/10 z-20">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white">
+                          <Network className="w-4 h-4" />
+                        </div>
+                        <div className="text-[10px] uppercase font-bold text-emerald-50 tracking-widest">Nodes Active</div>
+                      </div>
+                      <div className="text-2xl font-black text-white">1,420 <span className="w-2 h-2 bg-emerald-300 rounded-full inline-block ml-1 animate-pulse" /></div>
+                    </div>
+
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-emerald-500/10 blur-[180px] -z-10 rounded-full opacity-50" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="mobile-graphic"
+                    initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, rotateY: -20 }}
+                    className="relative z-10 flex justify-center w-full"
+                  >
+                    <div className="relative w-[320px] h-[640px] bg-[#05150E] rounded-[4rem] border-[12px] border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] overflow-hidden">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
+                      <div className="absolute inset-0 p-8 pt-12 flex flex-col gap-8 bg-[#05150E]">
+                        <div className="flex items-center justify-between">
+                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                            <Bot className="w-6 h-6 text-emerald-500" />
+                          </div>
+                          <div className="flex -space-x-2">
+                            {[1, 2, 3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-[#05150E] bg-emerald-900" />)}
+                          </div>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="h-2 w-24 bg-emerald-500/30 rounded-full" />
+                          <h4 className="text-2xl font-black text-white leading-tight">Farmer <br /><span className="text-emerald-500">Dashboard</span></h4>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          {[
+                            { label: 'Soil Health', val: '98%', color: 'border-emerald-500/50' },
+                            { label: 'Moisture', val: '42%', color: 'border-blue-500/50' },
+                            { label: 'Market', val: 'High', color: 'border-amber-500/50' },
+                            { label: 'Pests', val: 'None', color: 'border-rose-500/50' }
+                          ].map((stat, i) => (
+                            <div key={i} className={`p-4 rounded-3xl bg-white/[0.03] border ${stat.color} flex flex-col gap-2`}>
+                              <span className="text-[8px] uppercase tracking-widest text-white/40 font-bold">{stat.label}</span>
+                              <span className="text-lg font-black text-white">{stat.val}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-auto p-5 rounded-[2rem] bg-gradient-to-br from-emerald-500 to-emerald-700 shadow-xl overflow-hidden relative">
+                          <div className="absolute top-0 right-0 p-4 opacity-20">
+                            <TrendingUp className="w-12 h-12 text-white" />
+                          </div>
+                          <p className="text-[10px] font-black uppercase tracking-widest text-white/80 mb-2">System AI Prediction</p>
+                          <p className="text-sm font-bold text-white leading-tight">Optimizing yield for next harvest cycle...</p>
+                        </div>
+                      </div>
+                    </div>
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -right-12 top-20 p-6 rounded-3xl bg-white shadow-2xl border border-emerald-50 flex flex-col gap-2 z-30"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600"><Smartphone className="w-4 h-4" /></div>
+                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Mobile Optimized</span>
+                      </div>
+                      <span className="text-xl font-black text-[#05150E]">Zero Data Mode</span>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
         </div>
@@ -333,7 +458,9 @@ const Home = () => {
             <div key={i} className="flex items-center gap-16">
               {[
                 { label: "A.I Contact Centre", icon: Sparkles },
+                { label: "Download Hurudzai App", icon: Download },
                 { label: "Localized AI Models", icon: Cpu },
+                { label: "Google Play Store", icon: Smartphone },
                 { label: "Field-to-Market Data", icon: Network },
                 { label: "Precision Agronomy", icon: Sprout },
                 { label: "SMS Integrated v4.0", icon: Bot },
