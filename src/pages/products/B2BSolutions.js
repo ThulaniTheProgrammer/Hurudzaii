@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import { motion } from "framer-motion";
-import { Briefcase, Building2, Globe, Handshake, ArrowRight, Layers } from "lucide-react";
+import { Building2, Globe, Handshake, ArrowRight, Layers } from "lucide-react";
+import { B2BSolutionsIcon } from "../../components/img/ProductIcons";
 
 const features = [
     { icon: Building2, title: "White-Label Platform", desc: "Deploy Hurudzai AI under your own brand for cooperatives, banks, or agri retailers." },
@@ -24,9 +25,9 @@ const B2BSolutions = () => (
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                 >
-                    <div className="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-6 py-2 mb-8">
-                        <Briefcase className="w-5 h-5 text-emerald-400" />
-                        <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">B2B Solutions</span>
+                    <div className="inline-flex items-center gap-3 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-5 py-2 mb-8">
+                        <B2BSolutionsIcon className="w-6 h-6" />
+                        <span className="text-cyan-300 text-sm font-bold uppercase tracking-widest">B2B Solutions</span>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tighter mb-6">
                         Enterprise AgriAI <br />

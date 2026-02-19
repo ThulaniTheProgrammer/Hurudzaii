@@ -1,29 +1,12 @@
 import React from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 /**
- * WhatsApp Bot Icon
- * Speech bubble with an AI spark inside — reinforces instant AI messaging.
+ * WhatsApp Bot Icon — official brand icon via react-icons
+ * Uses FaWhatsapp from react-icons/fa to respect WhatsApp brand guidelines.
  */
 export const WhatsAppBotIcon = ({ className = "w-8 h-8" }) => (
-    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Chat bubble body */}
-        <path
-            d="M8 10C8 7.79 9.79 6 12 6H36C38.21 6 40 7.79 40 10V28C40 30.21 38.21 32 36 32H26L18 42V32H12C9.79 32 8 30.21 8 28V10Z"
-            fill="#25D366"
-            fillOpacity="0.15"
-            stroke="#25D366"
-            strokeWidth="2"
-            strokeLinejoin="round"
-        />
-        {/* AI spark / lightning bolt */}
-        <path
-            d="M26 13L20 23H24L22 35L32 21H27L26 13Z"
-            fill="#25D366"
-            stroke="#25D366"
-            strokeWidth="1"
-            strokeLinejoin="round"
-        />
-    </svg>
+    <FaWhatsapp className={className} style={{ color: "#25D366" }} />
 );
 
 /**

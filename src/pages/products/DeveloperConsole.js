@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import { motion } from "framer-motion";
-import { Code2, Webhook, Key, ShieldCheck, ArrowRight, TerminalSquare } from "lucide-react";
+import { Code2, Webhook, Key, ShieldCheck, ArrowRight } from "lucide-react";
+import { DeveloperConsoleIcon } from "../../components/img/ProductIcons";
 
 const features = [
     { icon: Code2, title: "REST & GraphQL APIs", desc: "Full-featured API suite to integrate Hurudzai AI capabilities in any stack." },
@@ -24,9 +25,9 @@ const DeveloperConsole = () => (
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                 >
-                    <div className="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-6 py-2 mb-8">
-                        <TerminalSquare className="w-5 h-5 text-emerald-400" />
-                        <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">Developer Console</span>
+                    <div className="inline-flex items-center gap-3 bg-teal-500/10 border border-teal-500/20 rounded-full px-5 py-2 mb-8">
+                        <DeveloperConsoleIcon className="w-6 h-6" />
+                        <span className="text-teal-300 text-sm font-bold uppercase tracking-widest">Developer Console</span>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tighter mb-6">
                         Build On <br />

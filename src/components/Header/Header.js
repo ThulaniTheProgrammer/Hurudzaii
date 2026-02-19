@@ -18,6 +18,7 @@ const products = [
   {
     label: "WhatsApp Bot",
     path: "/products/whatsapp-bot",
+    href: "https://wa.me/message/5VEAMYH37ER3F1",
     Icon: WhatsAppBotIcon,
     accent: "#25D366",
     bg: "bg-green-500/10",
@@ -189,11 +190,18 @@ const Header = () => {
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          onClick={() => { navigate(product.path); setProductsOpen(false); }}
+                          onClick={() => {
+                            setProductsOpen(false);
+                            if (product.href) {
+                              window.open(product.href, "_blank", "noopener,noreferrer");
+                            } else {
+                              navigate(product.path);
+                            }
+                          }}
                           className="group flex flex-col gap-3 p-4 rounded-2xl hover:bg-gray-50 transition-all text-left border border-transparent hover:border-gray-100"
                         >
                           <div className={`w-10 h-10 rounded-xl ${product.bg} flex items-center justify-center flex-shrink-0`}>
-                            <product.icon className={`w-5 h-5 ${product.color}`} />
+                            <product.Icon className="w-6 h-6" />
                           </div>
                           <div>
                             <p className="text-sm font-black text-[#05150E] mb-0.5 group-hover:text-emerald-700 transition-colors">{product.label}</p>
@@ -308,11 +316,18 @@ const Header = () => {
                             initial={{ opacity: 0, x: -8 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.06 }}
-                            onClick={() => { navigate(product.path); setIsOpen(false); }}
+                            onClick={() => {
+                              setIsOpen(false);
+                              if (product.href) {
+                                window.open(product.href, "_blank", "noopener,noreferrer");
+                              } else {
+                                navigate(product.path);
+                              }
+                            }}
                             className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-emerald-50 transition-all text-left"
                           >
                             <div className={`w-9 h-9 rounded-xl ${product.bg} flex items-center justify-center flex-shrink-0`}>
-                              <product.icon className={`w-4 h-4 ${product.color}`} />
+                              <product.Icon className="w-5 h-5" />
                             </div>
                             <div>
                               <p className="text-xs font-black text-[#05150E] uppercase tracking-widest">{product.label}</p>

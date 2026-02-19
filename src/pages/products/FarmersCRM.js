@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/footer";
 import { motion } from "framer-motion";
-import { BarChart3, Database, RefreshCw, MapPin, ArrowRight, TrendingUp } from "lucide-react";
+import { Database, RefreshCw, MapPin, ArrowRight, TrendingUp } from "lucide-react";
+import { FarmersCRMIcon } from "../../components/img/ProductIcons";
 
 const features = [
     { icon: Database, title: "Unified Farmer Profiles", desc: "Store and access every farmer's history, crop cycles, and performance in one place." },
@@ -24,8 +25,8 @@ const FarmersCRM = () => (
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
                 >
-                    <div className="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-6 py-2 mb-8">
-                        <BarChart3 className="w-5 h-5 text-emerald-400" />
+                    <div className="inline-flex items-center gap-3 bg-emerald-500/10 border border-[#10B981]/20 rounded-full px-5 py-2 mb-8">
+                        <FarmersCRMIcon className="w-6 h-6" />
                         <span className="text-emerald-400 text-sm font-bold uppercase tracking-widest">Farmers AI CRM</span>
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tighter mb-6">
