@@ -11,3 +11,6 @@
 {"timestamp":"2026-02-19T20:37:36.417Z","type":"FOCUS_SESSION_END","totalActiveMs":451526,"durationMs":688219}
 {"timestamp":"2026-02-19T20:37:44.401Z","type":"FOCUS_HEARTBEAT","file":"public/index.html","activeMs":0,"totalActiveMs":5720}
 {"timestamp":"2026-02-19T20:43:08.876Z","type":"FOCUS_SESSION_END","totalActiveMs":5720,"durationMs":330196}
+{"timestamp":"2026-02-21T18:55:34.855Z","type":"FOCUS_HEARTBEAT","file":"src/pages/Home.js","activeMs":0,"totalActiveMs":85442}
+{"timestamp":"2026-02-21T19:58:06.597Z","type":"FOCUS_HEARTBEAT","file":"package.json","activeMs":0,"totalActiveMs":88094}
+{"timestamp":"2026-02-21T19:58:14.160Z","type":"FOCUS_SWITCH","from":"package.json","to":"package-lock.json","prevFileActiveMs":0}
