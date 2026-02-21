@@ -250,61 +250,6 @@ const Home = () => {
                 ) : (
                   <motion.div
                     key="mobile"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-10 backdrop-blur-xl">
-                      <div className="w-2.5 h-2.5 bg-blue-500 rounded-full relative z-10" />
-                      <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em]">Now live on Google Play</span>
-                    </motion.div>
-
-                    <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
-                      AI Agronomist <br />
-                      <span className="relative inline-block mt-2">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-300 to-blue-200">
-                          In Your Pocket
-                        </span>
-                      </span>
-                      <br />
-                      Anywhere.
-                    </h1>
-
-                    <div className="flex flex-wrap gap-4 mb-10">
-                      {[
-                        { icon: MessageSquare, text: "SMS Input", color: "text-blue-400" },
-                        { icon: Mic2, text: "Voice Input", color: "text-emerald-400" },
-                        { icon: Camera, text: "Image Analysis", color: "text-purple-400" },
-                        { icon: Bot, text: "AI Solutions", color: "text-amber-400" }
-                      ].map((h, i) => (
-                        <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
-                          <h.icon className={`w-4 h-4 ${h.color}`} />
-                          <span className="text-[10px] font-black text-white uppercase tracking-widest">{h.text}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <p className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
-                      Hurudza AI is an agritech app that assists farmers with farming insights. Farmers can log their problems using SMS, voice, or images, and our AI analyzes the problem and provides solutions, acting as an agronomist in your pocket.
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-8">
-                      <a href="https://play.google.com/store/apps/details?id=com.thulanimakeba.hurudzaai" target="_blank" rel="noopener noreferrer" className="group px-10 py-5 rounded-2xl bg-[#05150E] text-white font-black text-lg hover:bg-emerald-900 transition-all flex items-center gap-4 shadow-2xl border border-white/10">
-                        <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center border border-white/20">
-                          <PlayStoreIcon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex flex-col items-start leading-none">
-                          <span className="text-[10px] uppercase tracking-tighter text-emerald-400 mb-1">Download Now</span>
-                          <span>Google Play Store</span>
-                        </div>
-                      </a>
-                    </div>
-                  </motion.div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="mobile-graphic"
                     initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
                     animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                     exit={{ opacity: 0, scale: 0.8, rotateY: -20 }}
