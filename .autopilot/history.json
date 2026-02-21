@@ -1,6 +1,20 @@
 {
   "commits": [
     {
+      "hash": "98d0304d4cd3823fb1d8bae45c131099c1450356",
+      "message": "[autopilot] chore(release): bump version to 1.1.0\nAutopilot-Commit: true\nAutopilot-Version: 2.4.0\nAutopilot-User: 9b06151f-e74d-41b9-af57-d1d258601e9e\nAutopilot-Signature: 543878aa477a4b4dd1aac1afe2b532e69c9a8720cf061f60cae06847ec363ca3",
+      "files": [
+        ".autopilot.pid",
+        "autopilot.log",
+        "package-lock.json",
+        "package.json",
+        "src/pages/Home.js",
+        "src/components/HomeSections/",
+        "src/hooks/"
+      ],
+      "timestamp": "2026-02-21T20:01:17.240Z"
+    },
+    {
       "hash": "9f094511f12ac0e10a0289a82023ad0076f6ce06",
       "message": "[autopilot] style(ui): use theme variables for button colors\nAutopilot-Commit: true\nAutopilot-Version: 2.4.0\nAutopilot-User: 9b06151f-e74d-41b9-af57-d1d258601e9e\nAutopilot-Signature: 715836508af0891a5ceb7f94e095418b7467ac45d1018b27ed6ee7814072651d",
       "files": [
