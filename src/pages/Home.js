@@ -2,7 +2,6 @@ import React from "react";
 import { HeroSection } from "../components/HomeSections/HeroSection";
 import { ScrollingBulletinStrip } from "../components/HomeSections/ScrollingBulletinStrip";
 import { ResultModal } from "../components/HomeSections/ResultModal";
-import MobileHeroSection from "../components/HomeSections/MobileHeroSection";
 import Footer from "../components/Footer/footer";
 import Header from "../components/Header/Header";
 import PreHeader from "../components/preheader/preheader";

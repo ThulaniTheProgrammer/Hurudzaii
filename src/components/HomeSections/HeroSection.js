@@ -16,7 +16,7 @@ import {
   Sprout,
   Database
 } from "lucide-react";
-import { MobileHeroSection } from "./MobileHeroSection";
+import MobileHeroSection from "./MobileHeroSection";
 
 const HomeFieldImg = "/Futuristic-farm-at-dawn.png";
 const ScienceDetailImg = "/Leaf-rust-detection-in-precision-agriculture.png";
