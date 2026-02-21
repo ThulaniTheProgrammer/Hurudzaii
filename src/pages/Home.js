@@ -33,8 +33,11 @@ import {
   Smartphone,
   Download,
   Share2,
-  Signal
+  Signal,
+  MessageSquare,
+  Camera
 } from "lucide-react";
+import { PlayStoreIcon } from "../components/img/ProductIcons";
 import Footer from "../components/Footer/footer";
 import Header from "../components/Header/Header";
 import PreHeader from "../components/preheader/preheader";
@@ -258,7 +261,7 @@ const Home = () => {
                     </motion.div>
 
                     <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
-                      Intelligence <br />
+                      AI Agronomist <br />
                       <span className="relative inline-block mt-2">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-300 to-blue-200">
                           In Your Pocket
@@ -270,10 +273,10 @@ const Home = () => {
 
                     <div className="flex flex-wrap gap-4 mb-10">
                       {[
-                        { icon: Smartphone, text: "Zero Data Mode", color: "text-blue-400" },
-                        { icon: Mic2, text: "Voice Assistance", color: "text-emerald-400" },
-                        { icon: Share2, text: "Instant Export", color: "text-purple-400" },
-                        { icon: Zap, text: "Real-time Sync", color: "text-amber-400" }
+                        { icon: MessageSquare, text: "SMS Input", color: "text-blue-400" },
+                        { icon: Mic2, text: "Voice Input", color: "text-emerald-400" },
+                        { icon: Camera, text: "Image Analysis", color: "text-purple-400" },
+                        { icon: Bot, text: "AI Solutions", color: "text-amber-400" }
                       ].map((h, i) => (
                         <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
                           <h.icon className={`w-4 h-4 ${h.color}`} />
@@ -283,13 +286,13 @@ const Home = () => {
                     </div>
 
                     <p className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
-                      The Hurudzai Mobile Experience brings enterprise agritech to any device, optimized for high performance even on low-bandwidth networks.
+                      Hurudza AI is an agritech app that assists farmers with farming insights. Farmers can log their problems using SMS, voice, or images, and our AI analyzes the problem and provides solutions, acting as an agronomist in your pocket.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-8">
-                      <a href="https://play.google.com/store/apps/details?id=com.hurudza.ai" target="_blank" rel="noopener noreferrer" className="group px-10 py-5 rounded-2xl bg-white text-[#05150E] font-black text-lg hover:bg-emerald-50 transition-all flex items-center gap-4 shadow-2xl">
-                        <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-                          <Smartphone className="w-5 h-5 text-white" />
+                      <a href="https://play.google.com/store/apps/details?id=com.thulanimakeba.hurudzaai" target="_blank" rel="noopener noreferrer" className="group px-10 py-5 rounded-2xl bg-[#05150E] text-white font-black text-lg hover:bg-emerald-900 transition-all flex items-center gap-4 shadow-2xl border border-white/10">
+                        <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center border border-white/20">
+                          <PlayStoreIcon className="w-5 h-5 text-white" />
                         </div>
                         <div className="flex flex-col items-start leading-none">
                           <span className="text-[10px] uppercase tracking-tighter text-emerald-400 mb-1">Download Now</span>
@@ -389,41 +392,8 @@ const Home = () => {
                     className="relative z-10 flex justify-center w-full"
                   >
                     <div className="relative w-[320px] h-[640px] bg-[#05150E] rounded-[4rem] border-[12px] border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] overflow-hidden">
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
-                      <div className="absolute inset-0 p-8 pt-12 flex flex-col gap-8 bg-[#05150E]">
-                        <div className="flex items-center justify-between">
-                          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                            <Bot className="w-6 h-6 text-emerald-500" />
-                          </div>
-                          <div className="flex -space-x-2">
-                            {[1, 2, 3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-[#05150E] bg-emerald-900" />)}
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <div className="h-2 w-24 bg-emerald-500/30 rounded-full" />
-                          <h4 className="text-2xl font-black text-white leading-tight">Farmer <br /><span className="text-emerald-500">Dashboard</span></h4>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          {[
-                            { label: 'Soil Health', val: '98%', color: 'border-emerald-500/50' },
-                            { label: 'Moisture', val: '42%', color: 'border-blue-500/50' },
-                            { label: 'Market', val: 'High', color: 'border-amber-500/50' },
-                            { label: 'Pests', val: 'None', color: 'border-rose-500/50' }
-                          ].map((stat, i) => (
-                            <div key={i} className={`p-4 rounded-3xl bg-white/[0.03] border ${stat.color} flex flex-col gap-2`}>
-                              <span className="text-[8px] uppercase tracking-widest text-white/40 font-bold">{stat.label}</span>
-                              <span className="text-lg font-black text-white">{stat.val}</span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="mt-auto p-5 rounded-[2rem] bg-gradient-to-br from-emerald-500 to-emerald-700 shadow-xl overflow-hidden relative">
-                          <div className="absolute top-0 right-0 p-4 opacity-20">
-                            <TrendingUp className="w-12 h-12 text-white" />
-                          </div>
-                          <p className="text-[10px] font-black uppercase tracking-widest text-white/80 mb-2">System AI Prediction</p>
-                          <p className="text-sm font-bold text-white leading-tight">Optimizing yield for next harvest cycle...</p>
-                        </div>
-                      </div>
+                      <img src="/mobile-preview.jpg" alt="Mobile App Preview" className="w-full h-full object-cover" />
+                    
                     </div>
                     <motion.div
                       animate={{ y: [0, -10, 0] }}

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Voice from "./pages/voice/voice";
 import Fertilizer from "./pages/fertilizer/fertilizer";
@@ -13,7 +13,15 @@ import WhatsAppBot from "./pages/products/WhatsAppBot";
 import FarmersCRM from "./pages/products/FarmersCRM";
 import DeveloperConsole from "./pages/products/DeveloperConsole";
 import B2BSolutions from "./pages/products/B2BSolutions";
-import { Navigate } from "react-router-dom";
+import Market from "./pages/Market";
+import About from "./pages/About";
+import Science from "./pages/Science";
+import Stories from "./pages/Stories";
+import News from "./pages/News";
+import Contact from "./pages/Contact";
+import Docs from "./pages/Docs";
+import Api from "./pages/Api";
+import Support from "./pages/Support";
 function App() {
   const Gate = ({ children }) => {
     const ok = typeof window !== "undefined" && localStorage.getItem("demoAccess") === "true";
@@ -33,6 +41,15 @@ function App() {
           <Route path="/disease" element={<Gate><Disease /></Gate>} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
+          <Route path="/market" element={<Gate><Market /></Gate>} />
+          <Route path="/about" element={<Gate><About /></Gate>} />
+          <Route path="/science" element={<Gate><Science /></Gate>} />
+          <Route path="/stories" element={<Gate><Stories /></Gate>} />
+          <Route path="/news" element={<Gate><News /></Gate>} />
+          <Route path="/contact" element={<Gate><Contact /></Gate>} />
+          <Route path="/docs" element={<Gate><Docs /></Gate>} />
+          <Route path="/api" element={<Gate><Api /></Gate>} />
+          <Route path="/support" element={<Gate><Support /></Gate>} />
           {/* Product Pages */}
           <Route path="/products/whatsapp-bot" element={<WhatsAppBot />} />
           <Route path="/products/farmers-crm" element={<FarmersCRM />} />

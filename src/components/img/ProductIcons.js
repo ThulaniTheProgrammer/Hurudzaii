@@ -2,6 +2,13 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 /**
+ * Google Play Store Icon - using the provided PNG image.
+ */
+export const PlayStoreIcon = ({ className = "w-8 h-8" }) => (
+    <img src="/playstore.png" alt="Google Play Store" className={className} />
+);
+
+/**
  * WhatsApp Bot Icon — official brand icon via react-icons
  * Uses FaWhatsapp from react-icons/fa to respect WhatsApp brand guidelines.
  */
