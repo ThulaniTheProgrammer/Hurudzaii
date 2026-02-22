@@ -60,7 +60,7 @@ const DeleteAccount = () => {
 
       // Fallback to mailto
       const body = `Full name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nUsername: ${formData.username || "N/A"}\n\nRequest details:\n${formData.details || "N/A"}`;
-      const mailto = `mailto:support@hurudzai.ai?subject=Account Deletion Request&body=${encodeURIComponent(body)}`;
+      const mailto = `mailto:support@hurudzaai.tech?subject=Account Deletion Request&body=${encodeURIComponent(body)}`;
       setTimeout(() => { window.location.href = mailto; }, 2000);
     } finally {
       setSubmitting(false);

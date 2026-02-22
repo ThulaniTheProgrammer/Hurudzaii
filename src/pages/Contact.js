@@ -15,24 +15,24 @@ const contactMethods = [
     icon: MessageSquare,
     title: "General Inquiries",
     desc: "Interested in Hurudzai AI? We'd love to hear from you.",
-    action: "hello@hurudzai.ai",
-    link: "mailto:hello@hurudzai.ai",
+    action: "hello@hurudzaai.tech",
+    link: "mailto:hello@hurudzaai.tech",
     color: "emerald"
   },
   {
     icon: HeartPulse,
     title: "Customer Support",
     desc: "Active farmers needing technical help or agronomy advice.",
-    action: "support@hurudzai.ai",
-    link: "mailto:support@hurudzai.ai",
+    action: "support@hurudzaai.tech",
+    link: "mailto:support@hurudzaai.tech",
     color: "blue"
   },
   {
     icon: Globe2,
     title: "Sales & Partnerships",
     desc: "For B2B, NGOs, or institutional collaborations.",
-    action: "sales@hurudzai.ai",
-    link: "mailto:sales@hurudzai.ai",
+    action: "sales@hurudzaai.tech",
+    link: "mailto:sales@hurudzaai.tech",
     color: "purple"
   },
 ];
@@ -64,12 +64,25 @@ const Contact = () => {
     };
 
     try {
+      // 1. Send to ADMIN
+      const adminTemplate = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_ADMIN || process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
       await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_id",
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_id",
+        adminTemplate || "template_id",
         templateParams,
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "public_key"
       );
+
+      // 2. Send to CUSTOMER (Confirmation)
+      const customerTemplate = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_CUSTOMER;
+      if (customerTemplate) {
+        await emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          customerTemplate,
+          templateParams,
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        );
+      }
       setSubmitted(true);
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
@@ -172,7 +185,7 @@ const Contact = () => {
                 <div className="p-10 rounded-[2.5rem] bg-emerald-600 shadow-2xl shadow-emerald-600/20 text-white">
                   <Mail className="w-8 h-8 text-white mb-6" />
                   <div className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-200 mb-2">General Inquiry</div>
-                  <div className="text-xl font-black tracking-tight underline decoration-white/30 underline-offset-4">info@hurudzai.ai</div>
+                  <div className="text-xl font-black tracking-tight underline decoration-white/30 underline-offset-4">info@hurudzaai.tech</div>
                   <p className="text-emerald-100 text-xs mt-4 font-medium italic">We respond within 24 hours.</p>
                 </div>
               </motion.div>

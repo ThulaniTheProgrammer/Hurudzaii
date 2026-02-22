@@ -115,7 +115,7 @@ const DeveloperConsole = () => (
                             <div className="p-8 font-mono text-xs leading-relaxed overflow-x-auto">
                                 <pre className="text-emerald-300/80">
                                     <span className="text-purple-400">POST</span> /v1/advisory <span className="text-white/40">HTTP/1.1</span><br />
-                                    <span className="text-white/40">Host:</span> api.hurudzai.ai<br />
+                                    <span className="text-white/40">Host:</span> api.hurudzaai.tech<br />
                                     <span className="text-white/40">Authorization:</span> <span className="text-amber-400">Bearer hzai_live_xxxxxxx</span><br />
                                     <span className="text-white/40">Content-Type:</span> application/json<br /><br />
                                     {`{`} <br />

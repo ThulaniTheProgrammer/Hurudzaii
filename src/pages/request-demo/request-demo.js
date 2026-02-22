@@ -193,13 +193,26 @@ const RequestDemo = () => {
     };
 
     try {
-      // 1. Send via EmailJS (Primary request from USER)
+      // 1. Send via EmailJS
+      // Send to ADMIN (Notification)
+      const adminTemplate = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_ADMIN || process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
       await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_id",
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_id",
+        adminTemplate || "template_id",
         templateParams,
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "public_key"
       );
+
+      // Send to CUSTOMER (Confirmation - "Order Confirmation")
+      const customerTemplate = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_CUSTOMER;
+      if (customerTemplate) {
+        await emailjs.send(
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          customerTemplate,
+          templateParams,
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        );
+      }
 
       // 2. Existing hooks (Webhook & Analytics)
       if (webhook) await fetch(webhook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
