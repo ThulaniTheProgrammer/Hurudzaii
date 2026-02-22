@@ -13,7 +13,7 @@ export const fadeInUp = {
     visible: {
         y: 0,
         opacity: 1,
-        transition: { duration: 0.8, ease: "easeOut" },
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
 };
 
@@ -22,7 +22,25 @@ export const slideIn = {
     visible: {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.8, ease: "easeOut" },
+        transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
+export const scaleUp = {
+    hidden: { scale: 0.95, opacity: 0 },
+    visible: {
+        scale: 1,
+        opacity: 1,
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
+export const reveal = {
+    hidden: { clipPath: "inset(10% 0 10% 0)", opacity: 0 },
+    visible: {
+        clipPath: "inset(0% 0 0% 0)",
+        opacity: 1,
+        transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
     },
 };
 
@@ -34,3 +52,14 @@ export const floatingAnim = {
         ease: "easeInOut",
     },
 };
+
+export const glowAnim = {
+    opacity: [0.4, 0.7, 0.4],
+    scale: [1, 1.05, 1],
+    transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut",
+    },
+};
+

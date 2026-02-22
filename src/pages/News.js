@@ -3,7 +3,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/footer";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Newspaper, Sparkles, Megaphone, Share2, TrendingUp, Clock, Bookmark } from "lucide-react";
-import { staggerContainer, fadeInUp } from "../components/HomeSections/shared";
+import { staggerContainer, fadeInUp, reveal, glowAnim } from "../components/HomeSections/shared";
 
 const allArticles = [
   {
@@ -69,8 +69,14 @@ const News = () => {
       <section className="pt-56 pb-32 px-6 bg-[#05150E] relative overflow-hidden">
         {/* Background visual elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-emerald-500/10 blur-[200px] rounded-full translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 blur-[150px] rounded-full -translate-x-1/2 translate-y-1/2" />
+          <motion.div
+            animate={glowAnim}
+            className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-emerald-500/10 blur-[200px] rounded-full translate-x-1/2 -translate-y-1/2"
+          />
+          <motion.div
+            animate={glowAnim}
+            className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 blur-[150px] rounded-full -translate-x-1/2 translate-y-1/2"
+          />
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
@@ -95,7 +101,7 @@ const News = () => {
               Intelligence & Press
             </motion.div>
             <motion.h1
-              variants={fadeInUp}
+              variants={reveal}
               className="text-7xl md:text-9xl font-black text-white leading-tight tracking-tighter mb-10 uppercase"
             >
               THE <span className="text-emerald-500 italic font-serif lowercase">YIELD</span> REPORT.
