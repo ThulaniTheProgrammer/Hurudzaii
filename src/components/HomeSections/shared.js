@@ -17,10 +17,19 @@ export const fadeInUp = {
     },
 };
 
+export const slideIn = {
+    hidden: { x: -40, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.8, ease: "easeOut" },
+    },
+};
+
 export const floatingAnim = {
-    y: ["0%", "-5%", "0%"],
+    y: ["0%", "-3%", "0%"],
     transition: {
-        duration: 4,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut",
     },
