@@ -79,9 +79,9 @@ const Header = () => {
   const navItems = [
     { label: "Home", path: "/", icon: HomeIcon },
     { label: "Features", path: "/#features", icon: Cpu },
-    { label: "How it Works", path: "/#how-it-works", icon: Globe2 },
+    { label: "How", path: "/#how-it-works", icon: Globe2 },
     { label: "Partners", path: "/#partners", icon: Users },
-    { label: "Latest News", path: "/news", icon: Newspaper },
+    { label: "News", path: "/news", icon: Newspaper },
   ];
 
   const handleNavClick = (path) => {
@@ -124,30 +124,20 @@ const Header = () => {
           {/* Logo Section */}
           <div
             onClick={() => navigate("/")}
-            className="group flex items-center gap-4 cursor-pointer"
+            className="group flex items-center cursor-pointer"
           >
-            <div className="relative p-2.5 rounded-2xl bg-white border border-white/20 shadow-xl group-hover:scale-110 transition-all duration-500">
-              <img src={logo} className="w-12 h-12 object-contain" alt="Hurudzai Logo" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <span className={`text-2xl font-black tracking-tighter leading-none transition-colors duration-500 ${scrolled ? "text-[#05150E]" : "text-white"
-                }`}>
-                HURUDZAI <span className="text-emerald-500 underline decoration-2 underline-offset-4">AI</span>
-              </span>
-              <span className={`text-[10px] font-black uppercase tracking-[0.1em] mt-1 transition-colors duration-500 ${scrolled ? "text-emerald-700" : "text-emerald-400"
-                }`}>
-                Artificial Intelligence Contact Centre
-              </span>
+            <div className="relative p-2 rounded-2xl bg-white shadow-[0_10px_40px_rgba(16,185,129,0.15)] group-hover:scale-110 transition-all duration-500 border border-emerald-50">
+              <img src={logo} className="w-14 h-14 md:w-16 md:h-16 object-contain" alt="Hurudzai Logo" />
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center gap-1 lg:gap-2">
+            {navItems.slice(0, 3).map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.path)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isActive(item.path)
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isActive(item.path)
                   ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
                   : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
                   }`}
@@ -160,7 +150,7 @@ const Header = () => {
             <div className="relative" ref={productsRef}>
               <button
                 onClick={() => setProductsOpen((prev) => !prev)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isProductActive || productsOpen
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isProductActive || productsOpen
                   ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
                   : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
                   }`}
@@ -225,6 +215,19 @@ const Header = () => {
                 )}
               </AnimatePresence>
             </div>
+
+            {navItems.slice(3).map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleNavClick(item.path)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${isActive(item.path)
+                  ? scrolled ? "bg-[#05150E] text-white shadow-xl" : "bg-white/20 text-white backdrop-blur-md"
+                  : scrolled ? "text-[#05150E]/60 hover:text-[#05150E] hover:bg-[#05150E]/5" : "text-white/60 hover:text-white hover:bg-white/10"
+                  }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
           {/* Action Area */}
@@ -264,8 +267,8 @@ const Header = () => {
             <div className="bg-white rounded-[3rem] border border-emerald-100 shadow-2xl p-8 overflow-hidden relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10" />
 
-              <div className="space-y-3">
-                {navItems.map((item, i) => (
+              <div className="space-y-2">
+                {navItems.slice(0, 3).map((item, i) => (
                   <motion.button
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -289,7 +292,7 @@ const Header = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navItems.length * 0.07 }}
+                  transition={{ delay: 3 * 0.07 }}
                 >
                   <button
                     onClick={() => setMobileProductsOpen((v) => !v)}
@@ -339,6 +342,26 @@ const Header = () => {
                     )}
                   </AnimatePresence>
                 </motion.div>
+
+                {navItems.slice(3).map((item, i) => (
+                  <motion.button
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (i + 4) * 0.07 }}
+                    key={item.label}
+                    onClick={() => handleNavClick(item.path)}
+                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
+                      ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
+                      : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
+                      }`}
+                  >
+                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
+                      <item.icon className="w-5 h-5 opacity-60" />
+                      {item.label}
+                    </div>
+                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive(item.path) ? "translate-x-0" : "-translate-x-2 opacity-0"}`} />
+                  </motion.button>
+                ))}
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-100">

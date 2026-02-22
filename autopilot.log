@@ -47,3 +47,4 @@
 {"timestamp":"2026-02-22T15:42:46.584Z","type":"FOCUS_HEARTBEAT","file":".env","activeMs":0,"totalActiveMs":433989}
 {"timestamp":"2026-02-22T16:17:49.994Z","type":"FOCUS_HEARTBEAT","file":"src/pages/News.js","activeMs":0,"totalActiveMs":2537399}
 {"timestamp":"2026-02-22T16:17:49.995Z","type":"FOCUS_SWITCH","from":".env","to":"src/pages/News.js","prevFileActiveMs":0}
+{"timestamp":"2026-02-22T21:31:01.425Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":2040}
