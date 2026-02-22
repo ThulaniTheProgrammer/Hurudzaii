@@ -129,7 +129,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-widest text-emerald-400/40 mb-1">Email Support</div>
-                  <div className="text-sm font-bold text-white hover:text-emerald-400 transition-colors cursor-pointer">support@hurudza.ai</div>
+                  <div className="text-sm font-bold text-white hover:text-emerald-400 transition-colors cursor-pointer">support@hurudzaai.tech</div>
                 </div>
               </div>
 
@@ -139,7 +139,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-widest text-emerald-400/40 mb-1">Contact Us</div>
-                  <div className="text-sm font-bold text-white">+263 777 000 000</div>
+                  <div className="text-sm font-bold text-white">+263 71 404 1560</div>
                 </div>
               </div>
 

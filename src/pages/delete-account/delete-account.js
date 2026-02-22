@@ -145,7 +145,7 @@ const DeleteAccount = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          placeholder="+263 77 ..."
+                          placeholder="+263 71 404 1560"
                           className="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-rose-500 outline-none transition-all font-medium text-sm"
                         />
                       </div>

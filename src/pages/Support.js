@@ -174,7 +174,7 @@ const Support = () => {
                   </div>
                   <h4 className="text-2xl font-black uppercase tracking-tight mb-4 text-white">Emergency Hotline</h4>
                   <p className="text-emerald-100 text-sm font-medium mb-8">For critical system outages or enterprise support.</p>
-                  <div className="text-3xl font-black text-white tracking-widest mb-2">+263 77 000 0000</div>
+                  <div className="text-3xl font-black text-white tracking-widest mb-2">+263 71 404 1560</div>
                   <span className="text-[10px] font-black uppercase tracking-widest text-emerald-200">Exclusively for priority users</span>
                 </div>
                 {/* Background animation */}

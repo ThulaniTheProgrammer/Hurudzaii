@@ -179,7 +179,7 @@ const Contact = () => {
                 <div className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100">
                   <Phone className="w-8 h-8 text-emerald-600 mb-6" />
                   <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300 mb-2">Direct Line</div>
-                  <div className="text-xl font-black text-[#05150E] tracking-tight">+263 77 123 4567</div>
+                  <div className="text-xl font-black text-[#05150E] tracking-tight">+263 71 404 1560</div>
                   <p className="text-gray-400 text-xs mt-4 font-medium italic">Mon-Fri, 08:00 - 17:00 CAT</p>
                 </div>
                 <div className="p-10 rounded-[2.5rem] bg-emerald-600 shadow-2xl shadow-emerald-600/20 text-white">

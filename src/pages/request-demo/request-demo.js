@@ -411,7 +411,7 @@ const RequestDemo = () => {
                             <input
                               id="demo-phone"
                               type="tel"
-                              placeholder="+263 77 123 4567"
+                              placeholder="+263 71 404 1560"
                               value={form.phone}
                               onChange={(e) => setForm({ ...form, phone: e.target.value })}
                               onFocus={() => setFocused("phone")}
