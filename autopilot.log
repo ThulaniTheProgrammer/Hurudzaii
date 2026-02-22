@@ -26,3 +26,6 @@
 {"timestamp":"2026-02-21T20:32:22.597Z","type":"FOCUS_HEARTBEAT","file":"src/pages/Home.js","activeMs":18821,"totalActiveMs":467777}
 {"timestamp":"2026-02-22T05:28:00.049Z","type":"FOCUS_COMMIT","msSinceLastCommit":0}
 {"timestamp":"2026-02-22T05:33:40.884Z","type":"FOCUS_SESSION_START","file":"src/pages/Home.js"}
+{"timestamp":"2026-02-22T14:12:04.584Z","type":"FOCUS_COMMIT","msSinceLastCommit":0}
+{"timestamp":"2026-02-22T14:19:13.621Z","type":"FOCUS_SWITCH","from":"src/pages/Home.js","to":"src/components/HomeSections/shared.js","prevFileActiveMs":35229}
+{"timestamp":"2026-02-22T14:19:13.621Z","type":"FOCUS_HEARTBEAT","file":"src/components/HomeSections/shared.js","activeMs":0,"totalActiveMs":32016921}
