@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import {
   CheckCircle2,
   ArrowRight,
@@ -168,6 +169,7 @@ const RequestDemo = () => {
   const submit = async () => {
     if (!validate()) return;
     setSubmitting(true);
+
     const payload = {
       type: "demo_request",
       variant: abVariant,
@@ -176,17 +178,42 @@ const RequestDemo = () => {
       phone: form.phone,
       company: form.company,
       useCase: form.useCase,
-      ts: Date.now(),
+      ts: new Date().toLocaleString(),
     };
+
+    // EmailJS parameters
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      phone: form.phone || "N/A",
+      organization: form.company || "N/A",
+      message: form.useCase,
+      variant: abVariant,
+      request_type: "Demo Request"
+    };
+
     try {
+      // 1. Send via EmailJS (Primary request from USER)
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_id",
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_id",
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "public_key"
+      );
+
+      // 2. Existing hooks (Webhook & Analytics)
       if (webhook) await fetch(webhook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       if (analyticsUrl) await fetch(analyticsUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ metric: "demo_request", payload }) });
+
       localStorage.setItem("demoAccess", "true");
       localStorage.setItem("demoRequestEvent", JSON.stringify(payload));
       setSubmitted(true);
       setTimeout(() => navigate("/"), 2500);
-    } catch {
+    } catch (err) {
+      console.error("Submission error:", err);
+      // Still set submitted to true for UX, but log error
       setSubmitted(true);
+      setTimeout(() => navigate("/"), 2500);
     }
     setSubmitting(false);
   };
