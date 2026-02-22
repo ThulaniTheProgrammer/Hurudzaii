@@ -1,100 +1,61 @@
 import React from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
-  Languages,
-  ShieldAlert,
-  ChevronRight,
-  Zap,
-  Signal,
-  Network,
-  TrendingUp,
-  Cpu,
-  Bot,
-  Sparkles,
-  Smartphone,
-  Download,
-  Sprout,
-  Database
+  Zap, Languages, Signal, ShieldAlert,
+  ChevronRight, Sparkles, MessageSquare,
+  Mic2, Camera, Bot, TrendingUp, Network, Smartphone,
 } from "lucide-react";
-import MobileHeroSection from "./MobileHeroSection";
+import { PlayStoreIcon } from "../img/ProductIcons";
+import { staggerContainer, fadeInUp, floatingAnim } from "./shared";
 
 const HomeFieldImg = "/Futuristic-farm-at-dawn.png";
-const ScienceDetailImg = "/Leaf-rust-detection-in-precision-agriculture.png";
 
 const features = [
   {
     icon: Languages,
     title: "Multilingual Assistant Engine",
-    description: "Specialized assistant engine trained on african agricultural knowledge and practices that can answer questions in local african languages.",
+    description:
+      "Specialized assistant engine trained on african agricultural knowledge and practices that can answer questions in local african languages.",
     color: "bg-emerald-500",
   },
   {
-    icon: Database,
+    icon: () => null, // Database — imported in Home
     title: "The African Knowledge Graph",
-    description: "Hurudzai AI is building the largest proprietary database of soil types,crop types,and agricultural practices in africa.This make us the most knowledgeable ai agent in africa agricuture.",
+    description:
+      "Hurudzai AI is building the largest proprietary database of soil types,crop types,and agricultural practices in africa.",
     color: "bg-blue-500",
   },
   {
-    icon: Cpu,
+    icon: () => null, // BarChart3 — imported in Home
     title: "Real time market clearing house",
-    description: "Hurudzai AI layer connects thousands of farmers directly to high value markets in africa automating the logistics and pricing that middlemen usually steal",
+    description:
+      "Hurudzai AI layer connects thousands of farmers directly to high value markets in africa automating the logistics and pricing that middlemen usually steal",
     color: "bg-amber-500",
-    detailImg: ScienceDetailImg
   },
   {
-    icon: Bot,
+    icon: () => null, // Code2 — imported in Home
     title: "Agritech API",
     description: "Full agronomy support in Shona, Ndebele, and English. No tech-savviness required.",
     color: "bg-purple-500",
   },
 ];
 
-export const HeroSection = ({ heroView, setHeroView }) => {
+export const HeroSection = ({ heroView, setHeroView, features: featuresProp }) => {
   const { scrollYProgress } = useScroll();
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.05]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const fadeInUp = {
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    },
-  };
-
-  const floatingAnim = {
-    y: ["0%", "-5%", "0%"],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  };
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#05150E] pt-32 pb-20">
       {/* Animated Background Image */}
-      <motion.div
-        style={{ scale: heroScale, opacity: heroOpacity }}
-        className="absolute inset-0 z-0"
-      >
+      <motion.div style={{ scale: heroScale, opacity: heroOpacity }} className="absolute inset-0 z-0">
         <img src={HomeFieldImg} alt="Field" className="w-full h-full object-cover opacity-30 brightness-[0.3]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#05150E]/80 via-transparent to-[#05150E]" />
-
         {/* Decorative tech grid overlay */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(#10b981 1px, transparent 1px)", backgroundSize: "40px 40px" }}
+        />
       </motion.div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
@@ -161,7 +122,7 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                       { icon: Zap, text: "v4.0 AI Kernel", color: "text-amber-400" },
                       { icon: Languages, text: "Shona & Ndebele", color: "text-blue-400" },
                       { icon: Signal, text: "Offline SMS", color: "text-emerald-400" },
-                      { icon: ShieldAlert, text: "Potraz Regulated", color: "text-rose-400" }
+                      { icon: ShieldAlert, text: "Potraz Regulated", color: "text-rose-400" },
                     ].map((h, i) => (
                       <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
                         <h.icon className={`w-4 h-4 ${h.color}`} />
@@ -181,7 +142,64 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                   </div>
                 </motion.div>
               ) : (
-                <MobileHeroSection />
+                <motion.div
+                  key="mobile"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-10 backdrop-blur-xl">
+                    <div className="w-2.5 h-2.5 bg-blue-500 rounded-full relative z-10" />
+                    <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em]">Now live on Google Play</span>
+                  </motion.div>
+
+                  <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
+                    AI Agronomist <br />
+                    <span className="relative inline-block mt-2">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-300 to-blue-200">
+                        In Your Pocket
+                      </span>
+                    </span>
+                    <br />
+                    Anywhere.
+                  </h1>
+
+                  <div className="flex flex-wrap gap-4 mb-10">
+                    {[
+                      { icon: MessageSquare, text: "SMS Input", color: "text-blue-400" },
+                      { icon: Mic2, text: "Voice Input", color: "text-emerald-400" },
+                      { icon: Camera, text: "Image Analysis", color: "text-purple-400" },
+                      { icon: Bot, text: "AI Solutions", color: "text-amber-400" },
+                    ].map((h, i) => (
+                      <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-colors cursor-default">
+                        <h.icon className={`w-4 h-4 ${h.color}`} />
+                        <span className="text-[10px] font-black text-white uppercase tracking-widest">{h.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="text-xl text-emerald-100/60 mb-14 max-w-lg leading-relaxed font-medium">
+                    Hurudzai AI is an agritech app that assists farmers with farming insights. Farmers can log their problems using SMS, voice, or images, and our AI analyzes the problem and provides solutions, acting as an agronomist in your pocket.
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-8">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.thulanimakeba.hurudzaai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group px-10 py-5 rounded-2xl bg-[#05150E] text-white font-black text-lg hover:bg-emerald-900 transition-all flex items-center gap-4 shadow-2xl border border-white/10"
+                    >
+                      <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center border border-white/20">
+                        <PlayStoreIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex flex-col items-start leading-none">
+                        <span className="text-[10px] uppercase tracking-tighter text-emerald-400 mb-1">Download Now</span>
+                        <span>Google Play Store</span>
+                      </div>
+                    </a>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
@@ -204,7 +222,6 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                 >
                   <motion.div animate={floatingAnim} className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[4rem] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden">
                     <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full" />
-
                     <div className="relative overflow-hidden group/carousel">
                       <motion.div
                         animate={{ x: ["0%", "-50%"] }}
@@ -212,17 +229,13 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                         className="flex gap-6 py-6"
                         style={{ width: "fit-content" }}
                       >
-                        {[...features, ...features].map((f, i) => (
-                          <div
-                            key={i}
-                            className="w-[400px] flex-shrink-0 p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 flex flex-col items-start"
-                          >
-                            <div className={`p-5 rounded-2xl bg-[#05150E] border border-white/5 mb-8 shadow-xl`}>
-                              <f.icon className={`w-10 h-10 ${f.color.replace('bg-', 'text-')}`} />
+                        {[...featuresProp, ...featuresProp].map((f, i) => (
+                          <div key={i} className="w-[400px] flex-shrink-0 p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 flex flex-col items-start">
+                            <div className="p-5 rounded-2xl bg-[#05150E] border border-white/5 mb-8 shadow-xl">
+                              <f.icon className={`w-10 h-10 ${f.color.replace("bg-", "text-")}`} />
                             </div>
                             <div className="font-black text-white text-2xl leading-tight mb-6 pr-4">{f.title}</div>
                             <div className="text-base text-white/40 leading-relaxed font-medium mb-8 line-clamp-3">{f.description}</div>
-
                             <div className="mt-auto w-full flex items-center justify-between">
                               <div className="flex items-center gap-3 text-emerald-400 font-black text-[10px] uppercase tracking-widest">
                                 <Smartphone className="w-4 h-4" />
@@ -240,7 +253,7 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                     </div>
                   </motion.div>
 
-                  {/* Floating stat card */}
+                  {/* Floating stat cards */}
                   <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-3xl shadow-2xl flex items-center gap-4 border border-emerald-50/50 z-20">
                     <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
                       <TrendingUp className="w-6 h-6" />
@@ -251,7 +264,6 @@ export const HeroSection = ({ heroView, setHeroView }) => {
                     </div>
                   </div>
 
-                  {/* Second floating card */}
                   <div className="absolute -top-12 -right-8 bg-emerald-600 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 border border-white/10 z-20">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white">
@@ -264,9 +276,22 @@ export const HeroSection = ({ heroView, setHeroView }) => {
 
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-emerald-500/10 blur-[180px] -z-10 rounded-full opacity-50" />
                 </motion.div>
-              ) : null}
+              ) : (
+                <motion.div
+                  key="mobile-graphic"
+                  initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, rotateY: -20 }}
+                  className="relative z-10 flex justify-center"
+                >
+                  <motion.div animate={floatingAnim} className="relative w-[280px] h-[560px] rounded-[2.5rem] shadow-2xl bg-[#05150E] border border-white/10 overflow-hidden">
+                    <img src="/mobile-preview.jpg" alt="Mobile App Preview" className="w-full h-full object-cover" />
+                  </motion.div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </motion.div>
+
         </div>
       </div>
     </section>
