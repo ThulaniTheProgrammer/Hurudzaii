@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, CreditCard, BarChart3, Shield, Bell, MapPin, Check, ArrowRight, QrCode, Activity, Megaphone } from 'lucide-react';
+import { Smartphone, CreditCard, BarChart3, Shield, Bell, MapPin, Check, ArrowRight, QrCode, Activity, Megaphone, MessageSquare, Users } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import GlassCard from './GlassCard';
 
@@ -49,6 +49,38 @@ const apps: AppInfo[] = [
     ],
     downloads: '8,200+',
     rating: '4.7',
+    color: '#D4FF00',
+  },
+  {
+    id: 'whatsapp-bot',
+    name: 'WhatsApp Bot',
+    tagline: 'Farm insights right in your pocket',
+    description: 'Access crop prices, weather updates, and expert agricultural advice instantly through our localized WhatsApp bot. Designed for simplicity and deep integration with the African farming ecosystem.',
+    image: 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317ed_1771780367990_115ae537.jpg',
+    features: [
+      { icon: MessageSquare, text: 'Instant Q&A with agricultural experts' },
+      { icon: Activity, text: 'Daily market price updates' },
+      { icon: Shield, text: 'Secure verified farmer profiles' },
+      { icon: Smartphone, text: 'Works on basic smartphones' },
+    ],
+    downloads: '15,000+',
+    rating: '4.9',
+    color: '#2ECC71',
+  },
+  {
+    id: 'crm',
+    name: 'Agritech CRM',
+    tagline: 'Manage your entire agricultural business',
+    description: 'A powerful Customer Relationship Management tool built for agricultural cooperatives, suppliers, and buyers to track interactions, sales, and supply chains.',
+    image: APP_MOCKUP_1,
+    features: [
+      { icon: Users, text: 'Manage farmer cooperatives and buyer relations' },
+      { icon: BarChart3, text: 'Sales tracking and forecast analytics' },
+      { icon: MapPin, text: 'Regional supply chain mapping' },
+      { icon: Shield, text: 'Enterprise-grade data security' },
+    ],
+    downloads: '1,200+',
+    rating: '4.8',
     color: '#D4FF00',
   },
 ];
