@@ -39,7 +39,7 @@ const apps: AppInfo[] = [
     id: 'zunde-pay',
     name: 'ZundePay',
     tagline: 'Agricultural finance, simplified',
-    description: 'Seamlessly integrated with the Hurudza mobile app. Access micro-loans, buy produce directly, advertise your harvests, and manage direct market payments specifically designed for Zimbabwean farmers and agribusinesses.',
+    description: 'Seamlessly integrated with the Hurudza mobile app. Access micro-loans, buy produce directly, advertise your harvests, and manage direct market payments specifically designed for African farmers and agribusinesses.',
     image: APP_MOCKUP_2,
     features: [
       { icon: CreditCard, text: 'Instant micro-loans & crop financing' },

@@ -116,7 +116,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div>
                 <span className="text-white font-bold text-base">Hurudza AI</span>
-                <span className="text-[#2ECC71] text-[9px] font-medium tracking-[0.15em] uppercase block leading-none mt-0.5">Zimbabwe</span>
+                <span className="text-[#2ECC71] text-[9px] font-medium tracking-[0.15em] uppercase block leading-none mt-0.5">Africa</span>
               </div>
             </button>
             <p className="text-xs text-white/30 leading-relaxed max-w-xs">

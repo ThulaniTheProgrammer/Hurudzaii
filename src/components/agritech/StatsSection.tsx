@@ -70,7 +70,7 @@ const StatsSection: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-white/40">
-            Our platform's impact across Zimbabwe's agricultural landscape.
+            Our platform's impact across Africa's agricultural landscape.
           </p>
         </div>
 

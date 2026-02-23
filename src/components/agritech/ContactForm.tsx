@@ -294,7 +294,7 @@ const ContactForm: React.FC = () => {
                       <div className="w-4 h-4 rounded-full bg-[#2ECC71] mx-auto animate-pulse" />
                       <div className="w-12 h-12 rounded-full border-2 border-[#2ECC71]/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-ping opacity-30" />
                     </div>
-                    <p className="text-xs text-white/30 mt-4">Harare, Zimbabwe</p>
+                    <div className="font-medium text-white">Harare, Africa</div>
                   </div>
                 </div>
               </div>

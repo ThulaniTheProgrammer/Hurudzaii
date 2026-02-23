@@ -11,7 +11,7 @@ const features = [
   {
     icon: Cpu,
     title: 'AI Crop Diagnostics',
-    description: 'Machine learning models trained on 2M+ images of Zimbabwean crops detect diseases 14 days before visible symptoms.',
+    description: 'Machine learning models trained on 2M+ images of African crops detect diseases 14 days before visible symptoms.',
     stat: '98.7% Accuracy',
     color: '#2ECC71',
   },
@@ -87,14 +87,14 @@ const FeaturesSection: React.FC = () => {
             <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">Core Technology</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Precision Agriculture,{' '}
+            Agriculture Data Layer{' '}
             <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">
-              Perfected
+              For Africa
             </span>
           </h2>
           <p className="text-lg text-white/40 leading-relaxed">
             Our integrated platform combines AI, IoT sensors, satellite imagery, and financial tools
-            to deliver end-to-end agricultural intelligence for Zimbabwean farms.
+            to deliver end-to-end agricultural intelligence for African farms.
           </p>
         </div>
 

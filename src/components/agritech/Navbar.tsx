@@ -46,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </div>
             <div className="flex flex-col">
               <span className="text-white font-bold text-lg tracking-tight leading-none">Hurudza AI</span>
-              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-0.5">Zimbabwe</span>
+              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-0.5">Africa</span>
             </div>
           </button>
 
