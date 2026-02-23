@@ -23,13 +23,6 @@ const features = [
     color: '#2ECC71',
   },
   {
-    icon: Satellite,
-    title: 'Satellite Monitoring',
-    description: 'Multi-spectral satellite imagery provides NDVI analysis, crop health mapping, and growth tracking across all zones.',
-    stat: 'Daily Updates',
-    color: '#D4FF00',
-  },
-  {
     icon: BarChart3,
     title: 'Farm Management Dashboard',
     description: 'Comprehensive web-based platform to oversee all farm operations, track expenses, and manage personnel in one place.',
