@@ -17,7 +17,7 @@ const features = [
   },
   {
     icon: Shield,
-    title: 'ZundePay Finance',
+    title: 'ZundePay AgroWallet',
     description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
     stat: '$2.4M Disbursed',
     color: '#2ECC71',
