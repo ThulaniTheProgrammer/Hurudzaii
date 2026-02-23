@@ -16,6 +16,13 @@ const features = [
     color: '#2ECC71',
   },
   {
+    icon: Shield,
+    title: 'ZundePay Finance',
+    description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
+    stat: '$2.4M Disbursed',
+    color: '#2ECC71',
+  },
+  {
     icon: Satellite,
     title: 'Satellite Monitoring',
     description: 'Multi-spectral satellite imagery provides NDVI analysis, crop health mapping, and growth tracking across all zones.',
@@ -30,31 +37,10 @@ const features = [
     color: '#D4FF00',
   },
   {
-    icon: Shield,
-    title: 'ZundePay Finance',
-    description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
-    stat: '$2.4M Disbursed',
-    color: '#2ECC71',
-  },
-  {
     icon: Activity,
     title: 'Livestock Tracking',
     description: 'Real-time health monitoring and GPS tracking for your herds using low-power IoT wearables.',
     stat: '24/7 Monitoring',
-    color: '#D4FF00',
-  },
-  {
-    icon: Headphones,
-    title: 'AI Contact Center',
-    description: 'AI-powered farmers contact center providing instant, multilingual agricultural advice and technical support via WhatsApp & SMS.',
-    stat: '<5s Response',
-    color: '#2ECC71',
-  },
-  {
-    icon: Zap,
-    title: 'Real-time Alerts',
-    description: 'Instant notifications for weather events, pest outbreaks, optimal harvest windows, and market price changes.',
-    stat: '<30s Latency',
     color: '#D4FF00',
   },
 ];
