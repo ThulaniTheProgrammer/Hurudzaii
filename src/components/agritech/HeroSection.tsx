@@ -13,7 +13,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false);
 
   const stats = [
-    { icon: TrendingUp, value: '340%', label: 'Yield Increase', color: '#2ECC71' },
+    { icon: TrendingUp, value: '34%', label: 'Yield Increase', color: '#2ECC71' },
     { icon: Users, value: '12K+', label: 'Active Farmers', color: '#D4FF00' },
     { icon: Globe, value: '8', label: 'Provinces Covered', color: '#2ECC71' },
   ];
