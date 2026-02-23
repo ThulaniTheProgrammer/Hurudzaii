@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const [isDeleting, setIsDeleting] = React.useState(false);
 
   const animatedTexts = React.useMemo(() => [
-    "African Agriculture datalayer",
+    "African Agriculture data layer",
     "24/7 Multilingual contact center",
     "Farmers Flexible Payment System"
   ], []);
