@@ -93,8 +93,7 @@ const FeaturesSection: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-white/40 leading-relaxed">
-            Our integrated platform combines AI, IoT sensors, satellite imagery, and financial tools
-            to deliver end-to-end agricultural intelligence for African farms.
+            At Hurudza AI we are building localised african datalayer infrastucture wich provide solutions to farmers, developers, bussinesses and end users wich provides AI solutions,:Our integrated platform combines AI, IoT sensors, satellite imagery, and financial tools to deliver end-to-end agricultural intelligence for African farms.
           </p>
         </div>
 
