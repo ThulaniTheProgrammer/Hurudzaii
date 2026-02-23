@@ -9,24 +9,24 @@ const FARMER_IMG = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317e
 
 const features = [
   {
-    icon: Cpu,
-    title: '24/7 Multilingual Contact Center',
-    description: 'Machine learning models trained on 2M+ images of African crops detect diseases 14 days before visible symptoms.',
-    stat: '24/7 Availability',
+    icon: Headphones,
+    title: 'For Farmers',
+    description: 'Get instant diagnostic support in your local language. Our ML models detect crop diseases 14 days before they become visible, ensuring your harvests are protected.',
+    stat: '24/7 Support',
     color: '#2ECC71',
   },
   {
-    icon: BarChart3,
-    title: 'Farm Management Dashboard',
-    description: 'Comprehensive web-based platform to oversee all farm operations, track expenses, and manage personnel in one place.',
-    stat: 'All-in-One Control',
+    icon: Cpu,
+    title: 'For Developers',
+    description: 'Build with the most comprehensive African agritech API. Access disease detection models trained on 2M+ images with ultra-low latency and 24/7 uptime.',
+    stat: '99.9% Uptime',
     color: '#D4FF00',
   },
   {
-    icon: Shield,
-    title: 'ZundePay AgroWallet',
-    description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
-    stat: '$2.4M Disbursed',
+    icon: Activity,
+    title: 'For Businesses',
+    description: 'Scale your agribusiness with AI-driven insights. Mitigate supply chain risks using predictive disease detection and localized intelligence at an enterprise scale.',
+    stat: 'Enterprise Ready',
     color: '#2ECC71',
   },
 ];
