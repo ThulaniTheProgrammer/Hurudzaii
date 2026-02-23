@@ -11,7 +11,7 @@ const features = [
   {
     icon: Headphones,
     title: '24/7 Multilingual Contact Center',
-    description: 'Get instant diagnostic support in your local language. Our ML models detect crop diseases 14 days before they become visible, ensuring your harvests are protected.',
+    description: 'Farmers can log in any problem via our mobile app whatsapp bot or farm manager dashboard and sms gateway in the form of images, sms, voice and get solutions back in their local language',
     stat: 'Farmers',
     color: '#2ECC71',
   },
