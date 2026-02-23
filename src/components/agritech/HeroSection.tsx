@@ -56,7 +56,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2ECC71]/10 border border-[#2ECC71]/20 backdrop-blur-sm">
               <div className="w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
-              <span className="text-[#2ECC71] text-sm font-medium">Agriculture 5.0 — Now in Zimbabwe</span>
+              <span className="text-[#2ECC71] text-sm font-medium">Digitizing Generational Wisdom v4.0</span>
             </div>
 
             {/* Headline */}
