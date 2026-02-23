@@ -3,8 +3,8 @@ import { Smartphone, CreditCard, BarChart3, Shield, Bell, MapPin, Check, ArrowRi
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import GlassCard from './GlassCard';
 
-const APP_MOCKUP_1 = '/hurudza.png';
-const APP_MOCKUP_2 = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317ed_1771780367990_115ae537.jpg';
+const APP_MOCKUP_1 = '/hurudza_app_mockup.png';
+const APP_MOCKUP_2 = '/zundepay_app_mockup.png';
 
 interface AppInfo {
   id: string;
