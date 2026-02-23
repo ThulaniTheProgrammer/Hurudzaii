@@ -10,7 +10,7 @@ const FARMER_IMG = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317e
 const features = [
   {
     icon: Headphones,
-    title: '24/7 Support',
+    title: '24/7 Multilingual Contact Center',
     description: 'Get instant diagnostic support in your local language. Our ML models detect crop diseases 14 days before they become visible, ensuring your harvests are protected.',
     stat: 'Farmers',
     color: '#2ECC71',
