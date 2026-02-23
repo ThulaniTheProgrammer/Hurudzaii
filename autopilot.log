@@ -50,3 +50,6 @@
 {"timestamp":"2026-02-22T21:31:01.425Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":2040}
 {"timestamp":"2026-02-23T04:44:59.489Z","type":"FOCUS_HEARTBEAT","file":"src/pages/Science.js","activeMs":0,"totalActiveMs":14437}
 {"timestamp":"2026-02-23T04:45:11.663Z","type":"FOCUS_SWITCH","from":"src/pages/Science.js","to":"src/pages/Stories.js","prevFileActiveMs":0}
+{"timestamp":"2026-02-23T04:47:37.320Z","type":"FOCUS_COMMIT","msSinceLastCommit":0}
+{"timestamp":"2026-02-23T04:49:21.679Z","type":"FOCUS_SWITCH","from":"src/pages/Stories.js","to":"src/pages/Market.js","prevFileActiveMs":0}
+{"timestamp":"2026-02-23T04:50:21.520Z","type":"FOCUS_HEARTBEAT","file":"src/pages/Market.js","activeMs":59841,"totalActiveMs":336468}

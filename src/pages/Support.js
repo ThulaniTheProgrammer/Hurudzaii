@@ -28,9 +28,9 @@ const Support = () => {
       <Header />
 
       {/* ── Help Center Hero ── */}
-      <section className="pt-48 pb-24 px-6 bg-[#05150E] relative overflow-hidden">
+      <section className="pt-32 md:pt-48 pb-16 md:pb-24 px-4 md:px-6 bg-[#05150E] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/20 blur-[150px] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-emerald-500/20 blur-[100px] md:blur-[150px] rounded-full" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 text-center">
@@ -39,28 +39,28 @@ const Support = () => {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-[0.25em] mb-10">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] mb-8 md:mb-10">
               <HelpCircle className="w-3.5 h-3.5" />
               Hurudzai Support Hub
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-6xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter mb-12 uppercase">
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-black text-white leading-tight md:leading-[0.85] tracking-tighter mb-8 md:mb-12 uppercase">
               How can we <br /><span className="text-emerald-400">Help</span> you?
             </motion.h1>
 
-            <motion.div variants={fadeInUp} className="relative max-w-2xl mx-auto">
+            <motion.div variants={fadeInUp} className="relative max-w-2xl mx-auto px-4">
               <input
                 type="text"
                 placeholder="SEARCH FOR TOPICS, ARTICLES, OR GUIDES..."
-                className="w-full pl-16 pr-8 py-6 rounded-[2.5rem] bg-white text-[#05150E] outline-none focus:ring-4 ring-emerald-500/20 shadow-2xl font-bold text-xs uppercase tracking-widest transition-all"
+                className="w-full pl-12 md:pl-16 pr-6 md:pr-8 py-5 md:py-6 rounded-2xl md:rounded-[2.5rem] bg-white text-[#05150E] outline-none focus:ring-4 ring-emerald-500/20 shadow-2xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all"
               />
-              <Search className="absolute left-7 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
+              <Search className="absolute left-10 md:left-7 top-1/2 -translate-y-1/2 w-5 h-5 md:w-6 md:h-6 text-gray-400" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ── Category Grid ── */}
-      <section className="py-24 px-6 relative -mt-16 z-20">
+      <section className="py-12 md:py-24 px-4 md:px-6 relative -mt-12 md:-mt-16 z-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {helpCategories.map((cat, i) => (
@@ -69,13 +69,13 @@ const Support = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-white p-10 rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-gray-100 hover:shadow-[0_45px_100px_rgba(0,0,0,0.12)] transition-all duration-700 cursor-pointer text-center"
+                className="group bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.06)] border border-gray-100 hover:shadow-[0_45px_100px_rgba(0,0,0,0.12)] transition-all duration-700 cursor-pointer text-center"
               >
-                <div className="w-16 h-16 rounded-[1.5rem] bg-gray-50 text-[#05150E] flex items-center justify-center mx-auto mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
-                  <cat.icon className="w-8 h-8" />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] md:rounded-[1.5rem] bg-gray-50 text-[#05150E] flex items-center justify-center mx-auto mb-6 md:mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
+                  <cat.icon className="w-7 h-7 md:w-8 md:h-8" />
                 </div>
-                <h3 className="text-lg font-black uppercase tracking-tight mb-2">{cat.title}</h3>
-                <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em]">{cat.count}</p>
+                <h3 className="text-base md:text-lg font-black uppercase tracking-tight mb-2">{cat.title}</h3>
+                <p className="text-gray-400 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]">{cat.count}</p>
               </motion.div>
             ))}
           </div>
@@ -83,32 +83,32 @@ const Support = () => {
       </section>
 
       {/* ── Popular Resources ── */}
-      <section className="py-24 px-6 bg-gray-50">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-8">
+            <div className="px-2">
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none">Popular <br /><span className="text-emerald-600">Resources.</span></h2>
             </div>
-            <p className="text-gray-400 text-lg font-medium max-w-xs text-right italic">"The quickest path to resolving your queries."</p>
+            <p className="text-gray-400 text-base md:text-lg font-medium max-w-xs md:text-right italic px-2">"The quickest path to resolving your queries."</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-px bg-gray-200 rounded-[3.5rem] overflow-hidden border border-gray-200 shadow-2xl">
-            <div className="bg-white p-12 md:p-20 flex flex-col gap-10">
-              <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center"><PlayCircle className="w-7 h-7" /></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-gray-200 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-gray-200 shadow-2xl">
+            <div className="bg-white p-10 md:p-20 flex flex-col gap-8 md:gap-10">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0"><PlayCircle className="w-6 h-6 md:w-7 md:h-7" /></div>
               <div>
-                <h3 className="text-3xl font-black mb-6 uppercase tracking-tight">Video Tutorials</h3>
-                <p className="text-gray-500 font-medium text-lg leading-relaxed mb-10">Watch our step-by-step videos on how to navigate the Farmers CRM and use the WhatsApp AI advisory tool.</p>
-                <button className="flex items-center gap-3 text-[#05150E] font-black text-xs uppercase tracking-[0.2em] hover:text-blue-600 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black mb-4 md:mb-6 uppercase tracking-tight">Video Tutorials</h3>
+                <p className="text-gray-500 font-medium text-base md:text-lg leading-relaxed mb-8 md:mb-10">Watch our step-by-step videos on how to navigate the Farmers CRM and use the WhatsApp AI advisory tool.</p>
+                <button className="flex items-center gap-3 text-[#05150E] font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:text-blue-600 transition-colors">
                   View Playlist <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
-            <div className="bg-white p-12 md:p-20 flex flex-col gap-10">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center"><Heart className="w-7 h-7" /></div>
+            <div className="bg-white p-10 md:p-20 flex flex-col gap-8 md:gap-10">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"><Heart className="w-6 h-6 md:w-7 md:h-7" /></div>
               <div>
-                <h3 className="text-3xl font-black mb-6 uppercase tracking-tight">Onboarding Hub</h3>
-                <p className="text-gray-500 font-medium text-lg leading-relaxed mb-10">Everything you need to successfully launch Hurudzai AI in your cooperative or agricultural organization.</p>
-                <button className="flex items-center gap-3 text-[#05150E] font-black text-xs uppercase tracking-[0.2em] hover:text-emerald-600 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black mb-4 md:mb-6 uppercase tracking-tight">Onboarding Hub</h3>
+                <p className="text-gray-500 font-medium text-base md:text-lg leading-relaxed mb-8 md:mb-10">Everything you need to successfully launch Hurudzai AI in your cooperative or agricultural organization.</p>
+                <button className="flex items-center gap-3 text-[#05150E] font-black text-[10px] md:text-xs uppercase tracking-[0.2em] hover:text-emerald-600 transition-colors">
                   Start Hub <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

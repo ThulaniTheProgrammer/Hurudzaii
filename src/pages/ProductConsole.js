@@ -90,20 +90,20 @@ const ProductConsole = () => {
             <div className="max-w-6xl mx-auto">
 
                 {/* ── Friendly Welcome ── */}
-                <section className="mb-8 md:mb-12">
+                <section className="mb-6 md:mb-12">
                     <motion.div
                         initial="hidden"
                         animate="visible"
                         variants={staggerContainer}
-                        className="bg-[#05150E] p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl"
+                        className="bg-[#05150E] p-8 md:p-16 rounded-[2rem] md:rounded-[3rem] text-white relative overflow-hidden shadow-2xl"
                     >
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                        <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 blur-[80px] md:blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
 
                         <div className="relative z-10">
-                            <motion.h1 variants={fadeInUp} className="text-3xl md:text-5xl font-black tracking-tight mb-4">
-                                Hello! <span className="text-emerald-400">Ndeipi! Mhoroi!</span>
+                            <motion.h1 variants={fadeInUp} className="text-2xl md:text-5xl font-black tracking-tight mb-3 md:mb-4 uppercase leading-tight">
+                                Hello! <br className="sm:hidden" /><span className="text-emerald-400">Ndeipi! Mhoroi!</span>
                             </motion.h1>
-                            <motion.p variants={fadeInUp} className="text-emerald-100/60 text-lg md:text-xl font-medium max-w-xl">
+                            <motion.p variants={fadeInUp} className="text-emerald-100/60 text-base md:text-xl font-medium max-w-xl leading-relaxed">
                                 Welcome to your farm assistant. What do you want to do today?
                             </motion.p>
                         </div>
@@ -119,15 +119,15 @@ const ProductConsole = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
                             onClick={() => tool.href ? window.open(tool.href, "_blank") : navigate(tool.path)}
-                            className="group bg-white p-8 md:p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 cursor-pointer flex flex-col items-center text-center"
+                            className="group bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:border-emerald-100 transition-all duration-500 cursor-pointer flex flex-col items-center text-center"
                         >
-                            <div className={`w-20 h-20 md:w-24 md:h-24 rounded-2xl md:rounded-[2rem] bg-${tool.color}-50 flex items-center justify-center text-${tool.color}-600 mb-6 md:mb-8 transition-transform group-hover:scale-110 shadow-sm`}>
+                            <div className={`w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-[2rem] bg-${tool.color}-50 flex items-center justify-center text-${tool.color}-600 mb-6 md:mb-8 transition-transform group-hover:scale-110 shadow-sm`}>
                                 <tool.icon className="w-8 h-8 md:w-10 md:h-10" />
                             </div>
-                            <h3 className="text-xl md:text-2xl font-black text-[#05150E] mb-2 md:mb-3 uppercase tracking-tight">{tool.title}</h3>
-                            <p className="text-gray-400 text-sm font-medium leading-relaxed mb-8 md:mb-10 sm:h-10 line-clamp-2 sm:line-clamp-none">{tool.desc}</p>
+                            <h3 className="text-lg md:text-2xl font-black text-[#05150E] mb-2 md:mb-3 uppercase tracking-tight">{tool.title}</h3>
+                            <p className="text-gray-400 text-sm font-medium leading-relaxed mb-6 md:mb-10 sm:h-10 line-clamp-2 sm:line-clamp-none px-2">{tool.desc}</p>
 
-                            <div className={`w-full py-4 rounded-xl md:rounded-2xl bg-${tool.color}-600 text-white font-black text-[10px] uppercase tracking-widest group-hover:bg-[#05150E] transition-colors shadow-lg shadow-${tool.color}-600/20`}>
+                            <div className={`w-full py-4 rounded-xl md:rounded-2xl bg-${tool.color}-600 text-white font-black text-[9px] md:text-[10px] uppercase tracking-widest group-hover:bg-[#05150E] transition-colors shadow-lg shadow-${tool.color}-600/20`}>
                                 {tool.btnText}
                             </div>
                         </motion.div>
