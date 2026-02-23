@@ -12,18 +12,40 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const { ref, isVisible } = useScrollReveal(0.1);
   const [demoModalOpen, setDemoModalOpen] = React.useState(false);
   const [textIndex, setTextIndex] = React.useState(0);
+  const [displayText, setDisplayText] = React.useState('');
+  const [isDeleting, setIsDeleting] = React.useState(false);
 
-  const animatedTexts = [
+  const animatedTexts = React.useMemo(() => [
     "African Agriculture datalayer",
     "24/7 Multilingual contact center"
-  ];
+  ], []);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
+    let timeout: NodeJS.Timeout;
+
+    const currentFullText = animatedTexts[textIndex];
+    let typingSpeed = isDeleting ? 30 : 60;
+
+    if (!isDeleting && displayText === currentFullText) {
+      // Pause at the end of typing
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayText === '') {
+      // Move to next text
+      setIsDeleting(false);
       setTextIndex((prev) => (prev + 1) % animatedTexts.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
+      timeout = setTimeout(() => { }, 500); // Small pause before typing next
+    } else {
+      timeout = setTimeout(() => {
+        setDisplayText(
+          isDeleting
+            ? currentFullText.substring(0, displayText.length - 1)
+            : currentFullText.substring(0, displayText.length + 1)
+        );
+      }, typingSpeed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, textIndex, animatedTexts]);
 
   const stats = [
     { icon: TrendingUp, value: '34%', label: 'Yield Increase', color: '#2ECC71' },
@@ -76,8 +98,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight min-h-[130px] sm:min-h-[150px] lg:min-h-[180px]">
               <span className="text-white">Hurudza AI :</span>
               <br />
-              <span key={textIndex} className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent block mt-2 animate-in fade-in slide-in-from-bottom-2 duration-700">
-                {animatedTexts[textIndex]}
+              <span className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent block mt-2">
+                {displayText}
+                <span className="inline-block w-[3px] h-[1em] bg-[#D4FF00] ml-1 align-middle animate-pulse" />
               </span>
             </h1>
 
