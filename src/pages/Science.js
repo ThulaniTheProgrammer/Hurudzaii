@@ -42,7 +42,7 @@ const Science = () => {
       <Header />
 
       {/* ── Hero Section ── */}
-      <section className="relative pt-48 pb-32 px-6 overflow-hidden">
+      <section className="relative pt-32 md:pt-48 pb-20 md:pb-32 px-4 md:px-6 overflow-hidden">
         {/* Background visual */}
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img src="/Leaf-rust-detection-in-precision-agriculture.png" alt="Microscope view" className="w-full h-full object-cover blur-sm" />
@@ -60,14 +60,14 @@ const Science = () => {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.25em] mb-10">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 md:px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] mb-8 md:mb-10">
               <Microscope className="w-4 h-4" />
               Agronomic Intelligence Core
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-6xl md:text-[6.5rem] font-black leading-[0.85] tracking-tighter mb-10 uppercase">
+            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl md:text-[6.5rem] font-black leading-tight md:leading-[0.85] tracking-tighter mb-8 md:mb-10 uppercase">
               The <span className="text-emerald-400">Architecture</span> of Yield.
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-white/40 text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+            <motion.p variants={fadeInUp} className="text-white/40 text-base md:text-xl max-w-2xl mx-auto font-medium leading-relaxed px-4 md:px-0">
               We've spent years building the localized models and knowledge graphs that make precision agriculture accessible to the African smallholder.
             </motion.p>
           </motion.div>
@@ -75,9 +75,9 @@ const Science = () => {
       </section>
 
       {/* ── Technical Grid ── */}
-      <section className="py-24 px-6 relative z-10">
+      <section className="py-12 md:py-24 px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {techStack.map((tech, i) => (
               <motion.div
                 key={i}
@@ -85,14 +85,14 @@ const Science = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-white/5 p-12 rounded-[3rem] border border-white/5 hover:bg-white/[0.08] hover:border-emerald-500/30 transition-all duration-700 flex flex-col h-full"
+                className="group bg-white/5 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-white/5 hover:bg-white/[0.08] hover:border-emerald-500/30 transition-all duration-700 flex flex-col h-full"
               >
-                <div className="w-16 h-16 rounded-[1.5rem] bg-[#05150E] flex items-center justify-center mb-10 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                  <tech.icon className="w-8 h-8 text-emerald-400" />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-[1.25rem] md:rounded-[1.5rem] bg-[#05150E] flex items-center justify-center mb-8 md:mb-10 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                  <tech.icon className="w-7 h-7 md:w-8 md:h-8 text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-black mb-6 uppercase tracking-tight group-hover:text-emerald-400 transition-colors leading-[1.1]">{tech.title}</h3>
+                <h3 className="text-xl md:text-2xl font-black mb-4 md:mb-6 uppercase tracking-tight group-hover:text-emerald-400 transition-colors leading-[1.1]">{tech.title}</h3>
                 <p className="text-white/40 text-sm font-medium leading-relaxed flex-grow italic">{tech.desc}</p>
-                <div className="pt-8 mt-10 border-t border-white/5 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity">
+                <div className="pt-8 mt-8 md:mt-10 border-t border-white/5 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity">
                   <div className="w-8 h-px bg-emerald-500" />
                   <Sparkles className="w-4 h-4 text-emerald-500" />
                 </div>

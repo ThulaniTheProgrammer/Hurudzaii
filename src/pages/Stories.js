@@ -41,10 +41,10 @@ const Stories = () => {
       <Header />
 
       {/* ── Page Header ── */}
-      <section className="pt-48 pb-32 px-6 bg-[#05150E] relative overflow-hidden">
+      <section className="pt-32 md:pt-48 pb-20 md:pb-32 px-4 md:px-6 bg-[#05150E] relative overflow-hidden">
         {/* Abstract background */}
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
-          <div className="absolute top-1/2 left-0 w-[1000px] h-[1000px] bg-emerald-500/20 blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute top-1/2 left-0 w-[500px] md:w-[1000px] h-[500px] md:h-[1000px] bg-emerald-500/20 blur-[100px] md:blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 text-center">
@@ -53,14 +53,14 @@ const Stories = () => {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-[0.25em] mb-8">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] mb-8">
               <Heart className="w-3.5 h-3.5" />
               Impact across Zimbabwe
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-6xl md:text-[6.5rem] font-black text-white leading-none tracking-tighter mb-8 uppercase">
+            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-7xl md:text-[6.5rem] font-black text-white leading-tight md:leading-none tracking-tighter mb-8 md:mb-10 uppercase">
               Growing <span className="text-emerald-400">Together.</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-white/30 text-xl max-w-2xl mx-auto font-medium leading-relaxed italic">
+            <motion.p variants={fadeInUp} className="text-white/30 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed italic px-4">
               "Real people, real data, and the real impact of intelligent farming on our continent."
             </motion.p>
           </motion.div>
@@ -68,52 +68,52 @@ const Stories = () => {
       </section>
 
       {/* ── Featured Video/Story Placeholder ── */}
-      <section className="py-24 px-6 relative -mt-16 z-20">
+      <section className="py-12 md:py-24 px-4 md:px-6 relative -mt-12 md:-mt-16 z-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] border-8 border-white relative group"
+            className="bg-white rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] border-4 md:border-8 border-white relative group"
           >
-            <img src="/Futuristic-farm-at-dawn.png" alt="Featured Story" className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-12 md:p-20">
+            <img src="/Futuristic-farm-at-dawn.png" alt="Featured Story" className="w-full h-[350px] md:h-[500px] object-cover group-hover:scale-105 transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-20">
               <div className="max-w-2xl">
-                <div className="flex items-center gap-4 text-emerald-400 font-black text-[10px] uppercase tracking-widest mb-6">
-                  <Star className="w-4 h-4 fill-emerald-400" />
+                <div className="flex items-center gap-3 md:gap-4 text-emerald-400 font-black text-[9px] md:text-[10px] uppercase tracking-widest mb-4 md:mb-6">
+                  <Star className="w-3.5 h-3.5 md:w-4 md:h-4 fill-emerald-400" />
                   Featured Farmer Story
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter mb-10 uppercase">
+                <h2 className="text-3xl md:text-6xl font-black text-white leading-[0.9] tracking-tighter mb-6 md:mb-10 uppercase">
                   How Baba George <br /><span className="text-emerald-400">Changed his Cycle.</span>
                 </h2>
-                <div className="flex flex-wrap gap-8">
-                  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 text-white text-xs font-bold">
-                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                <div className="flex flex-wrap gap-4 md:gap-8">
+                  <div className="flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl border border-white/10 text-white text-[10px] md:text-xs font-bold">
+                    <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-400" />
                     +42% Harvest Increase
                   </div>
-                  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10 text-white text-xs font-bold">
-                    <Leaf className="w-4 h-4 text-green-400" />
+                  <div className="flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl border border-white/10 text-white text-[10px] md:text-xs font-bold">
+                    <Leaf className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-400" />
                     30% Less Fertilizer Used
                   </div>
                 </div>
               </div>
             </div>
             {/* Play button UI */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform cursor-pointer border-4 border-white/20">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform cursor-pointer border-4 border-white/20">
+              <div className="w-0 h-0 border-t-[8px] md:border-t-[10px] border-t-transparent border-l-[12px] md:border-l-[16px] border-l-white border-b-[8px] md:border-b-[10px] border-b-transparent ml-1" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ── Stories Grid ── */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
             <div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none">Voices of <br /><span className="text-emerald-600">The Field.</span></h2>
+              <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase leading-none px-2">Voices of <br /><span className="text-emerald-600">The Field.</span></h2>
             </div>
-            <p className="text-gray-400 text-lg font-medium max-w-xs text-right">Data-backed performance improvements across our entire farmer network.</p>
+            <p className="text-gray-400 text-sm md:text-lg font-medium max-w-xs md:text-right px-2">Data-backed performance improvements across our entire farmer network.</p>
           </div>
 
           <motion.div
@@ -121,18 +121,18 @@ const Stories = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10"
           >
             {successStories.map((story, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="group flex flex-col h-full bg-white rounded-[4rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_45px_100px_rgba(16,185,129,0.12)] transition-all duration-700 overflow-hidden"
+                className="group flex flex-col h-full bg-white rounded-[2.5rem] md:rounded-[4rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_45px_100px_rgba(16,185,129,0.12)] transition-all duration-700 overflow-hidden"
               >
-                <div className="h-64 overflow-hidden relative">
+                <div className="h-56 md:h-64 overflow-hidden relative">
                   <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                  <div className="absolute top-8 left-8">
-                    <div className="px-4 py-1.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
+                  <div className="absolute top-6 md:top-8 left-6 md:left-8">
+                    <div className="px-3 md:px-4 py-1.5 rounded-full bg-emerald-600 text-white text-[9px] md:text-[10px] font-black uppercase tracking-widest shadow-xl flex items-center gap-2">
                       <CheckCircle2 className="w-3 h-3" />
                       Verified Impact
                     </div>

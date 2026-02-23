@@ -103,7 +103,7 @@ export const HeroSection = ({ heroView, setHeroView, features: featuresProp }) =
                     <span className="text-emerald-400 font-bold text-[10px] uppercase tracking-[0.2em]">Digitizing Generational Wisdom v4.0</span>
                   </motion.div>
 
-                  <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
+                  <h1 className="text-6xl md:text-[5.5rem] font-heading font-black text-white leading-[0.9] mb-10 tracking-tight">
                     Agriculture <br />
                     <span className="relative inline-block mt-2">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-emerald-200">
@@ -154,7 +154,7 @@ export const HeroSection = ({ heroView, setHeroView, features: featuresProp }) =
                     <span className="text-blue-400 font-bold text-[10px] uppercase tracking-[0.2em]">Now live on Google Play</span>
                   </motion.div>
 
-                  <h1 className="text-6xl md:text-[5.5rem] font-black text-white leading-[0.9] mb-10 tracking-tight">
+                  <h1 className="text-6xl md:text-[5.5rem] font-heading font-black text-white leading-[0.9] mb-10 tracking-tight">
                     AI Agronomist <br />
                     <span className="relative inline-block mt-2">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-300 to-blue-200">

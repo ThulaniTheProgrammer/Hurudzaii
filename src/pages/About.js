@@ -49,7 +49,7 @@ const About = () => {
       <Header />
 
       {/* ── Hero section ── */}
-      <section className="pt-48 pb-32 px-6 bg-[#05150E] relative overflow-hidden">
+      <section className="pt-32 md:pt-48 pb-20 md:pb-32 px-4 md:px-6 bg-[#05150E] relative overflow-hidden">
         {/* Background visual */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
           <img src="/Futuristic-farm-at-dawn.png" alt="Hero" className="w-full h-full object-cover blur-sm" />
@@ -62,14 +62,14 @@ const About = () => {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 md:px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] mb-8 md:mb-10">
               <Sparkles className="w-4 h-4" />
               The Future of African Farming
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-6xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter mb-10 uppercase">
-              Rooted in <br /><span className="text-emerald-400">Innovation.</span>
+            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl md:text-9xl font-heading font-black text-white leading-tight md:leading-[0.85] tracking-tighter mb-8 md:mb-10 uppercase">
+              Rooted in <br className="hidden md:block" /><span className="text-emerald-400">Innovation.</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-emerald-50/40 text-xl md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed italic">
+            <motion.p variants={fadeInUp} className="text-emerald-50/40 text-lg md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed italic px-4">
               "Building the brain for the African smallholder farmer — one dialect at a time."
             </motion.p>
           </motion.div>
@@ -77,20 +77,20 @@ const About = () => {
       </section>
 
       {/* ── Mission & Vision ── */}
-      <section className="py-32 px-6 relative -mt-20 z-20">
+      <section className="py-16 md:py-32 px-4 md:px-6 relative -mt-12 md:-mt-20 z-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-px bg-gray-100 rounded-[4rem] overflow-hidden shadow-2xl border border-gray-100">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-gray-100 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border border-gray-100">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-12 md:p-24 flex flex-col justify-center gap-8"
+              className="bg-white p-8 md:p-24 flex flex-col justify-center gap-6 md:gap-8"
             >
-              <div className="w-16 h-16 rounded-[2rem] bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-inner">
-                <Target className="w-8 h-8" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[2rem] bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-inner">
+                <Target className="w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-black leading-none tracking-tight uppercase">Our <br /><span className="text-emerald-600">Mission.</span></h2>
-              <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
+              <h2 className="text-3xl md:text-6xl font-black leading-none tracking-tight uppercase">Our <br /><span className="text-emerald-600">Mission.</span></h2>
+              <p className="text-gray-500 text-base md:text-xl font-medium leading-relaxed">
                 To democratise high-end agricultural intelligence for every farmer in Africa, regardless of their technology literacy, language, or internet connectivity.
               </p>
             </motion.div>
@@ -99,13 +99,13 @@ const About = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-50 p-12 md:p-24 flex flex-col justify-center gap-8"
+              className="bg-gray-50 p-8 md:p-24 flex flex-col justify-center gap-6 md:gap-8"
             >
-              <div className="w-16 h-16 rounded-[2rem] bg-blue-50 text-blue-600 flex items-center justify-center shadow-inner">
-                <Lightbulb className="w-8 h-8" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-[2rem] bg-blue-50 text-blue-600 flex items-center justify-center shadow-inner">
+                <Lightbulb className="w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-black leading-none tracking-tight uppercase">Our <br /><span className="text-blue-600">Vision.</span></h2>
-              <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
+              <h2 className="text-3xl md:text-6xl font-black leading-none tracking-tight uppercase">Our <br /><span className="text-blue-600">Vision.</span></h2>
+              <p className="text-gray-500 text-base md:text-xl font-medium leading-relaxed">
                 To become the primary interface between the African farmer and the global economy, clearing the path for food security and institutional growth.
               </p>
             </motion.div>

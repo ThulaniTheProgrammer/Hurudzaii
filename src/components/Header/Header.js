@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, ArrowRight,
   Home as HomeIcon, Cpu, Globe2, Newspaper, Users,
-  ChevronDown,
+  ChevronDown, LayoutDashboard
 } from "lucide-react";
 import logo from "../img/logo.png";
 import {
@@ -58,6 +58,7 @@ const Header = () => {
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const productsRef = useRef(null);
+  const isApproved = typeof window !== "undefined" && localStorage.getItem("demoAccess") === "true";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -78,6 +79,7 @@ const Header = () => {
 
   const navItems = [
     { label: "Home", path: "/", icon: HomeIcon },
+    ...(isApproved ? [{ label: "My Assistant", path: "/console", icon: LayoutDashboard }] : []),
     { label: "Features", path: "/#features", icon: Cpu },
     { label: "How", path: "/#how-it-works", icon: Globe2 },
     { label: "Partners", path: "/#partners", icon: Users },
@@ -133,7 +135,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navItems.slice(0, 3).map((item) => (
+            {navItems.slice(0, isApproved ? 4 : 3).map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.path)}
@@ -216,7 +218,7 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {navItems.slice(3).map((item) => (
+            {navItems.slice(isApproved ? 4 : 3).map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.path)}
@@ -232,15 +234,27 @@ const Header = () => {
 
           {/* Action Area */}
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => navigate("/request-demo")}
-              className={`hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${scrolled
-                ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
-                : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
-                }`}
-            >
-              Request Demo <ArrowRight className="w-4 h-4" />
-            </button>
+            {!isApproved ? (
+              <button
+                onClick={() => navigate("/request-demo")}
+                className={`hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${scrolled
+                  ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                  : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
+                  }`}
+              >
+                Join Hurudzai <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate("/console")}
+                className={`hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${scrolled
+                  ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                  : "bg-white text-[#05150E] hover:bg-emerald-50 shadow-2xl"
+                  }`}
+              >
+                Open Dashboard <LayoutDashboard className="w-4 h-4" />
+              </button>
+            )}
 
             {/* Mobile Toggle */}
             <button
@@ -258,120 +272,104 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            style={{ originY: 0 }}
-            className="md:hidden absolute top-full left-6 right-6 mt-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden absolute top-full left-0 right-0 px-6 z-50 origin-top overflow-hidden"
           >
-            <div className="bg-white rounded-[3rem] border border-emerald-100 shadow-2xl p-8 overflow-hidden relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-3xl -z-10" />
-
-              <div className="space-y-2">
-                {navItems.slice(0, 3).map((item, i) => (
+            <div className="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] border border-emerald-100 shadow-[0_30px_100px_rgba(0,0,0,0.15)] p-6 space-y-2 mt-2">
+              <div className="space-y-1 mb-6">
+                {navItems.map((item, i) => (
                   <motion.button
+                    key={item.label}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 }}
-                    key={item.label}
+                    transition={{ delay: i * 0.05 + 0.1 }}
                     onClick={() => handleNavClick(item.path)}
                     className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
-                      ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
-                      : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
+                      ? "bg-emerald-600 text-white shadow-lg"
+                      : "text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
                       }`}
                   >
-                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
-                      <item.icon className="w-5 h-5 opacity-60" />
+                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.15em]">
+                      <item.icon className={`w-5 h-5 ${isActive(item.path) ? "opacity-100" : "opacity-40"}`} />
                       {item.label}
                     </div>
-                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive(item.path) ? "translate-x-0" : "-translate-x-2 opacity-0"}`} />
-                  </motion.button>
-                ))}
-
-                {/* Mobile Products Accordion */}
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 3 * 0.07 }}
-                >
-                  <button
-                    onClick={() => setMobileProductsOpen((v) => !v)}
-                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isProductActive ? "bg-emerald-600 text-white" : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"}`}
-                  >
-                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
-                      <Cpu className="w-5 h-5 opacity-60" />
-                      Products
-                    </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {mobileProductsOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden mt-2 space-y-2 pl-2"
-                      >
-                        {products.map((product, i) => (
-                          <motion.button
-                            key={product.label}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.06 }}
-                            onClick={() => {
-                              setIsOpen(false);
-                              if (product.href) {
-                                window.open(product.href, "_blank", "noopener,noreferrer");
-                              } else {
-                                navigate(product.path);
-                              }
-                            }}
-                            className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-emerald-50 transition-all text-left"
-                          >
-                            <div className={`w-9 h-9 rounded-xl ${product.bg} flex items-center justify-center flex-shrink-0`}>
-                              <product.Icon className="w-5 h-5" />
-                            </div>
-                            <div>
-                              <p className="text-xs font-black text-[#05150E] uppercase tracking-widest">{product.label}</p>
-                              <p className="text-[10px] text-[#05150E]/40 leading-snug mt-0.5">{product.desc}</p>
-                            </div>
-                          </motion.button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-
-                {navItems.slice(3).map((item, i) => (
-                  <motion.button
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (i + 4) * 0.07 }}
-                    key={item.label}
-                    onClick={() => handleNavClick(item.path)}
-                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isActive(item.path)
-                      ? "bg-emerald-600 text-white shadow-xl shadow-emerald-600/20"
-                      : "bg-gray-50 text-[#05150E]/60 hover:bg-emerald-50 hover:text-emerald-700"
-                      }`}
-                  >
-                    <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em]">
-                      <item.icon className="w-5 h-5 opacity-60" />
-                      {item.label}
-                    </div>
-                    <ArrowRight className={`w-4 h-4 transition-transform ${isActive(item.path) ? "translate-x-0" : "-translate-x-2 opacity-0"}`} />
+                    {isActive(item.path) && <motion.div layoutId="mobile-nav-dot" className="w-1.5 h-1.5 rounded-full bg-white" />}
                   </motion.button>
                 ))}
               </div>
 
-              <div className="mt-8 pt-8 border-t border-gray-100">
+              {/* Mobile Products Accordion */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mb-6"
+              >
                 <button
-                  onClick={() => { navigate("/request-demo"); setIsOpen(false); }}
-                  className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-[#05150E] text-white font-black text-xs uppercase tracking-widest shadow-2xl active:scale-95 transition-all"
+                  onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                  className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all ${isProductActive ? "bg-emerald-50 text-emerald-700" : "bg-gray-50 text-[#05150E]/60"}`}
                 >
-                  Request System Demo <ArrowRight className="w-4 h-4" />
+                  <div className="flex items-center gap-4 text-xs font-black uppercase tracking-[0.15em]">
+                    <Cpu className="w-5 h-5 opacity-40" />
+                    Our Products
+                  </div>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`} />
                 </button>
-              </div>
+
+                <AnimatePresence>
+                  {mobileProductsOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden mt-2 grid grid-cols-1 gap-2 pl-2"
+                    >
+                      {products.map((product, i) => (
+                        <motion.button
+                          key={product.label}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.05 }}
+                          onClick={() => {
+                            setIsOpen(false);
+                            if (product.href) {
+                              window.open(product.href, "_blank", "noopener,noreferrer");
+                            } else {
+                              navigate(product.path);
+                            }
+                          }}
+                          className="w-full flex items-center gap-4 p-4 rounded-2xl bg-gray-50/50 hover:bg-emerald-50 transition-all text-left"
+                        >
+                          <div className={`w-10 h-10 rounded-xl ${product.bg} flex items-center justify-center`}>
+                            <product.Icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-xs font-black text-[#05150E] uppercase tracking-wider">{product.label}</p>
+                            <p className="text-[10px] text-[#05150E]/40">{product.desc}</p>
+                          </div>
+                        </motion.button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="pt-6 border-t border-gray-100"
+              >
+                <button
+                  onClick={() => { navigate(isApproved ? "/console" : "/request-demo"); setIsOpen(false); }}
+                  className="w-full py-5 rounded-[1.5rem] bg-[#05150E] text-white font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl active:scale-95 transition-all"
+                >
+                  {isApproved ? "Open Dashboard" : "Get Early Access"} <ArrowRight className="w-4 h-4" />
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         )}

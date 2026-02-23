@@ -221,12 +221,12 @@ const RequestDemo = () => {
       localStorage.setItem("demoAccess", "true");
       localStorage.setItem("demoRequestEvent", JSON.stringify(payload));
       setSubmitted(true);
-      setTimeout(() => navigate("/"), 2500);
+      setTimeout(() => navigate("/console"), 2500);
     } catch (err) {
       console.error("Submission error:", err);
       // Still set submitted to true for UX, but log error
       setSubmitted(true);
-      setTimeout(() => navigate("/"), 2500);
+      setTimeout(() => navigate("/console"), 2500);
     }
     setSubmitting(false);
   };
