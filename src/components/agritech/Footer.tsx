@@ -111,8 +111,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
             <button onClick={() => onNavigate('hero')} className="flex items-center gap-3 mb-5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2ECC71] to-[#D4FF00] flex items-center justify-center shadow-[0_0_15px_rgba(46,204,113,0.2)]">
-                <img src="/hurudza.png" alt="Hurudza logo" className="w-4 h-4 object-contain" />
+              <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ECC71] to-[#D4FF00] flex items-center justify-center shadow-[0_0_20px_rgba(46,204,113,0.3)] mb-4">
+                <img src="https://raw.githubusercontent.com/chandy-profipath/website/main/public/hurudza.png" alt="Hurudza logo" className="w-6 h-6 object-contain relative z-10" />
               </div>
               <div>
                 <span className="text-white font-bold text-base">Hurudza AI</span>

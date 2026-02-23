@@ -23,6 +23,13 @@ const features = [
     color: '#D4FF00',
   },
   {
+    icon: BarChart3,
+    title: 'Farm Management Dashboard',
+    description: 'Comprehensive web-based platform to oversee all farm operations, track expenses, and manage personnel in one place.',
+    stat: 'All-in-One Control',
+    color: '#D4FF00',
+  },
+  {
     icon: Shield,
     title: 'ZundePay Finance',
     description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
@@ -52,7 +59,7 @@ const features = [
   },
 ];
 
-const HurudzaIcon = (props: any) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
+const HurudzaIcon = (props: any) => <img src="https://raw.githubusercontent.com/chandy-profipath/website/main/public/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
 
 const techStack = [
   { icon: HurudzaIcon, label: 'Crop AI', desc: 'TensorFlow models' },

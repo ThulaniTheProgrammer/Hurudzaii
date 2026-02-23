@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Solutions', id: 'solutions', children: ['Farm Manager', 'ZundePay', 'Crop Analytics', 'IoT Sensors'] },
+    { label: 'Solutions', id: 'solutions', children: ['Farm Management', 'Farm Manager', 'ZundePay', 'Crop Analytics', 'IoT Sensors'] },
     { label: 'Products', id: 'apps' },
     { label: 'API & Docs', id: 'api' },
     { label: 'About', id: 'about' },
@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           {/* Logo */}
           <button onClick={() => handleNav('hero')} className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#2ECC71] to-[#D4FF00] flex items-center justify-center shadow-[0_0_20px_rgba(46,204,113,0.3)] group-hover:shadow-[0_0_30px_rgba(46,204,113,0.5)] transition-shadow duration-300">
-              <img src="/hurudza.png" alt="Hurudza logo" className="w-5 h-5 object-contain" />
+              <img src="https://raw.githubusercontent.com/chandy-profipath/website/main/public/hurudza.png" alt="Hurudza logo" className="w-5 h-5 object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="text-white font-bold text-lg tracking-tight leading-none">Hurudza AI</span>
