@@ -29,6 +29,20 @@ const features = [
     stat: 'Enterprise Ready',
     color: '#2ECC71',
   },
+  {
+    icon: BarChart3,
+    title: 'Farm Management Dashboard',
+    description: 'Comprehensive web-based platform to oversee all farm operations, track expenses, and manage personnel in one place.',
+    stat: 'All-in-One Control',
+    color: '#D4FF00',
+  },
+  {
+    icon: Shield,
+    title: 'ZundePay AgroWallet',
+    description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
+    stat: '$2.4M Disbursed',
+    color: '#2ECC71',
+  },
 ];
 
 const HurudzaIcon = (props: any) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
