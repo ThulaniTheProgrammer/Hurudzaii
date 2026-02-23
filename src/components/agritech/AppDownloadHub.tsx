@@ -73,7 +73,7 @@ const AppDownloadHub: React.FC = () => {
         <div className={`text-center max-w-3xl mx-auto mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4FF00]/10 border border-[#D4FF00]/20 mb-6">
             <Smartphone className="w-3.5 h-3.5 text-[#D4FF00]" />
-            <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Agro-Mobile Suite</span>
+            <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Products in the market</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Two Apps.{' '}
