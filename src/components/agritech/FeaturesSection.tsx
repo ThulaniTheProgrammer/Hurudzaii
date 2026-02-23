@@ -24,7 +24,7 @@ const features = [
   },
   {
     icon: Activity,
-    title: 'Enterprise Ready',
+    title: 'B2B service',
     description: 'Scale your agribusiness with AI-driven insights. Mitigate supply chain risks using predictive disease detection and localized intelligence at an enterprise scale.',
     stat: 'Businesses',
     color: '#2ECC71',
