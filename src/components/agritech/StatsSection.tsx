@@ -40,7 +40,7 @@ const AnimatedCounter: React.FC<CounterProps> = ({ end, suffix = '', prefix = ''
 const stats = [
   { value: 21000, suffix: '+', label: 'Active Farmers', description: 'Across 8 provinces' },
   { value: 34, suffix: '%', label: 'Avg Yield Increase', description: 'In first growing season' },
-  { value: 2400, suffix: '+', label: 'IoT Sensors', description: 'Deployed nationwide' },
+
   { value: 98, suffix: '%', label: 'Uptime', description: 'Platform reliability' },
   { value: 500, suffix: 'K', label: 'Hectares Monitored', description: 'Via satellite & drone' },
   { value: 24, suffix: '/7', label: 'Support', description: 'Expert agricultural team' },
