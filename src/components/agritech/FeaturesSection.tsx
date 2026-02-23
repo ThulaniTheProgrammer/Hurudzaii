@@ -38,7 +38,7 @@ const features = [
   },
   {
     icon: Shield,
-    title: '$2.4M Disbursed',
+    title: 'Digital Agro-Finance',
     description: 'Integrated Hurudza mobile app features for buying by produce, produce advertising, micro-loans, and direct market payments.',
     stat: 'ZundePay',
     color: '#2ECC71',
