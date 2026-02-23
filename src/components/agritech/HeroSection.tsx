@@ -17,7 +17,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   const animatedTexts = React.useMemo(() => [
     "African Agriculture datalayer",
-    "24/7 Multilingual contact center"
+    "24/7 Multilingual contact center",
+    "Farmers Flexible Payment System"
   ], []);
 
   React.useEffect(() => {
