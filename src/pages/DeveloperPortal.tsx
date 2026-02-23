@@ -130,7 +130,7 @@ const DeveloperPortal: React.FC = () => {
                         ].map((tab) => (
                             <button
                                 key={tab.id}
-                                onClick={() => setActiveTab(tab.id as any)}
+                                onClick={() => setActiveTab(tab.id as 'overview' | 'keys' | 'webhooks')}
                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${activeTab === tab.id
                                     ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.1)]'
                                     : 'text-white/40 hover:text-white/80 hover:bg-white/[0.04] border border-transparent'

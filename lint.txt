@@ -1,0 +1,49 @@
+﻿
+> hurudza-ai@0.0.0 lint
+> eslint .
+
+
+C:\Users\user\Desktop\Hurudzai\src\components\agritech\APIPortal.tsx
+  336:30  error  Unnecessary escape character: \"  no-useless-escape
+  336:34  error  Unnecessary escape character: \"  no-useless-escape
+  336:38  error  Unnecessary escape character: \"  no-useless-escape
+
+C:\Users\user\Desktop\Hurudzai\src\components\agritech\FeaturesSection.tsx
+  48:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\user\Desktop\Hurudzai\src\components\agritech\HeroSection.tsx
+  28:9  error  'typingSpeed' is never reassigned. Use 'const' instead  prefer-const
+
+C:\Users\user\Desktop\Hurudzai\src\components\theme-provider.tsx
+  63:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\badge.tsx
+  48:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\button.tsx
+  56:18  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\form.tsx
+  168:3  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\navigation-menu.tsx
+  119:3  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\sidebar.tsx
+  733:3  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\sonner.tsx
+  31:19  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\components\ui\toggle.tsx
+  45:18  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\contexts\AppContext.tsx
+  17:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\user\Desktop\Hurudzai\src\pages\DeveloperPortal.tsx
+  133:71  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Γ£û 15 problems (6 errors, 9 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

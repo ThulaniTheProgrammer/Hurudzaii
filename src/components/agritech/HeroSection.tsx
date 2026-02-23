@@ -25,7 +25,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
     let timeout: NodeJS.Timeout;
 
     const currentFullText = animatedTexts[textIndex];
-    let typingSpeed = isDeleting ? 30 : 60;
+    const typingSpeed = isDeleting ? 30 : 60;
 
     if (!isDeleting && displayText === currentFullText) {
       // Pause at the end of typing

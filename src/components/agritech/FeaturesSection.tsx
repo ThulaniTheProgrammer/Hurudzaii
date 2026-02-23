@@ -45,7 +45,7 @@ const features = [
   },
 ];
 
-const HurudzaIcon = (props: any) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
+const HurudzaIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
 
 const techStack = [
   { icon: HurudzaIcon, label: 'Crop AI', desc: 'TensorFlow models' },

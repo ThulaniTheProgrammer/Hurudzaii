@@ -225,11 +225,10 @@ const APIPortal: React.FC = () => {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${
-                      activeSection === section.id
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${activeSection === section.id
                         ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20'
                         : 'text-white/40 hover:text-white/60 hover:bg-white/[0.03] border border-transparent'
-                    }`}
+                      }`}
                   >
                     <section.icon className="w-4 h-4 flex-shrink-0" />
                     <span>{section.label}</span>
@@ -333,7 +332,7 @@ const APIPortal: React.FC = () => {
 // Simple syntax highlighting
 function highlightSyntax(line: string): React.ReactNode {
   // Highlight strings
-  const parts = line.split(/(\"[^\"]*\")/g);
+  const parts = line.split(/("[^"]*")/g);
   return parts.map((part, i) => {
     if (part.startsWith('"') && part.endsWith('"')) {
       return <span key={i} className="text-[#2ECC71]/80">{part}</span>;
