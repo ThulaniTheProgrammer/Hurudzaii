@@ -11,6 +11,19 @@ const HERO_BG = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317ed_1
 const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   const { ref, isVisible } = useScrollReveal(0.1);
   const [demoModalOpen, setDemoModalOpen] = React.useState(false);
+  const [textIndex, setTextIndex] = React.useState(0);
+
+  const animatedTexts = [
+    "African Agriculture datalayer",
+    "24/7 Multilingual contact center"
+  ];
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex((prev) => (prev + 1) % animatedTexts.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
 
   const stats = [
     { icon: TrendingUp, value: '34%', label: 'Yield Increase', color: '#2ECC71' },
@@ -60,13 +73,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-tight">
-              <span className="text-white">Farming</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight min-h-[130px] sm:min-h-[150px] lg:min-h-[180px]">
+              <span className="text-white">Hurudza AI :</span>
               <br />
-              <span className="text-white">Reimagined</span>
-              <br />
-              <span className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent">
-                with hurudza AI.
+              <span key={textIndex} className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent block mt-2 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                {animatedTexts[textIndex]}
               </span>
             </h1>
 
