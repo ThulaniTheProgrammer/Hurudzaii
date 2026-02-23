@@ -98,8 +98,8 @@ const ContactForm: React.FC = () => {
 
   const contactInfo = [
     { icon: MapPin, label: 'Address', value: 'Chinhoyi University of Technology\nChinhoyi, Zimbabwe' },
-    { icon: Phone, label: 'Phone', value: '+263 242 700 100' },
-    { icon: Mail, label: 'Email', value: 'hello@hurudza.ai' },
+    { icon: Phone, label: 'Phone', value: '0787423492 or 0779741459' },
+    { icon: Mail, label: 'Email', value: 'fmakeba@hurudzaai.tech\nchandiwanablessing@gmail.com' },
     { icon: Clock, label: 'Hours', value: '24/7 Support\nAlways Available' },
   ];
 
@@ -115,7 +115,7 @@ const ContactForm: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2ECC71]/10 border border-[#2ECC71]/20 mb-6 relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
             <Headphones className="w-3.5 h-3.5 text-[#2ECC71] animate-pulse" />
-            <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">AI Contact Center</span>
+            <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">24/7 Multilingual AI Contact Center</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             24/7 Intelligent{' '}
@@ -124,7 +124,7 @@ const ContactForm: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-white/40 leading-relaxed max-w-2xl mx-auto">
-            Experience our AI-powered farmers contact center. Get instant, multilingual agricultural advice or connect with our human experts for enterprise solutions.
+            Experience our 24/7 Multilingual AI Contact Center. Get instant, multilingual agricultural advice or connect with our human experts for enterprise solutions.
           </p>
         </div>
 

@@ -17,7 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   const animatedTexts = React.useMemo(() => [
     "African Agriculture data layer",
-    "24/7 Multilingual contact center",
+    "24/7 Multilingual AI Contact Center",
     "Farmers Flexible Payment System"
   ], []);
 
@@ -180,7 +180,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                     ))}
                   </div>
 
-                  {/* Chart Bars */}
+                  {/* Request demo Bars */}
                   <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
                     <div className="text-xs text-white/40 mb-3">Weekly Yield Forecast</div>
                     <div className="flex items-end gap-2 h-24">

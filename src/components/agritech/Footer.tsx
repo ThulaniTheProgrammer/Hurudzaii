@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, Twitter, Linkedin, Github, Youtube } from 'lucide-react';
+import { ArrowRight, Check, Twitter, Linkedin, Github, Youtube, Instagram, Facebook } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (section: string) => void;
@@ -53,9 +53,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   const socialLinks = [
     { name: 'Twitter', Icon: Twitter, url: '#' },
-    { name: 'LinkedIn', Icon: Linkedin, url: '#' },
+    { name: 'LinkedIn', Icon: Linkedin, url: 'https://www.linkedin.com/company/hurudza/posts/?feedView=all' },
     { name: 'GitHub', Icon: Github, url: '#' },
     { name: 'YouTube', Icon: Youtube, url: '#' },
+    { name: 'Instagram', Icon: Instagram, url: 'https://www.instagram.com/hurudza.ai/reels/' },
+    { name: 'Facebook', Icon: Facebook, url: 'https://www.facebook.com/p/HurudzaAI-100041917326006/' },
   ];
 
   return (

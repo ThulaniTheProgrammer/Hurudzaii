@@ -3,8 +3,8 @@ import { Smartphone, CreditCard, BarChart3, Shield, Bell, MapPin, Check, ArrowRi
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import GlassCard from './GlassCard';
 
-const APP_MOCKUP_1 = '/hurudza_app_real.png';
-const APP_MOCKUP_2 = '/zundepay_app_mockup.png';
+const APP_MOCKUP_1 = '/hurudza_app_real.jpg';
+const APP_MOCKUP_2 = '/zundepay_app_mockup.jpg';
 
 interface AppInfo {
   id: string;
@@ -16,6 +16,7 @@ interface AppInfo {
   downloads: string;
   rating: string;
   color: string;
+  playStoreUrl?: string;
 }
 
 const apps: AppInfo[] = [
@@ -34,6 +35,7 @@ const apps: AppInfo[] = [
     downloads: '12,400+',
     rating: '4.8',
     color: '#2ECC71',
+    playStoreUrl: 'https://play.google.com/store/search?q=Hurudza+App&c=apps',
   },
   {
     id: 'zunde-pay',
@@ -56,7 +58,7 @@ const apps: AppInfo[] = [
     name: 'WhatsApp Bot',
     tagline: 'Farm insights right in your pocket',
     description: 'Access crop prices, weather updates, and expert agricultural advice instantly through our localized WhatsApp bot. Designed for simplicity and deep integration with the African farming ecosystem.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317ed_1771780367990_115ae537.jpg',
+    image: '/whatsapp_bot_preview.jpg',
     features: [
       { icon: MessageSquare, text: 'Instant Q&A with agricultural experts' },
       { icon: Activity, text: 'Daily market price updates' },
@@ -72,7 +74,7 @@ const apps: AppInfo[] = [
     name: 'Agritech CRM',
     tagline: 'Manage your entire agricultural business',
     description: 'A powerful Customer Relationship Management tool built for agricultural cooperatives, suppliers, and buyers to track interactions, sales, and supply chains.',
-    image: APP_MOCKUP_1,
+    image: '/crm_dashboard.png',
     features: [
       { icon: Users, text: 'Manage farmer cooperatives and buyer relations' },
       { icon: BarChart3, text: 'Sales tracking and forecast analytics' },
@@ -108,9 +110,9 @@ const AppDownloadHub: React.FC = () => {
             <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Products in the market</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Two Apps.{' '}
+            Connected{' '}
             <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">
-              One Ecosystem.
+              Ecosystem.
             </span>
           </h2>
           <p className="text-lg text-white/40 leading-relaxed">
@@ -121,14 +123,14 @@ const AppDownloadHub: React.FC = () => {
 
         {/* App Switcher Tabs */}
         <div className={`flex justify-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
-          <div className="inline-flex p-1.5 rounded-2xl bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl">
+          <div className="flex flex-wrap justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl gap-1">
             {apps.map((app, i) => (
               <button
                 key={app.id}
                 onClick={() => setActiveApp(i)}
-                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${activeApp === i
-                    ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-white border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
-                    : 'text-white/40 hover:text-white/60'
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${activeApp === i
+                  ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-white border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
+                  : 'text-white/40 hover:text-white/60'
                   }`}
               >
                 {app.name}
@@ -149,20 +151,22 @@ const AppDownloadHub: React.FC = () => {
               />
 
               {/* Phone Frame */}
-              <div className="relative w-[280px] sm:w-[300px] rounded-[2.5rem] overflow-hidden border-2 border-white/[0.1] shadow-[0_30px_80px_rgba(0,0,0,0.6)] animate-float">
-                <div className="relative aspect-[9/19]">
+              <div className={`relative ${currentApp.id === 'crm' ? 'w-full max-w-[600px] rounded-xl' : 'w-[280px] sm:w-[300px] rounded-[2.5rem]'} overflow-hidden border-2 border-white/[0.1] shadow-[0_30px_80px_rgba(0,0,0,0.6)] animate-float`}>
+                <div className={`relative ${currentApp.id === 'crm' ? 'aspect-[16/9]' : 'aspect-[9/19]'}`}>
                   <img
                     src={currentApp.image}
                     alt={currentApp.name}
                     className="w-full h-full object-cover"
                   />
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl" />
+                  {/* Notch (Hide for desktop CRM) */}
+                  {currentApp.id !== 'crm' && (
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-2xl" />
+                  )}
                 </div>
               </div>
 
               {/* Floating Stats */}
-              <div className="absolute -left-4 sm:-left-12 top-1/4 animate-float-slow">
+              <div className={`absolute ${currentApp.id === 'crm' ? '-left-2 sm:-left-6 top-1/4' : '-left-4 sm:-left-12 top-1/4'} animate-float-slow`}>
                 <GlassCard className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-[#2ECC71]/20 flex items-center justify-center">
@@ -176,7 +180,7 @@ const AppDownloadHub: React.FC = () => {
                 </GlassCard>
               </div>
 
-              <div className="absolute -right-4 sm:-right-12 bottom-1/3 animate-float-slow" style={{ animationDelay: '1.5s' }}>
+              <div className={`absolute ${currentApp.id === 'crm' ? '-right-2 sm:-right-6 bottom-1/4' : '-right-4 sm:-right-12 bottom-1/3'} animate-float-slow`} style={{ animationDelay: '1.5s' }}>
                 <GlassCard className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <div className="flex">
@@ -240,15 +244,32 @@ const AppDownloadHub: React.FC = () => {
               </button>
 
               {/* Google Play */}
-              <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.1] hover:bg-white/[0.1] hover:border-[#2ECC71]/20 transition-all duration-300">
-                <svg className="w-6 h-6 text-white/80" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z" />
-                </svg>
-                <div className="text-left">
-                  <div className="text-[10px] text-white/40 leading-none">Get it on</div>
-                  <div className="text-sm font-semibold text-white leading-tight">Google Play</div>
-                </div>
-              </button>
+              {currentApp.playStoreUrl ? (
+                <a
+                  href={currentApp.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-[#2ECC71]/10 border border-[#2ECC71]/30 hover:bg-[#2ECC71]/20 hover:border-[#2ECC71]/50 transition-all duration-300"
+                >
+                  <svg className="w-6 h-6 text-[#2ECC71]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z" />
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-[10px] text-[#2ECC71]/70 leading-none">Get it on</div>
+                    <div className="text-sm font-bold text-[#2ECC71] leading-tight">Google Play</div>
+                  </div>
+                </a>
+              ) : (
+                <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.1] hover:bg-white/[0.1] hover:border-[#2ECC71]/20 transition-all duration-300">
+                  <svg className="w-6 h-6 text-white/80" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z" />
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-[10px] text-white/40 leading-none">Get it on</div>
+                    <div className="text-sm font-semibold text-white leading-tight">Google Play</div>
+                  </div>
+                </button>
+              )}
 
               {/* QR Code Button */}
               <button
@@ -291,7 +312,7 @@ const AppDownloadHub: React.FC = () => {
                 }}
                 className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#2ECC71] to-[#27ae60] text-[#050505] font-semibold rounded-xl shadow-[0_0_30px_rgba(46,204,113,0.3)] hover:shadow-[0_0_50px_rgba(46,204,113,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
               >
-                Get Started Free
+                Request demo
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>

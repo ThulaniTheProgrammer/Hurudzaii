@@ -10,7 +10,7 @@ const FARMER_IMG = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317e
 const features = [
   {
     icon: Headphones,
-    title: '24/7 Multilingual Contact Center',
+    title: '24/7 Multilingual AI Contact Center',
     description: 'Empowering farmers through a seamless multi-channel ecosystem. Log any challenge via WhatsApp, SMS, or our mobile dashboard using voice or images, and receive instant, AI-driven solutions in your native language.',
     stat: 'Farmers',
     color: '#2ECC71',

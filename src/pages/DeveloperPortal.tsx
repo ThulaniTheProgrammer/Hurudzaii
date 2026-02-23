@@ -132,8 +132,8 @@ const DeveloperPortal: React.FC = () => {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id as any)}
                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${activeTab === tab.id
-                                        ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.1)]'
-                                        : 'text-white/40 hover:text-white/80 hover:bg-white/[0.04] border border-transparent'
+                                    ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.1)]'
+                                    : 'text-white/40 hover:text-white/80 hover:bg-white/[0.04] border border-transparent'
                                     }`}
                             >
                                 <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-[#2ECC71]' : 'text-white/40'}`} />
@@ -365,7 +365,7 @@ const DeveloperPortal: React.FC = () => {
                                     className="px-5 py-2.5 text-sm font-semibold bg-[#2ECC71] text-[#050505] hover:bg-[#27ae60] rounded-lg transition-colors shadow-[0_0_15px_rgba(46,204,113,0.2)] hover:shadow-[0_0_20px_rgba(46,204,113,0.4)] flex items-center gap-2"
                                 >
                                     <Key className="w-4 h-4" />
-                                    Generate Key
+                                    Request demo Key
                                 </button>
                             </div>
                         </form>
