@@ -97,7 +97,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight min-h-[130px] sm:min-h-[150px] lg:min-h-[180px]">
-              <span className="text-white">Hurudza AI :</span>
+              <span className="text-white">Hurudza AI</span>
               <br />
               <span className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent block mt-2">
                 {displayText}
