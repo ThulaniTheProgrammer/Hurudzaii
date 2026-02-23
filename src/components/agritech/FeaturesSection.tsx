@@ -10,7 +10,7 @@ const FARMER_IMG = 'https://d64gsuwffb70l.cloudfront.net/699b38a68f8f88114c4317e
 const features = [
   {
     icon: Cpu,
-    title: 'The AI Contact Center Available to be the First',
+    title: '24/7 Multilingual Contact Center',
     description: 'Machine learning models trained on 2M+ images of African crops detect diseases 14 days before visible symptoms.',
     stat: '24/7 Availability',
     color: '#2ECC71',
