@@ -59,7 +59,7 @@ const features = [
   },
 ];
 
-const HurudzaIcon = (props: any) => <img src="https://raw.githubusercontent.com/chandy-profipath/website/main/public/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
+const HurudzaIcon = (props: any) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
 
 const techStack = [
   { icon: HurudzaIcon, label: 'Crop AI', desc: 'TensorFlow models' },
