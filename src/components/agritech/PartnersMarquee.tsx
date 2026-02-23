@@ -9,12 +9,12 @@ const partners = [
 ];
 
 const PartnerLogo: React.FC<{ name: string; abbr: string }> = ({ name, abbr }) => (
-  <div className="group flex-shrink-0 mx-6 sm:mx-10">
-    <div className="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-500 group-hover:bg-[#2ECC71]/5">
-      <div className="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-white/30 font-bold text-sm group-hover:bg-[#2ECC71]/10 group-hover:border-[#2ECC71]/20 group-hover:text-[#2ECC71] transition-all duration-500">
+  <div className="group flex-shrink-0 mx-6 sm:mx-10 cursor-pointer">
+    <div className="flex items-center gap-4 px-6 py-3 rounded-2xl transition-all duration-500 group-hover:bg-white/[0.03] group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(46,204,113,0.15)] origin-center">
+      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/[0.1] flex items-center justify-center text-white/50 font-black text-lg group-hover:from-[#2ECC71]/20 group-hover:to-[#D4FF00]/10 group-hover:border-[#2ECC71]/40 group-hover:text-[#D4FF00] transition-all duration-500 shadow-inner">
         {abbr}
       </div>
-      <span className="text-sm text-white/25 font-medium group-hover:text-[#2ECC71]/80 transition-all duration-500 whitespace-nowrap">
+      <span className="text-lg text-white/40 font-bold tracking-wide group-hover:text-white transition-all duration-500 whitespace-nowrap">
         {name}
       </span>
     </div>
@@ -30,9 +30,11 @@ const PartnersMarquee: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#080808] to-[#050505]" />
 
       <div ref={ref} className={`relative z-10 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-        <div className="text-center mb-10">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/30 font-medium">
+        <div className="text-center mb-14">
+          <p className="inline-flex items-center gap-4 text-sm sm:text-base uppercase tracking-[0.25em] text-white/60 font-semibold">
+            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#2ECC71]/50"></span>
             Trusted by Industry Leaders
+            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#2ECC71]/50"></span>
           </p>
         </div>
 
@@ -42,8 +44,8 @@ const PartnersMarquee: React.FC = () => {
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-          <div className="flex animate-marquee hover:[animation-play-state:paused]">
-            {[...partners, ...partners].map((p, i) => (
+          <div className="flex animate-marquee hover:[animation-play-state:paused] items-center">
+            {[...partners, ...partners, ...partners].map((p, i) => (
               <PartnerLogo key={`${p.abbr}-${i}`} name={p.name} abbr={p.abbr} />
             ))}
           </div>
