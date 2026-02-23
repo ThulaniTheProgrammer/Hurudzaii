@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {
   TrendingUp, TrendingDown, BarChart3, Globe2,
   MapPin, ShoppingCart, DollarSign, ArrowUpRight,
-  Target, Zap, Scale, Layers
+  Target, Zap, Scale, Layers, Activity
 } from "lucide-react";
 import { staggerContainer, fadeInUp, floatingAnim } from "../components/HomeSections/shared";
 
@@ -28,29 +28,34 @@ const regions = [
 const Market = () => {
   return (
     <div className="font-sans selection:bg-emerald-100 pb-20">
-      {/* ── Header ── */}
-      <div className="mb-12">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 text-[10px] font-black uppercase tracking-[0.25em] mb-6 border border-emerald-500/10"
-        >
-          <BarChart3 className="w-3.5 h-3.5" />
-          Live Price Checker
-        </motion.div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-black text-[#05150E] uppercase tracking-tighter mb-4 leading-[0.9]">
-              Market <span className="text-emerald-600">Intelligence.</span>
-            </h1>
-            <p className="text-gray-500 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-              Real-time insights on commodity valuation and regional liquidity.
-            </p>
+      {/* ── Dashboard Content Header ── */}
+      <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+              <Activity className="w-3.5 h-3.5" />
+              Live Market Data
+            </div>
+            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+              Updated 2 mins ago
+            </div>
           </div>
-          <div className="flex items-center gap-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
-            <div className="px-5 py-3 rounded-xl bg-gray-50 text-[10px] font-black uppercase tracking-widest text-[#05150E]">Export CSV</div>
-            <div className="px-5 py-3 rounded-xl bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-600/20 cursor-pointer hover:bg-emerald-700 transition-colors">Alert Settings</div>
+          <h1 className="text-3xl md:text-4xl font-black text-[#05150E] uppercase tracking-tight leading-none mb-3">
+            Market <span className="text-emerald-600">Analytics.</span>
+          </h1>
+          <p className="text-gray-500 text-sm md:text-base font-medium max-w-xl">
+            Institutional-grade insights on commodity valuation and regional liquidity.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex flex-col items-end mr-4">
+            <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Trading Volume</span>
+            <span className="text-sm font-black text-[#05150E]">$1.2M <span className="text-emerald-500">+4.2%</span></span>
           </div>
+          <button className="px-6 py-3.5 rounded-2xl bg-[#05150E] text-white text-[10px] font-black uppercase tracking-widest shadow-xl shadow-black/10 hover:bg-emerald-600 transition-all active:scale-95">
+            Export Report
+          </button>
         </div>
       </div>
 
