@@ -72,7 +72,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl text-white/50 max-w-lg leading-relaxed">
-              Empowering Zimbabwean farmers with precision agriculture, real-time analytics, and smart financial tools. From seed to market — powered by data.
+              Hurudzai AI transforms generational african data and wisdom into actionable insights through localized intelligence.
             </p>
 
             {/* CTA Buttons */}
