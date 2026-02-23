@@ -72,7 +72,7 @@ const ContactForm: React.FC = () => {
   };
 
   const contactInfo = [
-    { icon: MapPin, label: 'Address', value: '14th Floor, Joina City\nHarare, Zimbabwe' },
+    { icon: MapPin, label: 'Address', value: 'Chinhoyi University of Technology\nChinhoyi, Zimbabwe' },
     { icon: Phone, label: 'Phone', value: '+263 242 700 100' },
     { icon: Mail, label: 'Email', value: 'hello@hurudza.ai' },
     { icon: Clock, label: 'Hours', value: '24/7 Support\nAlways Available' },
@@ -294,7 +294,7 @@ const ContactForm: React.FC = () => {
                       <div className="w-4 h-4 rounded-full bg-[#2ECC71] mx-auto animate-pulse" />
                       <div className="w-12 h-12 rounded-full border-2 border-[#2ECC71]/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-ping opacity-30" />
                     </div>
-                    <div className="font-medium text-white">Harare, Africa</div>
+                    <div className="font-medium text-white">Chinhoyi, Zimbabwe</div>
                   </div>
                 </div>
               </div>
