@@ -2,18 +2,10 @@ import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const partners = [
-  { name: 'AgriBank Zimbabwe', abbr: 'AB' },
-  { name: 'TIMB', abbr: 'TI' },
-  { name: 'Seed Co International', abbr: 'SC' },
   { name: 'ZimTrade', abbr: 'ZT' },
-  { name: 'Econet Wireless', abbr: 'EW' },
-  { name: 'CBZ Holdings', abbr: 'CB' },
-  { name: 'National Foods', abbr: 'NF' },
-  { name: 'Innscor Africa', abbr: 'IA' },
-  { name: 'Delta Corporation', abbr: 'DC' },
-  { name: 'Old Mutual', abbr: 'OM' },
-  { name: 'FBC Holdings', abbr: 'FB' },
-  { name: 'Hippo Valley', abbr: 'HV' },
+  { name: 'CUT', abbr: 'CUT' },
+  { name: 'Potraz', abbr: 'PZ' },
+  { name: 'Eight2Five', abbr: '825' },
 ];
 
 const PartnerLogo: React.FC<{ name: string; abbr: string }> = ({ name, abbr }) => (
