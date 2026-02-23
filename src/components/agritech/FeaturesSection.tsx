@@ -18,7 +18,7 @@ const features = [
   {
     icon: Cpu,
     title: '99.9% Uptime',
-    description: 'The heartbeat of African Agritech. Integrate our world-class API to leverage disease detection models trained on 2M+ proprietary images, optimized for ultra-low latency and enterprise-grade reliability.',
+    description: 'Accelerate your build with the definitive agritech engine. Developers can fetch our high-performance API to power their own applications using bespoke AI models trained on extensive proprietary African data, ensuring localized precision and unparalleled performance.',
     stat: 'Developers',
     color: '#D4FF00',
   },
