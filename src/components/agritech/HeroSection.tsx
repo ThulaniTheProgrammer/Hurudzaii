@@ -66,7 +66,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <span className="text-white">Reimagined</span>
               <br />
               <span className="bg-gradient-to-r from-[#2ECC71] via-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent">
-                with AI
+                with hurudza AI.
               </span>
             </h1>
 
