@@ -1,9 +1,10 @@
+```
 import React, { useState } from 'react';
 import { Smartphone, CreditCard, BarChart3, Shield, Bell, MapPin, Check, ArrowRight, QrCode, Activity, Megaphone, MessageSquare, Users } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import GlassCard from './GlassCard';
 
-const APP_MOCKUP_1 = '/hurudza_app_mockup.png';
+const APP_MOCKUP_1 = '/hurudza_app_real.png';
 const APP_MOCKUP_2 = '/zundepay_app_mockup.png';
 
 interface AppInfo {
@@ -102,7 +103,7 @@ const AppDownloadHub: React.FC = () => {
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center max-w-3xl mx-auto mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+        <div className={`text - center max - w - 3xl mx - auto mb - 16 ${ isVisible ? 'animate-slide-up' : 'opacity-0' } `}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4FF00]/10 border border-[#D4FF00]/20 mb-6">
             <Smartphone className="w-3.5 h-3.5 text-[#D4FF00]" />
             <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Products in the market</span>
@@ -120,16 +121,17 @@ const AppDownloadHub: React.FC = () => {
         </div>
 
         {/* App Switcher Tabs */}
-        <div className={`flex justify-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+        <div className={`flex justify - center mb - 12 ${ isVisible ? 'animate-slide-up' : 'opacity-0' } `} style={{ animationDelay: '0.1s' }}>
           <div className="inline-flex p-1.5 rounded-2xl bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl">
             {apps.map((app, i) => (
               <button
                 key={app.id}
                 onClick={() => setActiveApp(i)}
-                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${activeApp === i
-                  ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-white border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
-                  : 'text-white/40 hover:text-white/60'
-                  }`}
+                className={`px - 6 py - 3 rounded - xl text - sm font - medium transition - all duration - 300 ${
+  activeApp === i
+  ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-white border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
+  : 'text-white/40 hover:text-white/60'
+} `}
               >
                 {app.name}
               </button>
@@ -138,14 +140,14 @@ const AppDownloadHub: React.FC = () => {
         </div>
 
         {/* App Content */}
-        <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+        <div className={`grid lg: grid - cols - 2 gap - 12 lg: gap - 16 items - center ${ isVisible ? 'animate-slide-up' : 'opacity-0' } `} style={{ animationDelay: '0.2s' }}>
           {/* Phone Mockup */}
           <div className="relative flex justify-center order-2 lg:order-1">
             <div className="relative">
               {/* Glow behind phone */}
               <div
                 className="absolute inset-0 rounded-[3rem] blur-[60px] opacity-30 animate-glow-pulse"
-                style={{ background: `radial-gradient(circle, ${currentApp.color}40, transparent)` }}
+                style={{ background: `radial - gradient(circle, ${ currentApp.color }40, transparent)` }}
               />
 
               {/* Phone Frame */}
@@ -198,7 +200,7 @@ const AppDownloadHub: React.FC = () => {
             <div>
               <div
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4"
-                style={{ color: currentApp.color, backgroundColor: `${currentApp.color}15`, border: `1px solid ${currentApp.color}25` }}
+                style={{ color: currentApp.color, backgroundColor: `${ currentApp.color } 15`, border: `1px solid ${ currentApp.color } 25` }}
               >
                 {activeApp === 0 ? <Smartphone className="w-3 h-3" /> : <CreditCard className="w-3 h-3" />}
                 {currentApp.tagline}
@@ -216,7 +218,7 @@ const AppDownloadHub: React.FC = () => {
                 >
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
-                    style={{ backgroundColor: `${currentApp.color}10`, border: `1px solid ${currentApp.color}15` }}
+                    style={{ backgroundColor: `${ currentApp.color } 10`, border: `1px solid ${ currentApp.color } 15` }}
                   >
                     <feature.icon className="w-5 h-5" style={{ color: currentApp.color }} />
                   </div>
@@ -277,7 +279,7 @@ const AppDownloadHub: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className={`mt-20 text-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+        <div className={`mt - 20 text - center ${ isVisible ? 'animate-slide-up' : 'opacity-0' } `} style={{ animationDelay: '0.4s' }}>
           <GlassCard className="p-8 sm:p-12 max-w-4xl mx-auto" hover>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="text-left">
