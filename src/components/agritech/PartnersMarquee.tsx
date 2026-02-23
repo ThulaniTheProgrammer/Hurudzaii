@@ -2,24 +2,37 @@ import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const partners = [
-  { name: 'ZimTrade', abbr: 'ZT' },
-  { name: 'CUT', abbr: 'CUT' },
-  { name: 'Potraz', abbr: 'PZ' },
-  { name: 'Eight2Five', abbr: '825' },
+  { name: 'ZimTrade', abbr: 'ZT', domain: 'tradezimbabwe.com' },
+  { name: 'CUT', abbr: 'CUT', domain: 'cut.ac.zw' },
+  { name: 'Potraz', abbr: 'PZ', domain: 'potraz.gov.zw' },
+  { name: 'Eight2Five', abbr: '825', domain: 'eight2five.co.zw' },
 ];
 
-const PartnerLogo: React.FC<{ name: string; abbr: string }> = ({ name, abbr }) => (
-  <div className="group flex-shrink-0 mx-6 sm:mx-10 cursor-pointer">
-    <div className="flex items-center gap-4 px-6 py-3 rounded-2xl transition-all duration-500 group-hover:bg-white/[0.03] group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(46,204,113,0.15)] origin-center">
-      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/[0.1] flex items-center justify-center text-white/50 font-black text-lg group-hover:from-[#2ECC71]/20 group-hover:to-[#D4FF00]/10 group-hover:border-[#2ECC71]/40 group-hover:text-[#D4FF00] transition-all duration-500 shadow-inner">
-        {abbr}
+const PartnerLogo: React.FC<{ name: string; abbr: string; domain?: string }> = ({ name, abbr, domain }) => {
+  const [imgError, setImgError] = React.useState(false);
+
+  return (
+    <div className="group flex-shrink-0 mx-6 sm:mx-10 cursor-pointer">
+      <div className="flex items-center gap-4 px-6 py-3 rounded-2xl transition-all duration-500 group-hover:bg-white/[0.03] group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(46,204,113,0.15)] origin-center">
+        {domain && !imgError ? (
+          <img
+            src={`https://logo.clearbit.com/${domain}`}
+            alt={`${name} logo`}
+            className="w-12 h-12 object-contain rounded-xl bg-white p-1.5 transition-transform duration-500 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/[0.1] flex items-center justify-center text-white/50 font-black text-lg group-hover:from-[#2ECC71]/20 group-hover:to-[#D4FF00]/10 group-hover:border-[#2ECC71]/40 group-hover:text-[#D4FF00] transition-all duration-500 shadow-inner">
+            {abbr}
+          </div>
+        )}
+        <span className="text-lg text-white/40 font-bold tracking-wide group-hover:text-white transition-all duration-500 whitespace-nowrap">
+          {name}
+        </span>
       </div>
-      <span className="text-lg text-white/40 font-bold tracking-wide group-hover:text-white transition-all duration-500 whitespace-nowrap">
-        {name}
-      </span>
     </div>
-  </div>
-);
+  );
+};
 
 const PartnersMarquee: React.FC = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -46,7 +59,7 @@ const PartnersMarquee: React.FC = () => {
 
           <div className="flex animate-marquee hover:[animation-play-state:paused] items-center">
             {[...partners, ...partners, ...partners].map((p, i) => (
-              <PartnerLogo key={`${p.abbr}-${i}`} name={p.name} abbr={p.abbr} />
+              <PartnerLogo key={`${p.abbr}-${i}`} name={p.name} abbr={p.abbr} domain={p.domain} />
             ))}
           </div>
         </div>
