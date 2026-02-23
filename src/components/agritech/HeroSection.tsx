@@ -14,7 +14,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
   const stats = [
     { icon: TrendingUp, value: '34%', label: 'Yield Increase', color: '#2ECC71' },
-    { icon: Users, value: '12K+', label: 'Active Farmers', color: '#D4FF00' },
+    { icon: Users, value: '21K+', label: 'Active Farmers', color: '#D4FF00' },
     { icon: Globe, value: '8', label: 'Provinces Covered', color: '#2ECC71' },
   ];
 
