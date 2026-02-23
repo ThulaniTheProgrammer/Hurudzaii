@@ -2,21 +2,21 @@ import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const partners = [
-  { name: 'ZimTrade', abbr: 'ZT', domain: 'tradezimbabwe.com' },
-  { name: 'CUT', abbr: 'CUT', domain: 'cut.ac.zw' },
-  { name: 'Potraz', abbr: 'PZ', domain: 'potraz.gov.zw' },
-  { name: 'Eight2Five', abbr: '825', domain: 'eight2five.co.zw' },
+  { name: 'ZimTrade', abbr: 'ZT', logo: 'https://tradezimbabwe.com/wp-content/uploads/2023/05/cropped-ZimTrade-Logo.png' },
+  { name: 'CUT', abbr: 'CUT', logo: 'https://cut.ac.zw/welcome/assets/img/logo.png' },
+  { name: 'Potraz', abbr: 'PZ', logo: 'https://www.potraz.gov.zw/wp-content/uploads/2021/02/cropped-favicon-180x180.png' },
+  { name: 'Eight2Five', abbr: '825', logo: 'https://eight2five.africa/wp-content/uploads/2020/05/eight2five.png' },
 ];
 
-const PartnerLogo: React.FC<{ name: string; abbr: string; domain?: string }> = ({ name, abbr, domain }) => {
+const PartnerLogo: React.FC<{ name: string; abbr: string; logo?: string }> = ({ name, abbr, logo }) => {
   const [imgError, setImgError] = React.useState(false);
 
   return (
     <div className="group flex-shrink-0 mx-6 sm:mx-10 cursor-pointer">
       <div className="flex items-center gap-4 px-6 py-3 rounded-2xl transition-all duration-500 group-hover:bg-white/[0.03] group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(46,204,113,0.15)] origin-center">
-        {domain && !imgError ? (
+        {logo && !imgError ? (
           <img
-            src={`https://logo.clearbit.com/${domain}`}
+            src={logo}
             alt={`${name} logo`}
             className="w-12 h-12 object-contain rounded-xl bg-white p-1.5 transition-transform duration-500 group-hover:scale-105"
             onError={() => setImgError(true)}
@@ -59,7 +59,7 @@ const PartnersMarquee: React.FC = () => {
 
           <div className="flex animate-marquee hover:[animation-play-state:paused] items-center">
             {[...partners, ...partners, ...partners].map((p, i) => (
-              <PartnerLogo key={`${p.abbr}-${i}`} name={p.name} abbr={p.abbr} domain={p.domain} />
+              <PartnerLogo key={`${p.abbr}-${i}`} name={p.name} abbr={p.abbr} logo={p.logo} />
             ))}
           </div>
         </div>
