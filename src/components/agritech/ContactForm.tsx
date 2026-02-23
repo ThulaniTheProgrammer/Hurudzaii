@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Send, MapPin, Phone, Mail, Clock, CheckCircle2, Loader2, Building2, User, MessageSquare, Headphones } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { toast } from 'sonner';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import GlassCard from './GlassCard';
 
@@ -58,10 +60,33 @@ const ContactForm: React.FC = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      const templateParams = {
+        to_name: 'Hurudza AI Support',
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company,
+        subject: formData.subject || 'New Inquiry',
+        message: formData.message,
+        type: formData.type,
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_placeholder',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_placeholder',
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key_placeholder'
+      );
+
+      setIsSubmitted(true);
+      toast.success('Message sent successfully!');
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast.error('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: keyof FormData, value: string) => {
