@@ -29,13 +29,6 @@ const features = [
     stat: 'All-in-One Control',
     color: '#D4FF00',
   },
-  {
-    icon: Activity,
-    title: 'Livestock Tracking',
-    description: 'Real-time health monitoring and GPS tracking for your herds using low-power IoT wearables.',
-    stat: '24/7 Monitoring',
-    color: '#D4FF00',
-  },
 ];
 
 const HurudzaIcon = (props: any) => <img src="/hurudza.png" alt="Hurudza" {...props} className={(props.className || '') + " object-contain"} />;
