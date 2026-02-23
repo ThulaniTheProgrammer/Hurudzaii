@@ -25,7 +25,7 @@ const features = [
   {
     icon: Activity,
     title: 'B2B service',
-    description: 'Precision intelligence for the modern agribusiness. Transform your supply chain with predictive AI that mitigates risk, optimizes yield, and delivers localized insights at an unparalleled enterprise scale.',
+    description: 'Empower your enterprise with data-driven clarity. Businesses can subscribe to Hurudza AI to access premium insights into the agricultural landscape, transforming raw farming data into actionable intelligence for optimized growth.',
     stat: 'Businesses',
     color: '#2ECC71',
   },
