@@ -164,7 +164,7 @@ const DeveloperPortal: React.FC = () => {
                                 <div className="grid sm:grid-cols-3 gap-4">
                                     {[
                                         { title: 'Total Requests', val: '124.5K', sub: '+12% from last month', icon: Activity },
-                                        { title: 'Success Rate', val: '99.9%', sub: 'Last 30 days', icon: Shield },
+                                        { title: 'Developer API', val: 'REST', sub: 'Full API access', icon: Shield },
                                         { title: 'Avg Latency', val: '42ms', sub: 'Global edge network', icon: Box },
                                     ].map((stat, i) => (
                                         <GlassCard key={i} className="p-5 hover:-translate-y-1 transition-transform duration-300">

@@ -17,7 +17,7 @@ const features = [
   },
   {
     icon: Cpu,
-    title: '99.9% Uptime',
+    title: 'Developer API',
     description: 'Accelerate your build with the definitive agritech engine. Developers can fetch our high-performance API to power their own applications using bespoke AI models trained on extensive proprietary African data, ensuring localized precision and unparalleled performance.',
     stat: 'Developers',
     color: '#D4FF00',

@@ -203,7 +203,7 @@ const APIPortal: React.FC = () => {
         {/* API Stats */}
         <div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
           {[
-            { value: '99.9%', label: 'Uptime SLA' },
+            { value: 'REST', label: 'Developer API' },
             { value: '<50ms', label: 'Avg Response' },
             { value: '200+', label: 'Endpoints' },
             { value: '4 SDKs', label: 'Native Libraries' },
@@ -226,8 +226,8 @@ const APIPortal: React.FC = () => {
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
                     className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${activeSection === section.id
-                        ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20'
-                        : 'text-white/40 hover:text-white/60 hover:bg-white/[0.03] border border-transparent'
+                      ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20'
+                      : 'text-white/40 hover:text-white/60 hover:bg-white/[0.03] border border-transparent'
                       }`}
                   >
                     <section.icon className="w-4 h-4 flex-shrink-0" />
