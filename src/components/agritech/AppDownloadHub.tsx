@@ -38,22 +38,6 @@ const apps: AppInfo[] = [
     playStoreUrl: 'https://play.google.com/store/search?q=Hurudza+App&c=apps',
   },
   {
-    id: 'zunde-pay',
-    name: 'ZundePay',
-    tagline: 'Agricultural finance, simplified',
-    description: 'Seamlessly integrated with the Hurudza mobile app. Access micro-loans, buy produce directly, advertise your harvests, and manage direct market payments specifically designed for African farmers and agribusinesses.',
-    image: APP_MOCKUP_2,
-    features: [
-      { icon: CreditCard, text: 'Instant micro-loans & crop financing' },
-      { icon: Megaphone, text: 'Buying by produce & produce advertising' },
-      { icon: BarChart3, text: 'Revenue tracking & market prices' },
-      { icon: Bell, text: 'Payment reminders & financial alerts' },
-    ],
-    downloads: '8,200+',
-    rating: '4.7',
-    color: '#D4FF00',
-  },
-  {
     id: 'whatsapp-bot',
     name: 'WhatsApp Bot',
     tagline: 'Farm insights right in your pocket',
@@ -85,7 +69,24 @@ const apps: AppInfo[] = [
     rating: '4.8',
     color: '#D4FF00',
   },
+  {
+    id: 'zunde-pay',
+    name: 'ZundePay',
+    tagline: 'Agricultural finance, simplified',
+    description: 'Seamlessly integrated with the Hurudza mobile app. Access micro-loans, buy produce directly, advertise your harvests, and manage direct market payments specifically designed for African farmers and agribusinesses.',
+    image: APP_MOCKUP_2,
+    features: [
+      { icon: CreditCard, text: 'Instant micro-loans & crop financing' },
+      { icon: Megaphone, text: 'Buying by produce & produce advertising' },
+      { icon: BarChart3, text: 'Revenue tracking & market prices' },
+      { icon: Bell, text: 'Payment reminders & financial alerts' },
+    ],
+    downloads: '8,200+',
+    rating: '4.7',
+    color: '#D4FF00',
+  },
 ];
+
 
 const AppDownloadHub: React.FC = () => {
   const { ref, isVisible } = useScrollReveal(0.08);
