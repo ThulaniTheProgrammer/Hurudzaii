@@ -1,7 +1,13 @@
 import React from 'react';
 import { LayoutDashboard, Trees, PiggyBank, FlaskConical, Tractor, Users, CheckSquare, DollarSign, Search, Sun, LayoutPanelLeft } from 'lucide-react';
+import useSEO from '@/hooks/useSEO';
 
 const CrmDashboard = () => {
+    useSEO({
+        title: 'Farm Manager CRM — Hurudza AI',
+        description: 'Manage your fields, livestock, equipment, staff, and finances all in one place with the Hurudza AI Farm Manager dashboard.',
+        canonical: 'https://hurudzai.com/crm',
+    });
     return (
         <div className="flex h-screen bg-[#111827] text-white font-sans overflow-hidden">
             {/* Sidebar */}

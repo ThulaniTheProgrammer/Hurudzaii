@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Terminal, Key, Webhook, Book, Copy, Check, Eye, EyeOff, Plus, ArrowRight, Shield, Activity, Box, Trash2, X, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import GlassCard from '@/components/agritech/GlassCard';
+import useSEO from '@/hooks/useSEO';
 
 interface ApiKey {
     id: string;
@@ -12,6 +13,11 @@ interface ApiKey {
 }
 
 const DeveloperPortal: React.FC = () => {
+    useSEO({
+        title: 'Developer Portal — Hurudza AI APIs & Integrations',
+        description: 'Access Hurudza AI REST APIs, generate secret keys, configure webhooks, and integrate precision agriculture data into your applications.',
+        canonical: 'https://hurudzai.com/developers',
+    });
     const [activeTab, setActiveTab] = useState<'overview' | 'keys' | 'webhooks'>('keys');
 
     // Load from local storage or set default
