@@ -292,6 +292,12 @@ const AppDownloadHub: React.FC = () => {
                       alt="Scan to start a WhatsApp chat with Hurudza AI"
                       className="w-40 h-40 mx-auto rounded-xl object-cover"
                     />
+                  ) : currentApp.id === 'farm-manager' ? (
+                    <img
+                      src="/hurudza_app_qr.png"
+                      alt="Scan to download Hurudzai App on Google Play"
+                      className="w-40 h-40 mx-auto rounded-xl object-cover bg-white p-1"
+                    />
                   ) : (
                     <div className="w-32 h-32 mx-auto rounded-xl bg-white p-2">
                       <div className="w-full h-full bg-[#050505] rounded-lg flex items-center justify-center">
