@@ -284,13 +284,21 @@ const AppDownloadHub: React.FC = () => {
 
             {/* QR Code Display */}
             {showQR && (
-              <GlassCard className="p-6 max-w-xs animate-scale-in">
+              <GlassCard className="p-4 max-w-xs animate-scale-in">
                 <div className="text-center space-y-3">
-                  <div className="w-32 h-32 mx-auto rounded-xl bg-white p-2">
-                    <div className="w-full h-full bg-[#050505] rounded-lg flex items-center justify-center">
-                      <QrCode className="w-16 h-16 text-white/80" />
+                  {currentApp.id === 'whatsapp-bot' ? (
+                    <img
+                      src="/whatsapp_qr.png"
+                      alt="Scan to start a WhatsApp chat with Hurudza AI"
+                      className="w-40 h-40 mx-auto rounded-xl object-cover"
+                    />
+                  ) : (
+                    <div className="w-32 h-32 mx-auto rounded-xl bg-white p-2">
+                      <div className="w-full h-full bg-[#050505] rounded-lg flex items-center justify-center">
+                        <QrCode className="w-16 h-16 text-white/80" />
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <p className="text-xs text-white/40">Scan to download {currentApp.name}</p>
                 </div>
               </GlassCard>
