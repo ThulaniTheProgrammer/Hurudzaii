@@ -6,7 +6,7 @@ const CrmDashboard = () => {
     useSEO({
         title: 'Farm Manager CRM — Hurudza AI',
         description: 'Manage your fields, livestock, equipment, staff, and finances all in one place with the Hurudza AI Farm Manager dashboard.',
-        canonical: 'https://hurudzai.com/crm',
+        canonical: 'https://www.hurudzaai.tech/crm',
     });
     return (
         <div className="flex h-screen bg-[#111827] text-white font-sans overflow-hidden">

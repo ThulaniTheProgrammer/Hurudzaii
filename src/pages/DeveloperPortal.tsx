@@ -16,7 +16,7 @@ const DeveloperPortal: React.FC = () => {
     useSEO({
         title: 'Developer Portal — Hurudza AI APIs & Integrations',
         description: 'Access Hurudza AI REST APIs, generate secret keys, configure webhooks, and integrate precision agriculture data into your applications.',
-        canonical: 'https://hurudzai.com/developers',
+        canonical: 'https://www.hurudzaai.tech/developers',
     });
     const [activeTab, setActiveTab] = useState<'overview' | 'keys' | 'webhooks'>('keys');
 

@@ -40,7 +40,7 @@ const useSEO = ({ title, description, canonical }: SEOProps) => {
             }
             const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
             if (canonicalLink) {
-                canonicalLink.setAttribute('href', 'https://hurudzai.com/');
+                canonicalLink.setAttribute('href', 'https://www.hurudzaai.tech/');
             }
         };
     }, [title, description, canonical]);
