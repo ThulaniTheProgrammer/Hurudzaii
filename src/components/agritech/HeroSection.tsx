@@ -85,12 +85,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       />
 
       {/* Content */}
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full">
+      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-32 pt-20 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
           <div className={`space-y-8 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 ">
+            <div className="inline-flex items-center gap-2 px-4 py-0">
               <div className="w-2 h-4 rounded-full bg-[#2ECC71] animate-pulse" />
               <span className="text-[#2ECC71] text-sm font-medium">Digitizing African Agriculture Generational Wisdom</span>
             </div>
