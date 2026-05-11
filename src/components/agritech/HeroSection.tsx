@@ -85,7 +85,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       />
 
       {/* Content */}
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-32 pt-4 pb-20 w-full">
+      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-32 pt-0 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
           <div className={`space-y-8 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
