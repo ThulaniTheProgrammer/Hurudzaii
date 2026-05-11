@@ -122,13 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
           {/* Mobile Toggle */}
           <div className="lg:hidden flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              aria-label={isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
-              className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
-            >
-              {isLightTheme ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-            </button>
+          
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
