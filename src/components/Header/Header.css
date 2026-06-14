@@ -1,0 +1,5 @@
+.logoWeb {
+    height: 120px;
+    width: 120px;
+}
+/* Keep header visible on mobile; layout handled with utility classes */

@@ -112,7 +112,7 @@ const AppDownloadHub: React.FC = () => {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Connected{' '}
-            <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">
+            <span className="text-[#2ECC71]">
               Ecosystem.
             </span>
           </h2>

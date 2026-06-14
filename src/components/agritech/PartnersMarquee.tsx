@@ -65,7 +65,7 @@ const PartnersMarquee: React.FC = () => {
         </div>
 
         {/* Awards Row */}
-        <div className="max-w-4xl mx-auto mt-12 px-4">
+        <div className="max-w-4xl mx-auto mt-10 px-4">
           <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
             {[
               { label: 'AI for Good', org: 'Global Recognition' },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/components/theme-provider';
 
 interface NavbarProps {
   onNavigate: (section: string) => void;
@@ -9,6 +10,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -30,6 +32,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     setActiveDropdown(null);
   };
 
+  const isLightTheme = theme === 'light';
+
+  const toggleTheme = () => {
+    setTheme(isLightTheme ? 'dark' : 'light');
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
@@ -37,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         : 'bg-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-24 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button onClick={() => handleNav('hero')} className="flex items-center gap-3 group">
@@ -47,8 +55,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300"
             />
             <div className="flex flex-col">
-              <span className="text-white font-bold text-lg tracking-tight leading-none">Hurudza AI</span>
-              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-0.5">Africa</span>
+            
+              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase bold leading-none mt-0.5"></span>
+              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase bold leading-none mt-0.5"></span>
+            
             </div>
           </button>
 
@@ -88,6 +98,16 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
+            {/*
+            <button
+              onClick={toggleTheme}
+              aria-label={isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
+              className="p-2.5 text-white/70 hover:text-white border border-white/[0.1] hover:border-[#2ECC71]/30 rounded-lg transition-all duration-300 hover:bg-white/[0.03]"
+            >
+              {isLightTheme ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+            */
+            }
             <button
               onClick={() => handleNav('api')}
               className="px-4 py-2 text-sm text-white/70 hover:text-white border border-white/[0.1] hover:border-[#2ECC71]/30 rounded-lg transition-all duration-300 hover:bg-white/[0.03]"
@@ -103,12 +123,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           </div>
 
           {/* Mobile Toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
-          >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+          
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
+            >
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 

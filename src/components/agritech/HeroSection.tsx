@@ -246,6 +246,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 Explore Solutions
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
+              {/* 
               <button
                 onClick={() => setDemoModalOpen(true)}
                 className="group flex items-center gap-3 px-8 py-4 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] text-white font-medium rounded-xl hover:bg-white/[0.08] hover:border-[#2ECC71]/20 transition-all duration-300"
@@ -253,8 +254,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="w-10 h-10 rounded-full bg-white/[0.1] flex items-center justify-center group-hover:bg-[#2ECC71]/20 transition-colors">
                   <Play className="w-4 h-4 ml-0.5" />
                 </div>
-                Watch Demo
-              </button>
+               Watch Demo 
+              </button> */}
             </div>
 
             {/* Stats Row — hides during video */}
