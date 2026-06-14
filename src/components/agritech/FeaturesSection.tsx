@@ -20,7 +20,7 @@ const features = [
     title: 'Developer API',
     description: 'Accelerate your build with the definitive agritech engine. Developers can fetch our high-performance API to power their own applications using bespoke AI models trained on extensive proprietary African data, ensuring localized precision and unparalleled performance.',
     stat: 'Developers',
-    color: '#D4FF00',
+    color: '#2ECC71',
   },
   {
     icon: Activity,
@@ -34,7 +34,7 @@ const features = [
     title: 'All-in-One Control',
     description: 'Master your agricultural empire from a single, intuitive command center. Orchestrate complex operations, track precision expenses, and lead your personnel with data-driven transparency.',
     stat: 'Farm Management',
-    color: '#D4FF00',
+    color: '#2ECC71',
   },
   {
     icon: Shield,
@@ -63,7 +63,7 @@ const FeaturesSection: React.FC = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-[#050505]" />
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-[#2ECC71]/5 blur-[200px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[#D4FF00]/[0.03] blur-[150px]" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[#2ECC71]/[0.03] blur-[150px]" />
 
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ const FeaturesSection: React.FC = () => {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Agriculture Data Layer{' '}
-            <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">
+            <span className="text-[#2ECC71]">
               For Africa
             </span>
           </h2>
@@ -133,7 +133,7 @@ const FeaturesSection: React.FC = () => {
               <img src="/satellite_mapping.png" alt="Satellite Mapping" className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="text-xs text-[#D4FF00] font-medium uppercase tracking-wider mb-2">Satellite Mapping</div>
+                <div className="text-xs text-[#2ECC71] font-medium uppercase tracking-wider mb-2">Satellite Mapping</div>
                 <h3 className="text-2xl font-bold text-white mb-2">Moisture Stress & Crop Health Analysis</h3>
                 <p className="text-sm text-white/50">Multi-spectral satellite imagery provides deep insights into soil moisture levels and crop vitality.</p>
               </div>

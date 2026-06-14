@@ -60,12 +60,12 @@ const StatsSection: React.FC = () => {
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className={`text-center max-w-3xl mx-auto mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4FF00]/10 border border-[#D4FF00]/20 mb-6">
-            <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Impact & Scale</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2ECC71]/10 border border-[#2ECC71]/20 mb-6">
+            <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">Impact & Scale</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Numbers That{' '}
-            <span className="bg-gradient-to-r from-[#D4FF00] to-[#2ECC71] bg-clip-text text-transparent">
+            <span className="text-[#2ECC71]">
               Speak
             </span>
           </h2>
@@ -82,7 +82,7 @@ const StatsSection: React.FC = () => {
               className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] hover:bg-white/[0.04] hover:border-[#2ECC71]/15 transition-all duration-500"
             >
               {/* Glow on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2ECC71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-[#2ECC71]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative">
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
@@ -110,7 +110,7 @@ const StatsSection: React.FC = () => {
               "Hurudza AI has completely transformed how we manage our 200-hectare maize farm. The AI diagnostics caught a fall armyworm infestation two weeks before it would have been visible, saving us an estimated $45,000 in crop losses."
             </blockquote>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2ECC71] to-[#D4FF00] flex items-center justify-center text-[#050505] font-bold text-sm">
+              <div className="w-12 h-12 rounded-full bg-[#2ECC71] flex items-center justify-center text-[#050505] font-bold text-sm">
                 TM
               </div>
               <div>

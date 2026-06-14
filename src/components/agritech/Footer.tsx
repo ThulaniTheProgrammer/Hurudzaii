@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
                 Stay ahead of the{' '}
-                <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">harvest</span>
+                <span className="text-[#2ECC71]">harvest</span>
               </h3>
               <p className="text-white/40 text-sm">
                 Get weekly insights on agricultural technology, market trends, and platform updates.
@@ -90,7 +90,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <button
                 type="submit"
-                className="flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-[#2ECC71] to-[#27ae60] text-[#050505] font-semibold rounded-xl shadow-[0_0_20px_rgba(46,204,113,0.2)] hover:shadow-[0_0_30px_rgba(46,204,113,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap text-sm"
+                className="flex items-center gap-2 px-6 py-3.5 bg-[#2ECC71] text-[#050505] font-semibold rounded-xl shadow-[0_0_20px_rgba(46,204,113,0.2)] hover:bg-[#27ae60] hover:shadow-[0_0_30px_rgba(46,204,113,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap text-sm"
               >
                 {subscribed ? (
                   <>
@@ -113,9 +113,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
             <button onClick={() => onNavigate('hero')} className="flex items-center gap-3 mb-5 group">
-              <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-[#2ECC71] to-[#D4FF00] flex items-center justify-center shadow-[0_0_20px_rgba(46,204,113,0.3)] mb-4">
-                <img src="/hurudza.png" alt="Hurudza logo" className="w-6 h-6 object-contain relative z-10" />
-              </div>
+              <img
+                src="/hurudza_transparent.png"
+                alt="Hurudza logo"
+                className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-300 mb-4"
+              />
               <div>
                 <span className="text-white font-bold text-base">Hurudza AI</span>
                 <span className="text-[#2ECC71] text-[9px] font-medium tracking-[0.15em] uppercase block leading-none mt-0.5">Africa</span>

@@ -119,7 +119,7 @@ const ContactForm: React.FC = () => {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             24/7 Intelligent{' '}
-            <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">
+            <span className="text-[#2ECC71]">
               Support
             </span>
           </h2>
@@ -269,7 +269,7 @@ const ContactForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#2ECC71] to-[#27ae60] text-[#050505] font-semibold rounded-xl shadow-[0_0_30px_rgba(46,204,113,0.3)] hover:shadow-[0_0_50px_rgba(46,204,113,0.5)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-[#2ECC71] text-[#050505] font-semibold rounded-xl shadow-[0_0_30px_rgba(46,204,113,0.3)] hover:bg-[#27ae60] hover:shadow-[0_0_50px_rgba(46,204,113,0.5)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <>
