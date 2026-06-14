@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// Force Vite reload after cleaning up config conflicts
 import animate from "tailwindcss-animate";
 import typography from "@tailwindcss/typography";
 

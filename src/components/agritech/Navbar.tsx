@@ -55,9 +55,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-300"
             />
             <div className="flex flex-col">
-            
-              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase bold leading-none mt-0.5"></span>
-              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase bold leading-none mt-0.5"></span>
+              <span className="text-white font-bold text-lg tracking-tight leading-none">Hurudza AI</span>
+              <span className="text-[#2ECC71] text-[10px] font-medium tracking-[0.2em] uppercase leading-none mt-0.5">Africa</span>
             
             </div>
           </button>
