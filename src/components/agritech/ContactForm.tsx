@@ -106,7 +106,7 @@ const ContactForm: React.FC = () => {
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#080808] to-[#050505]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-gray-900 via-gray-50 dark:via-gray-800 to-white dark:to-gray-900" />
       <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] rounded-full bg-[#2ECC71]/5 blur-[200px]" />
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,13 +117,13 @@ const ContactForm: React.FC = () => {
             <Headphones className="w-3.5 h-3.5 text-[#2ECC71] animate-pulse" />
             <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">24/7 Multilingual AI Contact Center</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             24/7 Intelligent{' '}
             <span className="text-[#2ECC71]">
               Support
             </span>
           </h2>
-          <p className="text-lg text-white/40 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Experience our 24/7 Multilingual AI Contact Center. Get instant, multilingual agricultural advice or connect with our human experts for enterprise solutions.
           </p>
         </div>
@@ -136,8 +136,8 @@ const ContactForm: React.FC = () => {
                 <div className="w-20 h-20 rounded-2xl bg-[#2ECC71]/10 border border-[#2ECC71]/20 flex items-center justify-center mb-6">
                   <CheckCircle2 className="w-10 h-10 text-[#2ECC71]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Message Sent!</h3>
-                <p className="text-white/40 max-w-sm mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Message Sent!</h3>
+                <p className="text-gray-600 dark:text-gray-300 max-w-sm mb-8">
                   Thank you for reaching out. Our team will get back to you within 24 hours.
                 </p>
                 <button
@@ -145,7 +145,7 @@ const ContactForm: React.FC = () => {
                     setIsSubmitted(false);
                     setFormData({ name: '', email: '', company: '', subject: '', message: '', type: 'general' });
                   }}
-                  className="px-6 py-3 text-sm text-white/60 border border-white/[0.1] rounded-xl hover:border-[#2ECC71]/20 hover:text-white transition-all"
+                  className="px-6 py-3 text-sm text-gray-600 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-xl hover:border-[#2ECC71]/20 hover:text-gray-900 dark:hover:text-gray-100 transition-all"
                 >
                   Send Another Message
                 </button>
@@ -154,7 +154,7 @@ const ContactForm: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Inquiry Type */}
                 <div>
-                  <label className="block text-xs text-white/40 uppercase tracking-wider mb-3 font-medium">
+                  <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 font-medium">
                     Inquiry Type
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -165,7 +165,7 @@ const ContactForm: React.FC = () => {
                         onClick={() => handleChange('type', type.value)}
                         className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${formData.type === type.value
                           ? 'bg-[#2ECC71]/15 text-[#2ECC71] border border-[#2ECC71]/25'
-                          : 'bg-white/[0.03] text-white/40 border border-white/[0.06] hover:border-white/[0.12] hover:text-white/60'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100'
                           }`}
                       >
                         {type.label}
@@ -177,38 +177,38 @@ const ContactForm: React.FC = () => {
                 {/* Name & Email Row */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs text-white/40 uppercase tracking-wider mb-2 font-medium">
+                    <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 font-medium">
                       Full Name *
                     </label>
                     <div className="relative">
-                      <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleChange('name', e.target.value)}
                         placeholder="John Moyo"
-                        className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/[0.03] border text-white placeholder:text-white/20 text-sm focus:outline-none focus:ring-1 transition-all ${errors.name
+                        className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:ring-1 transition-all ${errors.name
                           ? 'border-red-500/50 focus:ring-red-500/30'
-                          : 'border-white/[0.06] focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
+                          : 'border-gray-300 dark:border-gray-700 focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
                           }`}
                       />
                     </div>
                     {errors.name && <p className="text-xs text-red-400 mt-1.5">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="block text-xs text-white/40 uppercase tracking-wider mb-2 font-medium">
+                    <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 font-medium">
                       Email Address *
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleChange('email', e.target.value)}
                         placeholder="john@example.com"
-                        className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/[0.03] border text-white placeholder:text-white/20 text-sm focus:outline-none focus:ring-1 transition-all ${errors.email
+                        className={`w-full pl-11 pr-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:ring-1 transition-all ${errors.email
                           ? 'border-red-500/50 focus:ring-red-500/30'
-                          : 'border-white/[0.06] focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
+                          : 'border-gray-300 dark:border-gray-700 focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
                           }`}
                       />
                     </div>
@@ -219,22 +219,22 @@ const ContactForm: React.FC = () => {
                 {/* Company & Subject Row */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs text-white/40 uppercase tracking-wider mb-2 font-medium">
+                    <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 font-medium">
                       Company / Farm
                     </label>
                     <div className="relative">
-                      <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                      <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => handleChange('company', e.target.value)}
                         placeholder="Moyo Farms Ltd"
-                        className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
+                        className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs text-white/40 uppercase tracking-wider mb-2 font-medium">
+                    <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 font-medium">
                       Subject
                     </label>
                     <input
@@ -242,14 +242,14 @@ const ContactForm: React.FC = () => {
                       value={formData.subject}
                       onChange={(e) => handleChange('subject', e.target.value)}
                       placeholder="How can we help?"
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-white placeholder:text-white/20 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
+                      className="w-full px-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-xs text-white/40 uppercase tracking-wider mb-2 font-medium">
+                  <label className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 font-medium">
                     Message *
                   </label>
                   <textarea
@@ -257,9 +257,9 @@ const ContactForm: React.FC = () => {
                     onChange={(e) => handleChange('message', e.target.value)}
                     placeholder="Tell us about your agricultural needs..."
                     rows={5}
-                    className={`w-full px-4 py-3.5 rounded-xl bg-white/[0.03] border text-white placeholder:text-white/20 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${errors.message
+                    className={`w-full px-4 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:ring-1 transition-all resize-none ${errors.message
                       ? 'border-red-500/50 focus:ring-red-500/30'
-                      : 'border-white/[0.06] focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
+                      : 'border-gray-300 dark:border-gray-700 focus:border-[#2ECC71]/30 focus:ring-[#2ECC71]/20'
                       }`}
                   />
                   {errors.message && <p className="text-xs text-red-400 mt-1.5">{errors.message}</p>}
@@ -296,8 +296,8 @@ const ContactForm: React.FC = () => {
                     <info.icon className="w-5 h-5 text-[#2ECC71]" />
                   </div>
                   <div>
-                    <div className="text-xs text-white/30 uppercase tracking-wider font-medium mb-1">{info.label}</div>
-                    <div className="text-sm text-white/70 whitespace-pre-line">{info.value}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium mb-1">{info.label}</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line">{info.value}</div>
                   </div>
                 </div>
               </GlassCard>
@@ -305,7 +305,7 @@ const ContactForm: React.FC = () => {
 
             {/* Map Placeholder */}
             <GlassCard className="overflow-hidden" hover>
-              <div className="relative h-48 bg-gradient-to-br from-[#0a1a0f] to-[#050505]">
+              <div className="relative h-48 bg-gradient-to-br from-gray-100 dark:from-gray-800 to-gray-50 dark:to-gray-900">
                 <div
                   className="absolute inset-0 opacity-20"
                   style={{
@@ -319,7 +319,7 @@ const ContactForm: React.FC = () => {
                       <div className="w-4 h-4 rounded-full bg-[#2ECC71] mx-auto animate-pulse" />
                       <div className="w-12 h-12 rounded-full border-2 border-[#2ECC71]/30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-ping opacity-30" />
                     </div>
-                    <div className="font-medium text-white">Chinhoyi, Zimbabwe</div>
+                    <div className="font-medium text-gray-900 dark:text-gray-100">Chinhoyi, Zimbabwe</div>
                   </div>
                 </div>
               </div>
@@ -327,12 +327,12 @@ const ContactForm: React.FC = () => {
 
             {/* Social Links */}
             <GlassCard className="p-5">
-              <div className="text-xs text-white/30 uppercase tracking-wider font-medium mb-3">Follow Us</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium mb-3">Follow Us</div>
               <div className="flex gap-3">
                 {['Twitter', 'LinkedIn', 'GitHub', 'YouTube'].map((social) => (
                   <button
                     key={social}
-                    className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/30 hover:text-[#2ECC71] hover:border-[#2ECC71]/20 hover:bg-[#2ECC71]/5 transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-[#2ECC71] hover:border-[#2ECC71]/20 hover:bg-[#2ECC71]/5 transition-all duration-300"
                     title={social}
                   >
                     <span className="text-xs font-bold">{social[0]}</span>

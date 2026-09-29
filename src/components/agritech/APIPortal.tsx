@@ -168,7 +168,7 @@ const APIPortal: React.FC = () => {
   return (
     <section id="api" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#050505]" />
+      <div className="absolute inset-0 bg-white dark:bg-gray-900" />
       <div className="absolute top-0 right-1/3 w-[400px] h-[400px] rounded-full bg-[#2ECC71]/[0.04] blur-[180px]" />
 
 
@@ -188,13 +188,13 @@ const APIPortal: React.FC = () => {
             <Terminal className="w-3.5 h-3.5 text-[#2ECC71]" />
             <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">Developer Portal</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Build with{' '}
             <span className="text-[#2ECC71]">
               Hurudza AI API
             </span>
           </h2>
-          <p className="text-lg text-white/40 leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             Integrate agricultural intelligence into your applications with our comprehensive
             REST API, GraphQL endpoint, webhooks, and native SDKs.
           </p>
@@ -210,7 +210,7 @@ const APIPortal: React.FC = () => {
           ].map((stat, i) => (
             <GlassCard key={i} className="p-5 text-center">
               <div className="text-2xl font-bold text-[#2ECC71]">{stat.value}</div>
-              <div className="text-xs text-white/40 mt-1">{stat.label}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</div>
             </GlassCard>
           ))}
         </div>
@@ -227,7 +227,7 @@ const APIPortal: React.FC = () => {
                     onClick={() => setActiveSection(section.id)}
                     className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${activeSection === section.id
                       ? 'bg-[#2ECC71]/10 text-[#2ECC71] border border-[#2ECC71]/20'
-                      : 'text-white/40 hover:text-white/60 hover:bg-white/[0.03] border border-transparent'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 border border-transparent'
                       }`}
                   >
                     <section.icon className="w-4 h-4 flex-shrink-0" />
@@ -239,8 +239,8 @@ const APIPortal: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-4 pt-4 border-t border-white/[0.06] px-4">
-                <button className="flex items-center gap-2 text-xs text-white/30 hover:text-[#2ECC71] transition-colors">
+              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 px-4">
+                <button className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 hover:text-[#2ECC71] transition-colors">
                   <ExternalLink className="w-3.5 h-3.5" />
                   Full Documentation
                 </button>
@@ -253,14 +253,14 @@ const APIPortal: React.FC = () => {
             {currentExamples.map((example, i) => (
               <GlassCard key={`${activeSection}-${i}`} className="overflow-hidden">
                 {/* Code Header */}
-                <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+                <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
                   <div className="flex items-center gap-3">
                     <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-white/10" />
-                      <div className="w-3 h-3 rounded-full bg-white/10" />
-                      <div className="w-3 h-3 rounded-full bg-white/10" />
+                      <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600" />
+                      <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600" />
+                      <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600" />
                     </div>
-                    <span className="text-xs text-white/40 font-mono">{example.title}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 font-mono">{example.title}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-[10px] text-[#2ECC71]/60 font-mono uppercase px-2 py-0.5 rounded bg-[#2ECC71]/5">
@@ -268,7 +268,7 @@ const APIPortal: React.FC = () => {
                     </span>
                     <button
                       onClick={() => handleCopy(example.code, i)}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-white/40 hover:text-white hover:bg-white/[0.05] transition-all"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
                     >
                       {copiedIndex === i ? (
                         <>
@@ -288,10 +288,10 @@ const APIPortal: React.FC = () => {
                 {/* Code Block */}
                 <div className="p-5 overflow-x-auto">
                   <pre className="text-sm font-mono leading-relaxed">
-                    <code className="text-white/70">
+                    <code className="text-gray-700 dark:text-gray-300">
                       {example.code.split('\n').map((line, lineIdx) => (
                         <div key={lineIdx} className="flex">
-                          <span className="text-white/15 select-none w-8 text-right mr-4 flex-shrink-0 text-xs leading-relaxed">
+                          <span className="text-gray-300 dark:text-gray-600 select-none w-8 text-right mr-4 flex-shrink-0 text-xs leading-relaxed">
                             {lineIdx + 1}
                           </span>
                           <span className="flex-1">
@@ -309,14 +309,14 @@ const APIPortal: React.FC = () => {
             <GlassCard className="p-6" hover>
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h4 className="text-base font-semibold text-white">Try the API</h4>
-                  <p className="text-sm text-white/40 mt-1">Get your free API key and start building in minutes.</p>
+                  <h4 className="text-base font-semibold text-gray-900 dark:text-gray-100">Try the API</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Get your free API key and start building in minutes.</p>
                 </div>
                 <div className="flex gap-3">
                   <button className="px-5 py-2.5 text-sm font-medium text-[#050505] bg-gradient-to-r from-[#2ECC71] to-[#27ae60] rounded-lg shadow-[0_0_20px_rgba(46,204,113,0.2)] hover:shadow-[0_0_30px_rgba(46,204,113,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
                     Get API Key
                   </button>
-                  <button className="px-5 py-2.5 text-sm text-white/60 border border-white/[0.1] rounded-lg hover:border-[#2ECC71]/20 hover:text-white transition-all">
+                  <button className="px-5 py-2.5 text-sm text-gray-600 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg hover:border-[#2ECC71]/20 hover:text-gray-900 dark:hover:text-gray-100 transition-all">
                     View Docs
                   </button>
                 </div>
@@ -335,7 +335,7 @@ function highlightSyntax(line: string): React.ReactNode {
   const parts = line.split(/("[^"]*")/g);
   return parts.map((part, i) => {
     if (part.startsWith('"') && part.endsWith('"')) {
-      return <span key={i} className="text-[#2ECC71]/80">{part}</span>;
+      return <span key={i} className="text-[#2ECC71]/80 dark:text-[#2ECC71]/70">{part}</span>;
     }
     // Highlight keywords
     const keywords = ['curl', 'query', 'from', 'import', 'print', 'def', 'class', 'return', 'if', 'else', 'true', 'false', 'null', 'GET', 'POST', 'PUT', 'DELETE'];
@@ -343,15 +343,15 @@ function highlightSyntax(line: string): React.ReactNode {
     const subParts = part.split(keywordRegex);
     return subParts.map((sub, j) => {
       if (keywords.some(k => k.toLowerCase() === sub.toLowerCase())) {
-        return <span key={`${i}-${j}`} className="text-[#D4FF00]/80">{sub}</span>;
+        return <span key={`${i}-${j}`} className="text-[#D4FF00]/80 dark:text-[#D4FF00]/70">{sub}</span>;
       }
       // Highlight numbers
       if (/^\d+\.?\d*$/.test(sub.trim())) {
-        return <span key={`${i}-${j}`} className="text-[#D4FF00]/60">{sub}</span>;
+        return <span key={`${i}-${j}`} className="text-[#D4FF00]/60 dark:text-[#D4FF00]/50">{sub}</span>;
       }
       // Highlight comments
       if (sub.trim().startsWith('#') || sub.trim().startsWith('//')) {
-        return <span key={`${i}-${j}`} className="text-white/25 italic">{sub}</span>;
+        return <span key={`${i}-${j}`} className="text-white/25 dark:text-white/40 italic">{sub}</span>;
       }
       return <span key={`${i}-${j}`}>{sub}</span>;
     });

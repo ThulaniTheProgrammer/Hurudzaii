@@ -41,11 +41,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-[#050505]/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
-        : 'bg-transparent'
+        ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-gray-200 dark:border-gray-800 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
+        : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-gray-200 dark:border-gray-800 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-24 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button onClick={() => handleNav('hero')} className="flex items-center gap-0 group">
@@ -71,20 +71,19 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               >
                 <button
                   onClick={() => handleNav(link.id)}
-                  className="flex items-center gap-1 px-4 py-2 text-sm text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all duration-300"
+                  className="flex items-center gap-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-bold uppercase"
                 >
                   {link.label}
-                  {link.children && <ChevronDown className="w-3.5 h-3.5" />}
+                  {link.children && <ChevronDown className="w-3.5 h-3.5 text-gray-700 dark:text-gray-300" />}
                 </button>
                 {link.children && activeDropdown === link.id && (
-                  <div className="absolute top-full left-0 mt-1 w-56 rounded-xl bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.6)] p-2 animate-scale-in">
+                  <div className="absolute top-full left-0 mt-1 w-56 rounded-xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 shadow-[0_20px_60px_rgba(0,0,0,0.1)] p-2 animate-scale-in">
                     {link.children.map((child) => (
                       <button
                         key={child}
                         onClick={() => handleNav(link.id)}
-                        className="w-full text-left px-4 py-2.5 text-sm text-white/60 hover:text-white hover:bg-white/[0.05] rounded-lg transition-all duration-200 flex items-center gap-3"
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all duration-200 flex items-center gap-3 font-bold uppercase"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2ECC71]/50" />
                         {child}
                       </button>
                     ))}
@@ -96,19 +95,16 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            {/*
             <button
               onClick={toggleTheme}
               aria-label={isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
-              className="p-2.5 text-white/70 hover:text-white border border-white/[0.1] hover:border-[#2ECC71]/30 rounded-lg transition-all duration-300 hover:bg-white/[0.03]"
+              className="p-2.5 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 rounded-lg transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               {isLightTheme ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
-            */
-            }
             <button
               onClick={() => handleNav('api')}
-              className="px-4 py-2 text-sm text-white/70 hover:text-white border border-white/[0.1] hover:border-[#2ECC71]/30 rounded-lg transition-all duration-300 hover:bg-white/[0.03]"
+              className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 rounded-lg transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-bold uppercase"
             >
               Developer Portal
             </button>
@@ -122,10 +118,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
           {/* Mobile Toggle */}
           <div className="lg:hidden flex items-center gap-2">
-          
+            <button
+              onClick={toggleTheme}
+              aria-label={isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'}
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+            >
+              {isLightTheme ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
+
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -135,13 +138,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-[#050505]/98 backdrop-blur-2xl border-t border-white/[0.06] animate-slide-in">
+        <div className="lg:hidden bg-white/98 dark:bg-gray-900/98 backdrop-blur-2xl border-t border-gray-200 dark:border-gray-800 animate-slide-in">
           <div className="max-w-7xl mx-auto px-4 py-6 space-y-1">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className="w-full text-left px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.05] rounded-lg transition-all text-base"
+                className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all text-base font-bold uppercase"
               >
                 {link.label}
               </button>
@@ -149,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <div className="pt-4 flex flex-col gap-3">
               <button
                 onClick={() => handleNav('api')}
-                className="w-full px-4 py-3 text-sm text-white/70 border border-white/[0.1] rounded-lg text-center"
+                className="w-full px-4 py-3 text-sm text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg text-center hover:bg-gray-50 dark:hover:bg-gray-800 font-bold uppercase"
               >
                 Developer Portal
               </button>

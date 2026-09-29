@@ -98,7 +98,7 @@ const AppDownloadHub: React.FC = () => {
   return (
     <section id="apps" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#080808] to-[#050505]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-gray-900 via-gray-50 dark:via-gray-800 to-white dark:to-gray-900" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-[#2ECC71]/5 blur-[200px]" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#D4FF00]/[0.03] blur-[150px]" />
 
@@ -110,13 +110,13 @@ const AppDownloadHub: React.FC = () => {
             <Smartphone className="w-3.5 h-3.5 text-[#D4FF00]" />
             <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Products in the market</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Connected{' '}
             <span className="text-[#2ECC71]">
               Ecosystem.
             </span>
           </h2>
-          <p className="text-lg text-white/40 leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             Download our mobile applications to manage your farm operations and finances
             from anywhere — even in areas with limited connectivity.
           </p>
@@ -124,14 +124,14 @@ const AppDownloadHub: React.FC = () => {
 
         {/* App Switcher Tabs */}
         <div className={`flex justify-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
-          <div className="flex flex-wrap justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl gap-1">
+          <div className="flex flex-wrap justify-center p-1.5 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-xl gap-1">
             {apps.map((app, i) => (
               <button
                 key={app.id}
                 onClick={() => setActiveApp(i)}
                 className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${activeApp === i
-                  ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-white border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
-                  : 'text-white/40 hover:text-white/60'
+                  ? 'bg-gradient-to-r from-[#2ECC71]/20 to-[#D4FF00]/10 text-gray-900 dark:text-gray-100 border border-[#2ECC71]/20 shadow-[0_0_20px_rgba(46,204,113,0.15)]'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
                   }`}
               >
                 {app.name}
@@ -152,7 +152,7 @@ const AppDownloadHub: React.FC = () => {
               />
 
               {/* Phone Frame */}
-              <div className={`relative ${currentApp.id === 'crm' ? 'w-full max-w-[600px] rounded-xl' : 'w-[280px] sm:w-[300px] rounded-[2.5rem]'} overflow-hidden border-2 border-white/[0.1] shadow-[0_30px_80px_rgba(0,0,0,0.6)] animate-float`}>
+              <div className={`relative ${currentApp.id === 'crm' ? 'w-full max-w-[600px] rounded-xl' : 'w-[280px] sm:w-[300px] rounded-[2.5rem]'} overflow-hidden border-2 border-gray-200 dark:border-gray-700 shadow-[0_30px_80px_rgba(0,0,0,0.1)] animate-float`}>
                 <div className={`relative ${currentApp.id === 'crm' ? 'aspect-[16/9]' : 'aspect-[9/19]'}`}>
                   <img
                     src={currentApp.image}
@@ -174,8 +174,8 @@ const AppDownloadHub: React.FC = () => {
                       <BarChart3 className="w-4 h-4 text-[#2ECC71]" />
                     </div>
                     <div>
-                      <div className="text-xs text-white/80 font-medium">{currentApp.downloads}</div>
-                      <div className="text-[10px] text-white/40">Downloads</div>
+                      <div className="text-xs text-gray-800 dark:text-gray-200 font-medium">{currentApp.downloads}</div>
+                      <div className="text-[10px] text-gray-500 dark:text-gray-400">Downloads</div>
                     </div>
                   </div>
                 </GlassCard>
@@ -191,7 +191,7 @@ const AppDownloadHub: React.FC = () => {
                         </svg>
                       ))}
                     </div>
-                    <span className="text-xs text-white/60 font-medium">{currentApp.rating}</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">{currentApp.rating}</span>
                   </div>
                 </GlassCard>
               </div>
@@ -208,8 +208,8 @@ const AppDownloadHub: React.FC = () => {
                 {activeApp === 0 ? <Smartphone className="w-3 h-3" /> : <CreditCard className="w-3 h-3" />}
                 {currentApp.tagline}
               </div>
-              <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">{currentApp.name}</h3>
-              <p className="text-base text-white/45 leading-relaxed">{currentApp.description}</p>
+              <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{currentApp.name}</h3>
+              <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">{currentApp.description}</p>
             </div>
 
             {/* Feature List */}
@@ -217,7 +217,7 @@ const AppDownloadHub: React.FC = () => {
               {currentApp.features.map((feature, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] hover:border-white/[0.08] transition-all duration-300 group cursor-default"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 group cursor-default"
                 >
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300"
@@ -225,7 +225,7 @@ const AppDownloadHub: React.FC = () => {
                   >
                     <feature.icon className="w-5 h-5" style={{ color: currentApp.color }} />
                   </div>
-                  <span className="text-sm text-white/60 group-hover:text-white/80 transition-colors">{feature.text}</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors">{feature.text}</span>
                   <Check className="w-4 h-4 text-[#2ECC71]/40 ml-auto flex-shrink-0" />
                 </div>
               ))}
@@ -250,32 +250,32 @@ const AppDownloadHub: React.FC = () => {
                   </div>
                 </a>
               ) : (
-                <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.1] hover:bg-white/[0.1] hover:border-[#2ECC71]/20 transition-all duration-300">
-                  <svg className="w-6 h-6 text-white/80" viewBox="0 0 24 24" fill="currentColor">
+                <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:border-[#2ECC71]/20 transition-all duration-300">
+                  <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z" />
                   </svg>
                   <div className="text-left">
-                    <div className="text-[10px] text-white/40 leading-none">Get it on</div>
-                    <div className="text-sm font-semibold text-white leading-tight">Google Play</div>
+                    <div className="text-[10px] text-gray-500 dark:text-gray-400 leading-none">Get it on</div>
+                    <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-tight">Google Play</div>
                   </div>
                 </button>
               )}
 
               {/* App Store */}
-              <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.1] hover:bg-white/[0.1] hover:border-[#2ECC71]/20 transition-all duration-300">
-                <svg className="w-7 h-7 text-white/80" viewBox="0 0 24 24" fill="currentColor">
+              <button className="group flex items-center gap-3 px-6 py-3.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 hover:border-[#2ECC71]/20 transition-all duration-300">
+                <svg className="w-7 h-7 text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                 </svg>
                 <div className="text-left">
-                  <div className="text-[10px] text-white/40 leading-none">Download on the</div>
-                  <div className="text-sm font-semibold text-white leading-tight">App Store</div>
+                  <div className="text-[10px] text-gray-500 dark:text-gray-400 leading-none">Download on the</div>
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-tight">App Store</div>
                 </div>
               </button>
 
               {/* QR Code Button */}
               <button
                 onClick={() => setShowQR(!showQR)}
-                className="flex items-center gap-2 px-5 py-3.5 rounded-xl border border-white/[0.08] text-white/50 hover:text-white hover:border-[#2ECC71]/20 transition-all duration-300"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:border-[#2ECC71]/20 transition-all duration-300"
               >
                 <QrCode className="w-5 h-5" />
                 <span className="text-sm">QR Code</span>
@@ -305,7 +305,7 @@ const AppDownloadHub: React.FC = () => {
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-white/40">Scan to download {currentApp.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Scan to download {currentApp.name}</p>
                 </div>
               </GlassCard>
             )}
@@ -317,8 +317,8 @@ const AppDownloadHub: React.FC = () => {
           <GlassCard className="p-8 sm:p-12 max-w-4xl mx-auto" hover>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="text-left">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Ready to transform your farm?</h3>
-                <p className="text-sm text-white/40">Join 12,000+ farmers already using Hurudza AI.</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Ready to transform your farm?</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Join 12,000+ farmers already using Hurudza AI.</p>
               </div>
               <button
                 onClick={() => {

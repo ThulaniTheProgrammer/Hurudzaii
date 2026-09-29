@@ -61,20 +61,20 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <footer className="relative border-t border-white/[0.04]">
+    <footer className="relative border-t border-gray-200 dark:border-gray-800">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050505] to-[#020202]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-gray-900 to-gray-50 dark:to-gray-800" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
-        <div className="py-16 border-b border-white/[0.04]">
+        <div className="py-16 border-b border-gray-200 dark:border-gray-800">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
                 Stay ahead of the{' '}
                 <span className="bg-gradient-to-r from-[#2ECC71] to-[#D4FF00] bg-clip-text text-transparent">harvest</span>
               </h3>
-              <p className="text-white/40 text-sm">
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Get weekly insights on agricultural technology, market trends, and platform updates.
               </p>
             </div>
@@ -85,7 +85,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/25 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
+                  className="w-full px-5 py-3.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#2ECC71]/30 focus:ring-1 focus:ring-[#2ECC71]/20 transition-all"
                 />
               </div>
               <button
@@ -117,11 +117,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <img src="/hurudza.png" alt="Hurudza logo" className="w-6 h-6 object-contain relative z-10" />
               </div>
               <div>
-                <span className="text-white font-bold text-base">Hurudza AI</span>
+                <span className="text-gray-900 dark:text-gray-100 font-bold text-base">Hurudza AI</span>
                 <span className="text-[#2ECC71] text-[9px] font-medium tracking-[0.15em] uppercase block leading-none mt-0.5">Africa</span>
               </div>
             </button>
-            <p className="text-xs text-white/30 leading-relaxed max-w-xs">
+            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs">
               Empowering Zimbabwean agriculture with cutting-edge technology. From precision farming to financial inclusion.
             </p>
           </div>
@@ -129,21 +129,21 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs text-white/50 uppercase tracking-wider font-semibold mb-4">{category}</h4>
+              <h4 className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider font-semibold mb-4">{category}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
                     {link.id === 'developers' ? (
                       <a
                         href="/developers"
-                        className="text-sm text-white/30 hover:text-[#2ECC71] transition-colors duration-200"
+                        className="text-sm text-gray-500 dark:text-gray-400 hover:text-[#2ECC71] transition-colors duration-200"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <button
                         onClick={() => onNavigate(link.id)}
-                        className="text-sm text-white/30 hover:text-[#2ECC71] transition-colors duration-200"
+                        className="text-sm text-gray-500 dark:text-gray-400 hover:text-[#2ECC71] transition-colors duration-200"
                       >
                         {link.label}
                       </button>
@@ -156,8 +156,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/20">
+        <div className="py-6 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-400 dark:text-gray-500">
             &copy; {new Date().getFullYear()} Hurudza AI. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
@@ -171,7 +171,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 aria-label={name}
               >
                 <div className="absolute inset-0 bg-[#2ECC71]/10 rounded-full scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300" />
-                <Icon className="w-4 h-4 text-white/30 group-hover:text-[#2ECC71] relative z-10 transition-colors duration-300" />
+                <Icon className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-[#2ECC71] relative z-10 transition-colors duration-300" />
               </a>
             ))}
           </div>

@@ -50,9 +50,9 @@ const StatsSection: React.FC = () => {
   const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="stats" className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#050505]" />
+      <div className="absolute inset-0 bg-white dark:bg-gray-900" />
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#2ECC71]/3 blur-[200px]" />
       </div>
@@ -63,13 +63,13 @@ const StatsSection: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4FF00]/10 border border-[#D4FF00]/20 mb-6">
             <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Impact & Scale</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Numbers That{' '}
             <span className="text-[#2ECC71]">
               Speak
             </span>
           </h2>
-          <p className="text-lg text-white/40">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Our platform's impact across Africa's agricultural landscape.
           </p>
         </div>
@@ -79,13 +79,13 @@ const StatsSection: React.FC = () => {
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] hover:bg-white/[0.04] hover:border-[#2ECC71]/15 transition-all duration-500"
+              className="relative group p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-[#2ECC71]/15 transition-all duration-500"
             >
               {/* Glow on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2ECC71]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   <AnimatedCounter
                     end={stat.value}
                     suffix={stat.suffix}
@@ -93,8 +93,8 @@ const StatsSection: React.FC = () => {
                     duration={2000 + i * 200}
                   />
                 </div>
-                <div className="text-sm font-medium text-white/60 mb-1">{stat.label}</div>
-                <div className="text-xs text-white/25">{stat.description}</div>
+                <div className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">{stat.label}</div>
+                <div className="text-xs text-gray-400 dark:text-gray-500">{stat.description}</div>
               </div>
             </div>
           ))}
@@ -102,11 +102,11 @@ const StatsSection: React.FC = () => {
 
         {/* Testimonial */}
         <div className={`mt-16 max-w-3xl mx-auto ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
-          <div className="relative p-8 sm:p-10 rounded-2xl bg-white/[0.02] backdrop-blur-sm border border-white/[0.05]">
+          <div className="relative p-8 sm:p-10 rounded-2xl bg-gray-50 dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
             <svg className="w-8 h-8 text-[#2ECC71]/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
-            <blockquote className="text-lg sm:text-xl text-white/60 leading-relaxed mb-6">
+            <blockquote className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               "Hurudza AI has completely transformed how we manage our 200-hectare maize farm. The AI diagnostics caught a fall armyworm infestation two weeks before it would have been visible, saving us an estimated $45,000 in crop losses."
             </blockquote>
             <div className="flex items-center gap-4">
@@ -114,8 +114,8 @@ const StatsSection: React.FC = () => {
                 TM
               </div>
               <div>
-                <div className="text-sm font-medium text-white/80">Tendai Makoni</div>
-                <div className="text-xs text-white/30">Commercial Farmer, Mashonaland East</div>
+                <div className="text-sm font-medium text-gray-800 dark:text-gray-200">Tendai Makoni</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Commercial Farmer, Mashonaland East</div>
               </div>
             </div>
           </div>
