@@ -318,7 +318,7 @@ const AppDownloadHub: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="text-left">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Ready to transform your farm?</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Join 12,000+ farmers already using Hurudza AI.</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Join 21,000+ farmers already using Hurudza AI.</p>
               </div>
               <button
                 onClick={() => {
