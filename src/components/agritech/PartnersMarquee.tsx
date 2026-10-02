@@ -38,15 +38,15 @@ const PartnersMarquee: React.FC = () => {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section className="relative py-16 sm:py-20 overflow-hidden">
+    <section className="relative py-8 sm:py-8 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-gray-900 via-gray-50 dark:via-gray-800 to-white dark:to-gray-900" />
 
       <div ref={ref} className={`relative z-10 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-        <div className="text-center mb-14">
-          <p className="inline-flex items-center gap-4 text-sm sm:text-base uppercase tracking-[0.25em] text-gray-600 dark:text-gray-400 font-semibold">
+        <div className="text-center mb-2">
+          <p className="inline-flex items-center  text-sm sm:text-base uppercase tracking-[0.25em] text-gray-600 dark:text-gray-400 font-semibold">
             <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#2ECC71]/50"></span>
-            Trusted by Industry Leaders
+            Trusted and backed by
             <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#2ECC71]/50"></span>
           </p>
         </div>
@@ -65,27 +65,7 @@ const PartnersMarquee: React.FC = () => {
         </div>
 
         {/* Awards Row */}
-        <div className="w-full mt-10 px-4">
-          <div className="flex justify-center gap-6 sm:gap-10 overflow-x-auto">
-            {[
-              { label: "Eagle's Nest", org: 'Zimtrade' },
-              { label: 'VCC5', org: 'eight2five' },
-              { label: 'AI for Good', org: 'Global Recognition' },
-              { label: 'Innovators Forum Award', org: 'ZITF' },
-              { label: 'Top 10 Startups', org: 'Zimbabwe' },
-            ].map((award, i) => (
-              <div key={i} className="flex items-center gap-3 px-4 py-2">
-                <svg className="w-5 h-5 text-[#D4FF00]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 01-2.52.587 6.023 6.023 0 01-2.52-.587" />
-                </svg>
-                <div>
-                  <div className="text-xs font-medium text-gray-600">{award.label}</div>
-                  <div className="text-[10px] text-gray-400">{award.org}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      
       </div>
     </section>
   );

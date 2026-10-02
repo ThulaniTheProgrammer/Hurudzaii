@@ -1,105 +1,640 @@
-import React, { useState, useEffect } from 'react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import React, { useEffect, useRef, useState } from 'react';
+import HERO_VIDEO from '@/components/img/Elevator.mp4';
 
 const aboutImages = [
   '/Assets/one.jpeg',
   '/Assets/two.jpeg',
-  '/Assets/three.jpeg',
-  '/Assets/four.jpeg',
   '/Assets/five.jpeg',
-  '/Assets/six.jpeg',
-  '/Assets/seven.jpeg',
   '/Assets/eight.jpeg',
   '/Assets/nine.jpg',
-  '/Assets/ten.jpg'
 ];
 
+const storySteps = [
+  {
+    number: '01',
+    title: 'Behind Every Harvest Is a Family',
+    lines: [
+      'Founded by Frank Makeba.',
+      'Rooted in Zvimba, Zimbabwe.',
+      'Built for farming families.',
+    ],
+  },
+  {
+    number: '02',
+    title: 'Every Farmer Deserves to Be Heard',
+    lines: [
+      'Our datasets began in 2022.',
+      'Preserving local knowledge.',
+      'Giving farmers a voice.',
+    ],
+  },
+  {
+    number: '03',
+    title: 'So the Next Generation Can Thrive',
+    lines: [
+      'African AI. Local languages.',
+      'Building climate resilience.',
+      'Hope for the next generation.',
+    ],
+  },
+];
+
+const ABOUT_CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  .hurudza-about {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 88px 0;
+    color: #163c2e;
+    background:
+      radial-gradient(
+        ellipse at top left,
+        #ccebd8 0%,
+        transparent 55%
+      ),
+      linear-gradient(
+        135deg,
+        #f1f8f3 0%,
+        #e2f1e7 50%,
+        #d5eadd 100%
+      );
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .hurudza-about *,
+  .hurudza-about *::before,
+  .hurudza-about *::after {
+    box-sizing: border-box;
+  }
+
+  .hurudza-about h2,
+  .hurudza-about h3,
+  .hurudza-about p {
+    margin: 0;
+  }
+
+  .hurudza-about button {
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .hurudza-about .about-wrap {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+
+  .hurudza-about .about-display {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Centered heading */
+  .hurudza-about .about-header {
+    max-width: 1000px;
+    margin: 0 auto 52px;
+    text-align: center;
+  }
+
+  .hurudza-about h2 {
+    font-size: clamp(34px, 4.4vw, 58px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+  }
+
+  .hurudza-about h2 span {
+    color: #398258;
+  }
+
+  .hurudza-about .about-intro {
+    max-width: 620px;
+    margin: 20px auto 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #53695b;
+    text-wrap: pretty;
+  }
+
+  /* Gallery and story */
+  .hurudza-about .about-grid {
+    display: grid;
+    grid-template-columns: .95fr 1.05fr;
+    gap: 48px;
+    align-items: stretch;
+  }
+
+  .hurudza-about .about-gallery {
+    position: relative;
+    min-width: 0;
+  }
+
+  /* The text determines the grid row height; the photo fills that row. */
+  .hurudza-about .about-photo {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #244f3d;
+    box-shadow: 0 24px 60px -28px rgba(19, 58, 39, .4);
+  }
+
+  .hurudza-about .about-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 900ms ease;
+  }
+
+  .hurudza-about .about-photo-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(4, 24, 15, .04) 40%,
+      rgba(4, 24, 15, .86) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hurudza-about .about-photo-caption {
+    position: absolute;
+    bottom: 94px;
+    left: 30px;
+    right: 30px;
+    color: #fff;
+  }
+
+  .hurudza-about .about-photo-caption small {
+    display: block;
+    margin-bottom: 12px;
+    color: #d6eadb;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+
+  .hurudza-about .about-photo-caption p {
+    max-width: 350px;
+    font-size: clamp(25px, 3vw, 37px);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+  }
+
+  .hurudza-about .about-gallery-controls {
+    position: absolute;
+    z-index: 2;
+    bottom: 18px;
+    left: 20px;
+    right: 20px;
+    padding: 4px 10px;
+    border-radius: 16px;
+    background: rgba(241, 248, 243, .95);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hurudza-about .about-dots {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .hurudza-about .about-dot {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .hurudza-about .about-dot::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 20px;
+    background: #9aafa0;
+  }
+
+  .hurudza-about .about-dot[aria-pressed="true"]::after {
+    width: 22px;
+    background: #287a4f;
+  }
+
+  .hurudza-about .about-pause {
+    padding: 8px 13px;
+    border: 1px solid #b9cebd;
+    border-radius: 999px;
+    background: #ffffff80;
+    color: #315b43;
+    font-size: 12px;
+  }
+
+  .hurudza-about button:focus-visible {
+    outline: 3px solid #287a4f;
+    outline-offset: 3px;
+  }
+
+  .hurudza-about .about-stories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hurudza-about .about-story {
+    position: relative;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 16px;
+    padding: 0 0 34px;
+  }
+
+  /* Join the centres of each numbered step. */
+  .hurudza-about .about-story:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 38px;
+    bottom: 0;
+    left: 18px;
+    width: 2px;
+    background: #8db79b;
+  }
+
+  .hurudza-about .about-story:last-child {
+    padding-bottom: 0;
+  }
+
+  .hurudza-about .about-number {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #287a4f;
+    border-radius: 50%;
+    background: #287a4f;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .hurudza-about .about-story h3 {
+    padding-top: 3px;
+    font-size: clamp(21px, 2.1vw, 26px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.025em;
+  }
+
+  .hurudza-about .about-story p {
+    margin-top: 12px;
+    color: #526558;
+    line-height: 1.85;
+    font-size: clamp(12px, 1.25vw, 15px);
+  }
+
+  .hurudza-about .about-story p span {
+    display: block;
+  }
+
+  /* Full-width video with no text column */
+  .hurudza-about .about-film {
+    margin-top: 56px;
+    overflow: hidden;
+    border-radius: 26px;
+    background: #09281c;
+    box-shadow: 0 24px 60px -28px rgba(19, 58, 39, .4);
+  }
+
+  .hurudza-about .about-film video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #09281c;
+  }
+
+  .hurudza-about .about-video-error {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    padding: 24px;
+    color: #d6e6db;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .hurudza-about .about-grid {
+      gap: 28px;
+    }
+
+    .hurudza-about .about-story {
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hurudza-about {
+      padding: 56px 0;
+    }
+
+    .hurudza-about .about-wrap {
+      width: calc(100% - 40px);
+    }
+
+    .hurudza-about .about-header {
+      margin-bottom: 34px;
+    }
+
+    .hurudza-about .about-intro {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    .hurudza-about .about-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .hurudza-about .about-photo {
+      position: relative;
+      inset: auto;
+      aspect-ratio: 4 / 4.3;
+      border-radius: 20px;
+    }
+
+    .hurudza-about .about-photo-caption {
+      bottom: 94px;
+      left: 24px;
+      right: 24px;
+    }
+
+    .hurudza-about .about-story {
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .hurudza-about .about-number {
+      width: 34px;
+      height: 34px;
+    }
+
+    .hurudza-about .about-story:not(:last-child)::before {
+      top: 34px;
+      left: 16px;
+    }
+
+    .hurudza-about .about-story p {
+      font-size: clamp(11px, 3.1vw, 15px);
+    }
+
+    .hurudza-about .about-film {
+      margin-top: 36px;
+      border-radius: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hurudza-about .about-photo img {
+      transition: none;
+    }
+  }
+`;
+
 const AboutSection: React.FC = () => {
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const galleryRef = useRef<HTMLDivElement | null>(null);
+
   const [currentImage, setCurrentImage] = useState(0);
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [galleryVisible, setGalleryVisible] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(true);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % aboutImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    const query = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
+
+    const updateMotion = () => {
+      setReducedMotion(query.matches);
+    };
+
+    const updateVisibility = () => {
+      setPageVisible(!document.hidden);
+    };
+
+    updateMotion();
+    updateVisibility();
+
+    query.addEventListener('change', updateMotion);
+    document.addEventListener(
+      'visibilitychange',
+      updateVisibility
+    );
+
+    return () => {
+      query.removeEventListener('change', updateMotion);
+      document.removeEventListener(
+        'visibilitychange',
+        updateVisibility
+      );
+    };
   }, []);
 
+  useEffect(() => {
+    const element = galleryRef.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setGalleryVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (
+      paused ||
+      reducedMotion ||
+      !pageVisible ||
+      !galleryVisible
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setCurrentImage(
+        (previous) => (previous + 1) % aboutImages.length
+      );
+    }, 6000);
+
+    return () => window.clearInterval(timer);
+  }, [paused, reducedMotion, pageVisible, galleryVisible]);
+
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-white dark:bg-gray-900" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#2ECC71]/5 blur-[200px]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#D4FF00]/[0.03] blur-[150px]" />
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="hurudza-about"
+    >
+      <style>{ABOUT_CSS}</style>
 
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-          {/* Left Content */}
-          <div className={`order-2 lg:order-1 h-[500px] sm:h-[600px] flex flex-col ${isVisible ? 'animate-slide-left' : 'opacity-0'}`}>
-            {/* Section Header */}
-            <div className="mb-6">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                Our Story Began in an{' '}
-                <span className="text-[#2ECC71]">
-                  African Village
-                </span>
-              </h2>
-            </div>
+      <div className="about-wrap">
+        <header className="about-header">
+          <h2
+            id="about-heading"
+            className="about-display"
+          >
+            Our Story Began in an{' '}
+            <span>African Village</span>
+          </h2>
 
-            {/* Story Content */}
-            <div className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-              <p>
-                Founded by Frank Makeba, who grew up in Zvimba District in Zimbabwe's Mashonaland West, Hurudza AI is rooted in the understanding that every harvest carries a family's hopes: food on the table, a child's education, and the chance to face tomorrow with dignity. When a harvest fails, more than crops are lost. In 2022, Frank began building the datasets that would lay the foundation for Hurudza AI. That work grew from a purpose that still guides us today: ensuring African farmers' knowledge, languages, and everyday challenges have a place in the technology built to serve them. Today, we continue to listen to farmers and build around their realities—the rains that arrive too late, the disease that threatens months of labour, and the urgent questions that too often go unanswered. We bring generations of indigenous agricultural knowledge together with African-owned AI, making practical guidance accessible in the languages farmers speak. We build to help them protect their harvests, adapt to a changing climate, and care for the land their children will inherit.
-              </p>
-            </div>
+          <p className="about-intro">
+            For the families whose hopes are planted in the soil,
+            and the children whose futures grow with every harvest.
+          </p>
+        </header>
 
-            {/* Mission Statement */}
-            <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 mb-6 cursor-pointer hover:border-[#2ECC71]/30 transition-all duration-300" onClick={() => setExpandedSection(expandedSection === 'mission' ? null : 'mission')}>
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Our Mission</h3>
-                <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${expandedSection === 'mission' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p className={`text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-300 ${expandedSection === 'mission' ? '' : 'max-h-12 overflow-hidden'}`}>
-                To put African-owned AI into the hands of smallholder farmers, combining indigenous knowledge with practical guidance in their own languages to protect harvests, strengthen livelihoods, and build climate resilience.
-              </p>
-            </div>
-
-            {/* Vision Statement */}
-            <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-[#2ECC71]/30 transition-all duration-300" onClick={() => setExpandedSection(expandedSection === 'vision' ? null : 'vision')}>
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Our Vision</h3>
-                <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${expandedSection === 'vision' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <p className={`text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-300 ${expandedSection === 'vision' ? '' : 'max-h-12 overflow-hidden'}`}>
-                An Africa where every farmer can grow with confidence, every farming family can thrive, and generations of agricultural wisdom help sustain the land and feed the future.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Image Carousel */}
-          <div className={`order-1 lg:order-2 ${isVisible ? 'animate-slide-right' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative h-[500px] sm:h-[600px] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
+        <div className="about-grid">
+          <div
+            ref={galleryRef}
+            className="about-gallery"
+            role="group"
+            aria-label="Hurudza AI photo gallery"
+          >
+            <div className="about-photo">
+              {aboutImages.map((image, index) => (
                 <img
-                  src={aboutImages[currentImage]}
-                  alt={`About image ${currentImage + 1}`}
-                  className="w-full h-full object-contain transition-opacity duration-500"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop';
+                  key={image}
+                  src={image}
+                  alt={`Hurudza AI gallery photograph ${index + 1}`}
+                  aria-hidden={index !== currentImage}
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  style={{
+                    opacity: index === currentImage ? 1 : 0,
                   }}
                 />
+              ))}
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="about-photo-shade" />
+
+              <div className="about-photo-caption">
+                <small>
+                  Rooted in Zimbabwe · Built for Africa
+                </small>
+
+                <p className="about-display">
+                  Every harvest carries a family’s hopes.
+                </p>
               </div>
             </div>
+
+            <div className="about-gallery-controls">
+              <div
+                className="about-dots"
+                role="group"
+                aria-label="Choose a photograph"
+              >
+                {aboutImages.map((image, index) => (
+                  <button
+                    key={image}
+                    type="button"
+                    className="about-dot"
+                    aria-label={`Show photograph ${index + 1}`}
+                    aria-pressed={index === currentImage}
+                    onClick={() => {
+                      setCurrentImage(index);
+                      setPaused(true);
+                    }}
+                  />
+                ))}
+              </div>
+
+              {!reducedMotion && (
+                <button
+                  type="button"
+                  className="about-pause"
+                  onClick={() => setPaused((value) => !value)}
+                >
+                  {paused ? 'Play slideshow' : 'Pause slideshow'}
+                </button>
+              )}
+            </div>
           </div>
+
+          <ol className="about-stories">
+            {storySteps.map((step) => (
+              <li
+                key={step.number}
+                className="about-story"
+              >
+                <span
+                  className="about-number"
+                  aria-hidden="true"
+                >
+                  {step.number}
+                </span>
+
+                <div>
+                  <h3 className="about-display">
+                    {step.title}
+                  </h3>
+
+                  <p>
+                    {step.lines.map((line) => (
+                      <span key={line}>{line}</span>
+                    ))}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="about-film">
+          {videoError ? (
+            <div
+              role="status"
+              className="about-video-error"
+            >
+              The video is currently unavailable.
+              Please try again later.
+            </div>
+          ) : (
+            <video
+              src={HERO_VIDEO}
+              autoPlay
+              muted
+              loop
+              controls
+              playsInline
+              preload="auto"
+              aria-label="The story behind Hurudza AI"
+              onError={() => setVideoError(true)}
+            >
+              Your browser does not support video playback.{' '}
+              <a href={HERO_VIDEO}>Open the video</a>.
+            </video>
+          )}
         </div>
       </div>
     </section>
