@@ -19,11 +19,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Solutions', id: 'solutions', children: ['Farm Management', 'Farm Manager', 'ZundePay', 'Crop Analytics', 'IoT Sensors'] },
-    { label: 'Products', id: 'apps' },
-    { label: 'API & Docs', id: 'api' },
     { label: 'About', id: 'about' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Solutions', id: 'solutions'},
+    { label: 'API & Docs', id: 'api' },
+      { label: 'Contact', id: 'contact' },
+   
   ];
 
   const handleNav = (id: string) => {
@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                   className="flex items-center gap-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 font-bold uppercase"
                 >
                   {link.label}
-                  {link.children && <ChevronDown className="w-3.5 h-3.5 text-gray-700 dark:text-gray-300" />}
+                  {link.children }
                 </button>
                 {link.children && activeDropdown === link.id && (
                   <div className="absolute top-full left-0 mt-1 w-56 rounded-xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 shadow-[0_20px_60px_rgba(0,0,0,0.1)] p-2 animate-scale-in">

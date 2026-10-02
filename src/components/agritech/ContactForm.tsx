@@ -112,11 +112,7 @@ const ContactForm: React.FC = () => {
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2ECC71]/10 border border-[#2ECC71]/20 mb-6 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:animate-[shimmer_2s_infinite]" />
-            <Headphones className="w-3.5 h-3.5 text-[#2ECC71] animate-pulse" />
-            <span className="text-[#2ECC71] text-xs font-medium uppercase tracking-wider">24/7 Multilingual AI Contact Center</span>
-          </div>
+        
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             24/7 Intelligent{' '}
             <span className="text-[#2ECC71]">

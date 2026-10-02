@@ -96,20 +96,17 @@ const AppDownloadHub: React.FC = () => {
   const currentApp = apps[activeApp];
 
   return (
-    <section id="apps" className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="apps" className="relative py-12 sm:py-16 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white dark:from-gray-900 via-gray-50 dark:via-gray-800 to-white dark:to-gray-900" />
+      <div className="absolute inset-0 bg-white dark:bg-white" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-[#2ECC71]/5 blur-[200px]" />
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#D4FF00]/[0.03] blur-[150px]" />
 
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center max-w-3xl mx-auto mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4FF00]/10 border border-[#D4FF00]/20 mb-6">
-            <Smartphone className="w-3.5 h-3.5 text-[#D4FF00]" />
-            <span className="text-[#D4FF00] text-xs font-medium uppercase tracking-wider">Products in the market</span>
-          </div>
+        <div className={`text-center max-w-3xl mx-auto mb-10 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Connected{' '}
             <span className="text-[#2ECC71]">
@@ -123,7 +120,7 @@ const AppDownloadHub: React.FC = () => {
         </div>
 
         {/* App Switcher Tabs */}
-        <div className={`flex justify-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+        <div className={`flex justify-center mb-8 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
           <div className="flex flex-wrap justify-center p-1.5 rounded-2xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 backdrop-blur-xl gap-1">
             {apps.map((app, i) => (
               <button
@@ -313,7 +310,7 @@ const AppDownloadHub: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className={`mt-20 text-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+        <div className={`mt-12 text-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
           <GlassCard className="p-8 sm:p-12 max-w-4xl mx-auto" hover>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="text-left">

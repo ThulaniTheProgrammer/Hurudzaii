@@ -64,9 +64,9 @@ const AppLayoutContent: React.FC = () => {
       <PartnersMarquee />
       <AboutSection />
       <FeaturesSection />
-      <StatsSection />
       <AppDownloadHub />
       <APIPortal />
+      
       <ContactForm />
       <Footer onNavigate={handleNavigate} />
     </div>

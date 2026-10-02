@@ -56,7 +56,7 @@ const FeaturesSection: React.FC = () => {
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center max-w-5xl mx-auto mb-12 sm:mb-16 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-bold text-gray-900 dark:text-gray-100 mb-6">
+          <h2 className="text-3xl lg:pt-32 pt-6 sm:text-4xl lg:text-5xl leading-tight tracking-tight font-bold text-gray-900 dark:text-gray-100 mb-6">
            African Agriculture.{' '}
             <span className="text-[#2ECC71]">
             Sovereign AI Ecosystem.

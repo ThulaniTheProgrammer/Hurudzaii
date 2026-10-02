@@ -13,15 +13,13 @@ const storySteps = [
     title: 'Our story began in an african village',
     lines: [
       'In Zvimba, Zimbabwe, our founder, Frank Makeba, grew up watching his family and neighbours pour their hopes into the soil. When rains failed or diseases struck, there was often no one to turn to and months of hard work disappeared with the harvest. That pain inspired him to begin building Hurudza AI in 2022, so the families who feed us would never have to face another season alone.',
-      
     ],
   },
   {
     number: '02',
     title: 'Turning Our Pain into Purpose',
     lines: [
-      'In 2022, Frank and his university team began building African agricultural datasets, preserving local knowledge and laying the foundation for the support his village had needed..',
-      
+      'In 2022, Frank and his university team began building African agricultural datasets, preserving local knowledge and laying the foundation for the support his village had needed.',
     ],
   },
   {
@@ -29,7 +27,6 @@ const storySteps = [
     title: 'From Our Village to Every African Farmer',
     lines: [
       'In 2024, Hurudza AI was launched with a purpose close to our hearts: putting guidance in farmers’ hands, in their own languages, to help protect their harvests and face a changing climate—so the families who feed us would not have to face each season alone.',
-     
     ],
   },
 ];
@@ -39,21 +36,44 @@ const ABOUT_CSS = `
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    padding: 88px 0;
+    padding: 88px 0 16px;
     color: #163c2e;
     background:
       radial-gradient(
-        ellipse at top left,
-        #ccebd8 0%,
-        transparent 55%
+        900px 520px at 6% 0%,
+        rgba(128, 255, 158, 0.28) 0%,
+        transparent 60%
       ),
-      linear-gradient(
-        135deg,
-        #f1f8f3 0%,
-        #e2f1e7 50%,
-        #d5eadd 100%
-      );
+      radial-gradient(
+        800px 520px at 100% 100%,
+        rgba(240, 185, 58, 0.16) 0%,
+        transparent 60%
+      ),
+      linear-gradient(180deg, #fbfaf4 0%, #f2f6ec 100%);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  /* Subtle dot grid that fades toward the edges */
+  .hurudza-about::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(
+      rgba(22, 60, 46, 0.09) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      #000 30%,
+      transparent 80%
+    );
+    mask-image: radial-gradient(
+      ellipse at center,
+      #000 30%,
+      transparent 80%
+    );
   }
   .hurudza-about *,
   .hurudza-about *::before,
@@ -120,7 +140,9 @@ const ABOUT_CSS = `
     overflow: hidden;
     border-radius: 24px;
     background: #244f3d;
-    box-shadow: 0 24px 60px -28px rgba(19, 58, 39, .4);
+    box-shadow:
+      0 30px 70px -30px rgba(19, 58, 39, 0.45),
+      0 0 0 1px rgba(22, 60, 46, 0.06);
   }
   .hurudza-about .about-photo img {
     position: absolute;
@@ -274,7 +296,9 @@ const ABOUT_CSS = `
     overflow: hidden;
     border-radius: 26px;
     background: #09281c;
-    box-shadow: 0 24px 60px -28px rgba(19, 58, 39, .4);
+    box-shadow:
+      0 30px 70px -30px rgba(19, 58, 39, 0.45),
+      0 0 0 1px rgba(22, 60, 46, 0.06);
   }
   .hurudza-about .about-film video {
     display: block;
@@ -297,7 +321,6 @@ const ABOUT_CSS = `
       white-space: nowrap;
     }
   }
-
   @media (max-width: 900px) {
     .hurudza-about .about-grid {
       gap: 28px;
@@ -309,7 +332,7 @@ const ABOUT_CSS = `
   }
   @media (max-width: 640px) {
     .hurudza-about {
-      padding: 56px 0;
+      padding: 56px 0 12px;
     }
     .hurudza-about .about-wrap {
       width: calc(100% - 40px);
@@ -383,10 +406,7 @@ const AboutSection: React.FC = () => {
     updateMotion();
     updateVisibility();
     query.addEventListener('change', updateMotion);
-    document.addEventListener(
-      'visibilitychange',
-      updateVisibility
-    );
+    document.addEventListener('visibilitychange', updateVisibility);
     return () => {
       query.removeEventListener('change', updateMotion);
       document.removeEventListener(
@@ -432,14 +452,17 @@ const AboutSection: React.FC = () => {
       <style>{ABOUT_CSS}</style>
       <div className="about-wrap">
         <header className="about-header">
-          <h2
-            id="about-heading"
-            className="about-display"
-          >Building Sovereign African{' '}
+          <h2 id="about-heading" className="about-display">
+            Building Sovereign African{' '}
             <span>Agricultural Intelligence.</span>
           </h2>
           <p className="about-intro">
-            Africa’s agricultural knowledge is our foundation. AI is how we scale its power. We connect local expertise, satellite insights and financial tools to help farmers protect their harvests, businesses grow with confidence and developers build what comes next powering a more productive, climate-resilient Africa.
+            Africa’s agricultural knowledge is our foundation. AI is how
+            we scale its power. We connect local expertise, satellite
+            insights and financial tools to help farmers protect their
+            harvests, businesses grow with confidence and developers
+            build what comes next powering a more productive,
+            climate-resilient Africa.
           </p>
         </header>
         <div className="about-grid">
@@ -465,9 +488,7 @@ const AboutSection: React.FC = () => {
               ))}
               <div className="about-photo-shade" />
               <div className="about-photo-caption">
-                <small>
-                  Rooted in Zimbabwe · Built for Africa
-                </small>
+                <small>Rooted in Zimbabwe · Built for Africa</small>
                 <p className="about-display">
                   Every harvest carries a family’s hopes.
                 </p>
@@ -506,20 +527,12 @@ const AboutSection: React.FC = () => {
           </div>
           <ol className="about-stories">
             {storySteps.map((step) => (
-              <li
-                key={step.number}
-                className="about-story"
-              >
-                <span
-                  className="about-number"
-                  aria-hidden="true"
-                >
+              <li key={step.number} className="about-story">
+                <span className="about-number" aria-hidden="true">
                   {step.number}
                 </span>
                 <div>
-                  <h3 className="about-display">
-                    {step.title}
-                  </h3>
+                  <h3 className="about-display">{step.title}</h3>
                   <p>
                     {step.lines.map((line) => (
                       <span key={line}>{line}</span>
@@ -532,12 +545,9 @@ const AboutSection: React.FC = () => {
         </div>
         <div className="about-film">
           {videoError ? (
-            <div
-              role="status"
-              className="about-video-error"
-            >
-              The video is currently unavailable.
-              Please try again later.
+            <div role="status" className="about-video-error">
+              The video is currently unavailable. Please try again
+              later.
             </div>
           ) : (
             <video
