@@ -439,7 +439,7 @@ const AboutSection: React.FC = () => {
             <span>Agricultural Intelligence.</span>
           </h2>
           <p className="about-intro">
-            Africa’s agricultural knowledge is our foundation. AI is how we scale its power. We connect local expertise, satellite insights and financial tools to help farmers protect their harvests, businesses grow with confidence and developers build what comes next—powering a more productive, climate-resilient Africa.
+            Africa’s agricultural knowledge is our foundation. AI is how we scale its power. We connect local expertise, satellite insights and financial tools to help farmers protect their harvests, businesses grow with confidence and developers build what comes next powering a more productive, climate-resilient Africa.
           </p>
         </header>
         <div className="about-grid">
